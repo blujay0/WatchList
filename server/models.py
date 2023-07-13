@@ -24,7 +24,7 @@ from config import db
 
 
 # Models go here!
-class Customer(db.Model, SerializerMixin):
+class Customer(db.Model):
     __tablename__ = "customers"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -52,7 +52,47 @@ class Customer(db.Model, SerializerMixin):
     def as_dict(self):
         return {
             "id": self.id,
-            "title": self.title,
-            "": self.id,
-            "id": self.id,
+            "name": self.name,
+            "email": self.email,
+            "address": self.address,
+            "password": self.password,
+        }
+
+
+class Product(db.Model):
+    __tablename__ = "products"
+
+    id = db.Column(db.Integer, primary_key=True)
+    maker = db.Column(db.String, nullable=False)
+    model = db.Column(db.String, nullable=False)
+    product_name = db.Column(db.String, nullable=False)
+    product_price = db.Column(db.String, nullable=False)
+    inventory = db.Column(db.Integer, nullable=False)
+    product_description = db.Column(db.String, nullable=False)
+
+    # relationships
+
+    # validations
+
+    # other methods
+    def __repr__(self):
+        return (
+            f"<Product ID: #{self.id}\n"
+            + f"Product Name: {self.product_name}"
+            + f"Maker: {self.maker}"
+            + f"Model: {self.model}"
+            + f"Product Price: {self.product_price}"
+            + f"Inventory: {self.inventory}"
+            + f"Product Description: {self.product_description}"
+        )
+
+    def as_dict(self):
+        return {
+            "product_id": self.id,
+            "maker": self.maker,
+            "model": self.model,
+            "product_name": self.product_name,
+            "product_price": self.product_price,
+            "inventory": self.inventory,
+            "product_description": self.product_description,
         }
