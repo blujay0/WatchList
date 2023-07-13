@@ -126,3 +126,35 @@ class Order(db.Model):
             "date": self.date,
             "total_amount": self.total_amt,
         }
+
+
+# join table
+class CartItem(db.Model):
+    __tablename__ = "cart_items"
+
+    id = db.Column(db.Integer, unique=True)
+    customer_id = db.Column(db.Integer, db.ForeignKey("customers.id"))
+    product_id = db.Column(db.Integer, db.ForeignKey("products.id"))
+
+    # relationships
+    customer = db.relationship("Customer", back_populates="cart_items")
+    product = db.relationship("Product", back_populates="cart_items")
+
+    # serializations
+
+    # validations
+
+    # other methods
+    def __repr__(self):
+        return (
+            f"<Cart Item ID: #{self.id}\n"
+            + f"Customer ID: {self.customer_id}"
+            + f"Product ID: {self.product_id}"
+        )
+
+    def as_dict(self):
+        return {
+            "cart_item_id": self.id,
+            "customer_id": self.customer_id,
+            "product_id": self.product_id,
+        }
