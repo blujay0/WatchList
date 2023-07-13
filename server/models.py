@@ -96,3 +96,33 @@ class Product(db.Model):
             "inventory": self.inventory,
             "product_description": self.product_description,
         }
+
+
+class Order(db.Model):
+    __tablename__ = "orders"
+
+    id = db.Column(db.Integer, primary_key=True)
+    customer_id = db.Column(db.Integer, db.ForeignKey("customers.id"))
+    date = db.Column(db.DateTime, server_default=db.func.now())
+    total_amount = db.Column(db.Integer, nullable=False)
+
+    # relationships
+
+    # validations
+
+    # other methods
+    def __repr__(self):
+        return (
+            f"<Order ID: #{self.id}\n"
+            + f"Customer ID: {self.customer_id}"
+            + f"Date: {self.date}"
+            + f"Total Amount: {self.total_amt}"
+        )
+
+    def as_dict(self):
+        return {
+            "order_id": self.id,
+            "customer_id": self.customer_id,
+            "date": self.date,
+            "total_amount": self.total_amt,
+        }
