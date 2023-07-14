@@ -6,8 +6,8 @@ export default function Navbar() {
       WatchList
     </a>
     <ul>
-      <li>
-        <a href="/login">Cart</a>
+      <li className="active">
+        <a href="/login">Login</a>
       </li>
       <li>
         <a href="/signup">SignUp</a>
