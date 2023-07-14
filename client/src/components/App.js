@@ -29,7 +29,7 @@ function App() {
            {/* <SignUp/> */}
          </Route>
          <Route exact path="/login">
-           {/* <Login /> */}
+           <Login />
          </Route>
          <Route exact path="/watches/:id">
            {/* <WatchPage /> */}
