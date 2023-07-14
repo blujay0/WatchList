@@ -3,11 +3,11 @@ import { Link } from "react-router-dom" // Link component replaces the anchor ta
 
 export default function Navbar() {
   return <nav className="nav">
-    <a href="/" className="site-title">
+    <Link to="/" className="site-title">
       WatchList
-    </a>
+    </Link>
     <ul>
-      <li className="active">
+      <li>
         <a href="/login">Login</a>
       </li>
       <li>
