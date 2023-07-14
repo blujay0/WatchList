@@ -1,7 +1,7 @@
 import './Footer.css'
 
-function Navbar() {
+function Footer() {
 
 }
 
-export default Navbar
+export default Footer

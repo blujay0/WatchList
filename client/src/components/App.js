@@ -16,6 +16,7 @@ function App() {
     // use React Fragment to wrap <Navbar/> and <Switch/>
     <>
       <Navbar />
+      <Footer />
        <Switch>
          <Route exact path="/">
            {/* <WatchList watches={watches} /> */}
