@@ -6,13 +6,11 @@ import Navbar from "./Navbar.js"
 function App() {
   // Code goes here!
   return (
+    <Navbar />
     <Switch>
-      <Navbar />
       <Route exact path="/">
-
         {/* <WatchList watches={watches} /> */}
       </Route>
-
     </Switch>
   )
 }
