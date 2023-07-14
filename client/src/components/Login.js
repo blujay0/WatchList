@@ -1,11 +1,16 @@
 import React from 'react';
 import './Login.css';
+import { Grid, Paper, Avatar } from '@mui/material';
 
-function Login() {
+const Login = () => {
+  const paperStyle={padding: 20, height:'70vh', width: 280, margin: '20px auto'}
+
   return (
-    <div className="Login">
-      <h1>Login</h1>
-    </div>
+    <Grid>
+      <Paper elevation={10} style={paperStyle}>
+        Log In
+      </Paper>
+    </Grid>
   );
 }
 
