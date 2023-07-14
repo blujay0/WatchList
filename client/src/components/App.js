@@ -26,7 +26,7 @@ function App() {
            {/* <Customer /> */}
          </Route>
          <Route exact path="/signup">
-           {/* <SignUp/> */}
+           <SignUp/>
          </Route>
          <Route exact path="/login">
            <Login />
@@ -35,7 +35,7 @@ function App() {
            {/* <WatchPage /> */}
          </Route>
          <Route exact path="/watches/:id">
-           {/* <About /> */}
+           <About />
          </Route>
        </Switch>    
     </>
