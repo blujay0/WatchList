@@ -7,6 +7,7 @@ import Customer from "./Customer"
 import Login from "./Login"
 import SignUp from "./SignUp"
 import Navbar from "./Navbar.js"
+import Footer from "./Footer.js"
 
 function App() {
   // Code goes here!
