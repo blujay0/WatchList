@@ -7,9 +7,9 @@ function App() {
   // Code goes here!
   return (
     <Switch>
-
+      <Navbar />
       <Route exact path="/">
-        <Navbar />
+
         {/* <WatchList watches={watches} /> */}
       </Route>
 
