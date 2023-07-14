@@ -8,6 +8,7 @@ import Login from "./Login"
 import SignUp from "./SignUp"
 import Navbar from "./Navbar.js"
 import Footer from "./Footer.js"
+import About from "./About.js"
 
 function App() {
   // Code goes here!
@@ -32,6 +33,9 @@ function App() {
          </Route>
          <Route exact path="/watches/:id">
            {/* <WatchPage /> */}
+         </Route>
+         <Route exact path="/watches/:id">
+           {/* <About /> */}
          </Route>
        </Switch>    
     </>
