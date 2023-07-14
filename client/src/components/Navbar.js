@@ -2,7 +2,7 @@ import "./Navbar.css"
 
 export default function Navbar() {
   return <nav className="site-title">
-    <a href="/">
+    <a href="/" className="site-title">
       WatchList
     </a>
     <ul>
