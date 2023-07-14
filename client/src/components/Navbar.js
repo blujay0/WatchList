@@ -1,7 +1,7 @@
 import "./Navbar.css"
 
 export default function Navbar() {
-  return <nav className="site-title">
+  return <nav className="nav">
     <a href="/" className="site-title">
       WatchList
     </a>
