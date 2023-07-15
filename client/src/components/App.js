@@ -10,7 +10,7 @@ import Navbar from "./Navbar.js"
 import Footer from "./Footer.js"
 import About from "./About.js"
 
-function App() {
+const App = () => {
   // Code goes here!
   return (
     // keep navbar outside of <Switch> so it stays in place when page changes
