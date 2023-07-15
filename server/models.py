@@ -17,7 +17,6 @@ remember that you will need to use Flask-SQLAlchemy,
 Flask-Migrate, and SQLAlchemy-Serializer instead of 
 SQLAlchemy and Alembic in your models
 """
-
 from sqlalchemy_serializer import SerializerMixin
 
 from config import db
@@ -29,13 +28,15 @@ class Customer(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
-    email = db.Column(db.VARCHARD, nullable=False, unique=True)
+    email = db.Column(db.VARCHAR, nullable=False, unique=True)
     address = db.Column(db.String, nullable=False, unique=True)
     password = db.Column(db.String, unique=True)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
     # relationships
+    cart_items = db.relationship("CartItem", back_populates="customer")
+    orders = db.relationship("Order", back_populates="customer")
 
     # validations
 
@@ -71,6 +72,7 @@ class Product(db.Model):
     product_description = db.Column(db.String, nullable=False)
 
     # relationships
+    order_details = db.relationship("OrderDetail", back_populates="product")
 
     # validations
 
@@ -107,6 +109,8 @@ class Order(db.Model):
     total_amount = db.Column(db.Integer, nullable=False)
 
     # relationships
+    order_details = db.relationship("OrderDetail", back_populates="order")
+    customer = db.relationship("Customer", back_populates="order")
 
     # validations
 
@@ -135,6 +139,39 @@ class CartItem(db.Model):
     id = db.Column(db.Integer, unique=True)
     customer_id = db.Column(db.Integer, db.ForeignKey("customers.id"))
     product_id = db.Column(db.Integer, db.ForeignKey("products.id"))
+
+    # relationships
+    customer = db.relationship("Customer", back_populates="cart_items")
+    product = db.relationship("Product", back_populates="cart_items")
+
+    # serializations
+
+    # validations
+
+    # other methods
+    def __repr__(self):
+        return (
+            f"<Cart Item ID: #{self.id}\n"
+            + f"Customer ID: {self.customer_id}"
+            + f"Product ID: {self.product_id}"
+        )
+
+    def as_dict(self):
+        return {
+            "cart_item_id": self.id,
+            "customer_id": self.customer_id,
+            "product_id": self.product_id,
+        }
+
+
+# join table
+class OrderDetail(db.Model):
+    __tablename__ = "order_details"
+
+    id = db.Column(db.Integer, unique=True)
+    product_id = db.Column(db.Integer, db.ForeignKey("products.id"))
+    order_id = db.Column(db.Integer, db.ForeignKey("orders.id"))
+    quantity = db.Column(db.Integer, nullable=False)
 
     # relationships
     customer = db.relationship("Customer", back_populates="cart_items")
