@@ -1,19 +1,22 @@
 import "./Footer.css"
-import { Link, Router } from "react-router-dom" // Link component replaces the anchor tags
-import { Twitter, Facebook, Instagram, MailOutline } from '@mui/icons-material'
+import { Link } from "react-router-dom" // Link component replaces the anchor tags
+
+import { IconButton, BottomNavigation, BottomNavigationAction, AppBar, Box, Toolbar, Typography, InputBase, styled, alpha } from '@mui/material'
+import { Home, Twitter, Facebook, Instagram, MailOutline, Menu, Search } from '@mui/icons-material'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const iconStyle = { marginRight: 2, fontSize: 40, color: '#2196f3' };
 
   return (
     <footer className="footer">
-      <Link to="/" className="site-title">
-        WatchList
-      </Link>
 
-      <Link to="/about">
-        About
-      </Link>
+      <IconButton component={Link} to={{ pathname: '/' }} rel='noopener noreferrer'>
+        <Home sx={{ color: "white", fontSize: 40 }} />
+      </ IconButton>
+
+
+
       
       {/* target="_blank" is a special keyword that will open links in a 
       new tab every time */}
@@ -35,24 +38,34 @@ const Footer = () => {
       automatically use the behavior of rel="noopener" for any target="_blank" 
       link, nullifying this issue. See more at chromestatus.com.*/}
 
-      <Link to='https://twitter.com' target="_blank" rel='noopener noreferrer'>
-        <Twitter sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
-      </Link>
+      {/* <Link to='https://twitter.com' target="_blank" rel='noopener noreferrer'>
+        <Twitter sx={iconStyle} />
+      </Link> */}
 
-      <Link to='https://facebook.com' target="_blank" rel='noopener noreferrer'>
-        <Facebook sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
-      </Link>
+      <IconButton component={Link} to={{ pathname: 'https://twitter.com' }} target="_blank" rel='noopener noreferrer'>
+        <Twitter sx={iconStyle} />
+      </IconButton>
 
-      <Link to='https://instagram.com' target="_blank" rel='noopener noreferrer'>
-        <Instagram sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
-      </Link>
+      <IconButton component={Link} to={{ pathname: 'https://facebook.com'}} target="_blank" rel='noopener noreferrer'>
+        <Facebook sx={iconStyle} />
+      </IconButton>
 
-      <a href='https://gmail.com/' target="_blank" rel='noopener noreferrer'>
-        <MailOutline sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
-      </a>
+      <IconButton component={Link} to={{ pathname: 'https://instagram.com'}} target="_blank" rel='noopener noreferrer'>
+        <Instagram sx={iconStyle} />
+      </IconButton>
+
+      <IconButton component={Link} to={{ pathname: 'https://gmail.com' }} target="_blank" rel='noopener noreferrer'>
+        <MailOutline sx={iconStyle} />
+      </IconButton>
+
+      <p style={{ fontSize: '20px' }}>
+        <Link to="/about" rel='noopener noreferrer'>
+          About
+        </Link>
+      </p>
 
 
-      <p>&copy; 2023-{currentYear} WatchList, Inc.</p> 
+      <p style={{ fontSize: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', }}>&copy; 2023-{currentYear} WatchList, Inc.</p> 
 
       {/* <a href='#root'>
         <button className="back-button" style={{marginLeft: '10px'}}> Back to Top</button>
@@ -63,3 +76,7 @@ const Footer = () => {
 }
 
 export default Footer
+
+
+
+
