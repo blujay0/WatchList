@@ -10,6 +10,7 @@ body {
   background-color: #333;
   color: white;
   display: flex;
+  height: 6.5em;
   justify-content: space-between;
   align-items: stretch;
   gap: 2rem;
