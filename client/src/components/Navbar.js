@@ -1,7 +1,7 @@
 import "./Navbar.css"
 import { Link } from "react-router-dom" // Link component replaces the anchor tags
 
-function Navbar() {
+const Navbar = () => {
   return <nav className="nav">
     <Link to="/" className="site-title">
       WatchList

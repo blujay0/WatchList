@@ -2,14 +2,16 @@ import "./Footer.css"
 import { Link } from "react-router-dom" // Link component replaces the anchor tags
 import { Twitter, Facebook, Instagram, MailOutline } from '@mui/icons-material'
 
-function Footer() {
+const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="footer">
+
       <Link to="/" className="site-title">
         WatchList
       </Link>
+
       <Link to="/about">
         About
       </Link>
@@ -33,19 +35,25 @@ function Footer() {
       <a href='https://twitter.com' target="_blank" rel='noreferrer'>
         <Twitter sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
       </a>
+
       <a href='https://facebook.com' target="_blank" rel='noreferrer'>
         <Facebook sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
       </a>
+
       <a href='https://instagram.com' target="_blank" rel='noreferrer'>
         <Instagram sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
       </a>
+
       <a href='https://gmail.com/' target="_blank" rel='noreferrer'>
         <MailOutline sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
       </a>
+
       <p>&copy; 2023-{currentYear} WatchList, Inc.</p> 
+
       {/* <a href='#root'>
         <button className="back-button" style={{marginLeft: '10px'}}> Back to Top</button>
       </a>       */}
+      
     </footer>
   )
 }
