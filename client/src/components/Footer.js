@@ -31,16 +31,16 @@ function Footer() {
       visit will be shown as Direct Traffic, not Referral. */}
 
       <a href='https://twitter.com' target="_blank" rel='noreferrer'>
-        <Twitter className='socials-icon' sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
+        <Twitter sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
       </a>
       <a href='https://facebook.com' target="_blank" rel='noreferrer'>
-        <Facebook className='socials-icon' sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
+        <Facebook sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
       </a>
       <a href='https://instagram.com' target="_blank" rel='noreferrer'>
-        <Instagram className='socials-icon' sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
+        <Instagram sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
       </a>
       <a href='https://gmail.com/' target="_blank" rel='noreferrer'>
-        <MailOutline className='socials-icon' sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
+        <MailOutline sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
       </a>
       <p>&copy; Guitar Trader, Inc.</p> 
       {/* <a href='#root'>
