@@ -6,11 +6,9 @@ function Navbar() {
     <Link to="/" className="site-title">
       WatchList
     </Link>
-    <ul>
-      <li>
-        <a href="/about">About</a>
-      </li>
-    </ul>
+    <Link to="/about">
+      About
+    </Link>
   </nav>
 }
 
