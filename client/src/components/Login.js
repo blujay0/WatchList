@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 const Login = () => {
   
   const paperStyle = { backgroundColor: '#ADD8E6', padding: 20, height:'50vh', width: 300, margin: '20px auto' };
-  const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '10px', backgroundColor: '#4682BF', padding: 0 };
+  const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '10px', backgroundColor: '#FFD700', padding: 0 };
   const textFieldStyle = { backgroundColor: '#FFFAFA', margin: '8px 0' };
   const avatarStyle = { height: '70px', width: '70px', bgcolor: '#191970' };
   const lockPersonStyle = { fontSize: '2em', color: 'white' };
-  const fingerprintStyle = { fontSize: '40px', color: '#9ACD32' };
+  const fingerprintStyle = { fontSize: '40px', color: 'black' };
 
   return (
     <Grid>
@@ -24,7 +24,7 @@ const Login = () => {
         <TextField label='Email' placeholder='Enter email' style={textFieldStyle} fullWidth required/>
         <TextField label='Password' placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required/>
         <Button type='submit' style={buttonStyle} fullWidth>
-          <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}>Continue</p>
+          <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "black", fontSize: '20px'}}><b>Continue</b></p>
         </Button>
         Need an Account? <Link to="/signup">Sign Up</Link>
       </Paper>
