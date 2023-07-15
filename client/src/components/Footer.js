@@ -10,7 +10,7 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <Link to="/" className="site-title" target="_blank" rel='noopener noreferrer'>
+      <Link to="/" className="site-title" rel='noopener noreferrer'>
         WatchList
       </Link>
 
@@ -57,7 +57,7 @@ const Footer = () => {
       </IconButton>
 
       <div>
-        <Link to="/about" target="_blank" rel='noopener noreferrer'>
+        <Link to="/about" rel='noopener noreferrer'>
           About
         </Link>
       </div>
