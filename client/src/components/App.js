@@ -10,14 +10,13 @@ import Navbar from "./Navbar.js"
 import Footer from "./Footer.js"
 import About from "./About.js"
 
-function App() {
+const App = () => {
   // Code goes here!
   return (
     // keep navbar outside of <Switch> so it stays in place when page changes
     // use React Fragment to wrap <Navbar/> and <Switch/>
     <>
       <Navbar />
-      <Footer />
        <Switch>
          <Route exact path="/">
            {/* <WatchList watches={watches} /> */}
@@ -40,7 +39,8 @@ function App() {
          <Route exact path="/about">
            <About />
          </Route>
-       </Switch>    
+        </Switch>
+       <Footer />    
     </>
 
   )
