@@ -26,16 +26,19 @@ function App() {
            {/* <Customer /> */}
          </Route>
          <Route exact path="/signup">
-           {/* <SignUp/> */}
+           <SignUp/>
          </Route>
          <Route exact path="/login">
-           {/* <Login /> */}
+           <Login />
          </Route>
          <Route exact path="/watches/:id">
            {/* <WatchPage /> */}
          </Route>
-         <Route exact path="/watches/:id">
-           {/* <About /> */}
+         <Route exact path="/cart">
+            <Cart/>
+         </Route>
+         <Route exact path="/about">
+           <About />
          </Route>
        </Switch>    
     </>

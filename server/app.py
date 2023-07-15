@@ -1,10 +1,3 @@
-"""
-app.py is your Flask application. You'll want to use 
-Flask to build a simple API backend like we have in 
-previous modules. You should use Flask-RESTful for 
-your routes.
-"""
-
 #!/usr/bin/env python3
 
 # Standard library imports
