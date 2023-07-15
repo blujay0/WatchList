@@ -62,8 +62,7 @@ const Footer = () => {
       </p> */}
 
 
-      <p style={{ fontSize: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', }}>&copy; 2023-{currentYear} WatchList, Inc.</p> 
-
+      <div style={{ fontSize: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', }}>&copy; 2023-{currentYear} WatchList, Inc.</div> 
       {/* <a href='#root'>
         <button className="back-button" style={{marginLeft: '10px'}}> Back to Top</button>
       </a>       */}
