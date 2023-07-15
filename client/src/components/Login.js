@@ -1,8 +1,7 @@
 import React from 'react';
 import './Login.css';
 import { Grid, Paper, Avatar, TextField, Button, IconButton } from '@mui/material';
-import LockPersonIcon from '@mui/icons-material/LockPerson';
-import FingerprintIcon from '@mui/icons-material/Fingerprint';
+import { LockPersonIcon, FingerprintIcon } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 const Login = () => {
   
