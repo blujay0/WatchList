@@ -20,6 +20,7 @@ const Login = () => {
         <TextField label='Email' placeholder='Enter email' fullWidth required/>
         <TextField label='Password' placeholder='Enter password' type="password" fullWidth required/>
         <Button type='submit' variant='contained' color='primary' fullWidth>Continue</Button>
+        <Link>Link</Link>
       </Paper>
     </Grid>
   );
