@@ -1,6 +1,6 @@
 import React from 'react';
 import './Login.css';
-import { Grid, Paper, Avatar, TextField } from '@mui/material';
+import { Grid, Paper, Avatar, TextField, Button} from '@mui/material';
 import LockPersonIcon from '@mui/icons-material/LockPerson';
 
 const Login = () => {
@@ -15,7 +15,11 @@ const Login = () => {
           <Avatar style={avatarStyle}>
             <LockPersonIcon />
           </Avatar>
+          <h2>LOG IN</h2>
         </Grid>
+        <TextField label='Email' placeholder='Enter email' fullWidth required/>
+        <TextField label='Password' placeholder='Enter password' type="password" fullWidth required/>
+        <Button type='submit' variant='contained' color='primary' fullWidth>Continue</Button>
       </Paper>
     </Grid>
   );
