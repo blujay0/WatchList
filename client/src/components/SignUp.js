@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const SignUp = () => {
   
   const paperStyle = { backgroundColor: '#ADD8E6', padding: 20, height:'60vh', width: 400, margin: '20px auto' };
-  const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '10px', backgroundColor: '#FFD700', padding: 0 };
+  const buttonStyle = { margin: '8px 0', height:'5vh', width:'20vh', borderRadius: '10px', backgroundColor: '#FFD700', padding: 0 };
   const textFieldStyle = { backgroundColor: '#FFFAFA', margin: '8px 0' };
   const avatarStyle = { height: '70px', width: '70px', bgcolor: '#191970' };
   const lockPersonStyle = { fontSize: '2em', color: 'white' };
@@ -25,7 +25,7 @@ const SignUp = () => {
         <TextField label='email' placeholder='Enter email' style={textFieldStyle} fullWidth required/>
         <TextField label='address' placeholder='Enter your address' style={textFieldStyle} fullWidth required/>        
         <TextField label='password' placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required/>
-        <Box>
+        <Box textAlign="center">
           <Button type='submit' style={buttonStyle} fullWidth>
               <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "black", fontSize: '20px'}}><b>Register</b></p>
           </Button>          
