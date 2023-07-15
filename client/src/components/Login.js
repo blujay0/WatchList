@@ -1,11 +1,11 @@
 import React from 'react';
 import './Login.css';
-import { Grid, Paper, Avatar, TextField, Button} from '@mui/material';
+import { Grid, Paper, Avatar, TextField, Button, IconButton } from '@mui/material';
 import LockPersonIcon from '@mui/icons-material/LockPerson';
 import { Link } from 'react-router-dom';
 const Login = () => {
   
-  const paperStyle = {backgroundColor: '#ADD8E6', padding: 20, height:'70vh', width: 280, margin: '20px auto'};
+  const paperStyle = {backgroundColor: '#ADD8E6', padding: 20, height:'50vh', width: 300, margin: '20px auto'};
   const avatarStyle = {backgroundColor:'#1bbd7e'};
   const buttonStyle = {margin: '8px 0', borderRadius: '10px'};
   const textFieldStyle = {backgroundColor: '#FFFAFA', margin: '8px 0'};
