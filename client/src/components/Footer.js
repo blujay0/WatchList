@@ -39,9 +39,13 @@ const Footer = () => {
       automatically use the behavior of rel="noopener" for any target="_blank" 
       link, nullifying this issue. See more at chromestatus.com.*/}
 
-      <Link to='https://twitter.com' target="_blank" rel='noopener noreferrer'>
+      {/* <Link to='https://twitter.com' target="_blank" rel='noopener noreferrer'>
         <Twitter sx={iconStyle} />
-      </Link>
+      </Link> */}
+
+      <IconButton component={Link} to={{ pathname: 'https://twitter.com' }} target="_blank" rel='noopener noreferrer'>
+        <Twitter sx={iconStyle} />
+      </IconButton>
 
       <Link to='https://facebook.com' target="_blank" rel='noopener noreferrer'>
         <Facebook sx={iconStyle} />
