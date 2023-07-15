@@ -6,17 +6,19 @@ const Navbar = () => {
     <Link to="/" className="site-title">
       WatchList
     </Link>
-    <ul>
-      <li>
-        <a href="/login">Login</a>
-      </li>
-      <li>
-        <a href="/signup">SignUp</a>
-      </li>
-      <li>
-        <a href="/cart">Cart</a>
-      </li>
-    </ul>
+    
+    <Link to="/login" className="nav-links">
+      Login
+    </Link>
+    
+    <Link to="/signup" className="nav-links">
+      SignUp
+    </Link>
+
+    <Link to="/cart" className="nav-links">
+      Cart
+    </Link>
+
   </nav>
 }
 
