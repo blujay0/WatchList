@@ -21,8 +21,8 @@ const Login = () => {
           </Avatar>
           <h1><b>LOG IN</b></h1>
         </Grid>
-        <TextField label='Email' placeholder='Enter email' style={textFieldStyle} fullWidth required/>
-        <TextField label='Password' placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required/>
+        <TextField label='email' placeholder='Enter email' style={textFieldStyle} fullWidth required/>
+        <TextField label='password' placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required/>
         <Button type='submit' style={buttonStyle} fullWidth>
           <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "black", fontSize: '20px'}}><b>Continue</b></p>
         </Button>
