@@ -1,11 +1,12 @@
 import "./Footer.css"
 import { Link } from "react-router-dom" // Link component replaces the anchor tags
-import { IconButton, BottomNavigation, BottomNavigationAction } from '@mui/material'
-import { Twitter, Facebook, Instagram, MailOutline } from '@mui/icons-material'
+
+import { IconButton, BottomNavigation, BottomNavigationAction, AppBar, Box, Toolbar, Typography, InputBase, styled, alpha } from '@mui/material'
+import { Twitter, Facebook, Instagram, MailOutline, Menu, Search } from '@mui/icons-material'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const iconStyle = { mr: 2, fontSize: 40, color: '#2196f3' };
+  const iconStyle = { marginRight: 2, fontSize: 40, color: '#2196f3' };
 
   return (
     <footer className="footer">
@@ -13,9 +14,7 @@ const Footer = () => {
         WatchList
       </Link>
 
-      <Link to="/about" target="_blank" rel='noopener noreferrer'>
-        About
-      </Link>
+
       
       {/* target="_blank" is a special keyword that will open links in a 
       new tab every time */}
@@ -57,7 +56,11 @@ const Footer = () => {
         <MailOutline sx={iconStyle} />
       </IconButton>
 
-
+      <div>
+        <Link to="/about" target="_blank" rel='noopener noreferrer'>
+          About
+        </Link>
+      </div>
       <p>&copy; 2023-{currentYear} WatchList, Inc.</p> 
 
       {/* <a href='#root'>
@@ -69,3 +72,7 @@ const Footer = () => {
 }
 
 export default Footer
+
+
+
+

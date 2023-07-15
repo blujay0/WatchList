@@ -1,7 +1,7 @@
 
 
 
-function WatchList() {
+const WatchList = () => {
   return null;
 }
 
