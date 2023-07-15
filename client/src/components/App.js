@@ -21,21 +21,27 @@ const App = () => {
          <Route exact path="/">
            {/* <WatchList watches={watches} /> */}
          </Route>
-         <Route exact path="/customer">
-           {/* <Customer /> */}
-         </Route>
-         <Route exact path="/signup">
-           <SignUp/>
-         </Route>
-         <Route exact path="/login">
-           <Login />
-         </Route>
+
          <Route exact path="/watches/:id">
            {/* <WatchPage /> */}
          </Route>
+
+         <Route exact path="/login">
+           <Login />
+         </Route>
+
+         <Route exact path="/signup">
+           <SignUp/>
+         </Route>
+
+         <Route exact path="/customer">
+           {/* <Customer /> */}
+         </Route>
+
          <Route exact path="/cart">
             <Cart/>
          </Route>
+
          <Route exact path="/about">
            <About />
          </Route>
