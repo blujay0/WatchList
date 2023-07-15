@@ -5,6 +5,9 @@ import { Twitter, Facebook, Instagram, MailOutline } from '@mui/icons-material'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const iconStyle = { mr: 2, fontSize: 40, color: '#2196f3' };
+
+
 
   return (
     <footer className="footer">
@@ -37,19 +40,19 @@ const Footer = () => {
       link, nullifying this issue. See more at chromestatus.com.*/}
 
       <Link to='https://twitter.com' target="_blank" rel='noopener noreferrer'>
-        <Twitter sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
+        <Twitter sx={iconStyle} />
       </Link>
 
       <Link to='https://facebook.com' target="_blank" rel='noopener noreferrer'>
-        <Facebook sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
+        <Facebook sx={iconStyle} />
       </Link>
 
       <Link to='https://instagram.com' target="_blank" rel='noopener noreferrer'>
-        <Instagram sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
+        <Instagram sx={iconStyle} />
       </Link>
 
       <a href='https://gmail.com/' target="_blank" rel='noopener noreferrer'>
-        <MailOutline sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
+        <MailOutline sx={iconStyle} />
       </a>
 
 
