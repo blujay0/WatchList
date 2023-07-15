@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 const SignUp = () => {
   
   const paperStyle = { backgroundColor: 'white', padding: 20, height:'60vh', width: 400, margin: '20px auto' };
-  const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '30px', backgroundColor: '#10B65A', padding: 0 };
+  const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '30px', backgroundColor: '#627C79', padding: 0 };
   const textFieldStyle = { backgroundColor: 'white', margin: '8px 0' };
-  const avatarStyle = { height: '70px', width: '70px', bgcolor: '#7D8655', fontSize: 30 };
+  const avatarStyle = { height: '70px', width: '70px', bgcolor: '#273248', fontSize: 30 };
   const personStyle = { fontSize: '2em', color: 'white' };
-  const fingerprintStyle = { fontSize: '40px', color: 'black' };
+  const fingerprintStyle = { fontSize: '40px', color: 'white' };
 
   return (
     <Grid>
@@ -27,7 +27,7 @@ const SignUp = () => {
         <TextField label='password' placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required/>
         <Box textAlign="center">
           <Button type='submit' style={buttonStyle} fullWidth>
-              <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "black", fontSize: '20px'}}><b>Register</b></p>
+              <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>Register</b></p>
           </Button>          
         </Box>
         <br/>   

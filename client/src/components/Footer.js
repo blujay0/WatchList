@@ -6,7 +6,7 @@ import { Home, Twitter, Facebook, Instagram, MailOutline, Menu, Search } from '@
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const iconStyle = { marginRight: 2, fontSize: 40, color: '#333' };
+  const iconStyle = { marginRight: 2, fontSize: 40, color: 'white' };
 
   return (
     <footer className="footer">
@@ -55,11 +55,11 @@ const Footer = () => {
         <MailOutline sx={iconStyle} />
       </IconButton>
 
-      <p style={{ fontSize: '20px' }}>
+      {/* <p style={{ fontSize: '20px' }}>
         <Link to="/about" rel='noopener noreferrer'>
           About
         </Link>
-      </p>
+      </p> */}
 
 
       <p style={{ fontSize: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', }}>&copy; 2023-{currentYear} WatchList, Inc.</p> 
