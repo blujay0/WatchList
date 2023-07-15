@@ -1,23 +1,23 @@
 import React from 'react';
 import './SignUp.css';
 import { Grid, Paper, Avatar, TextField, Button, Box, IconButton } from '@mui/material';
-import { LockPerson, Fingerprint } from '@mui/icons-material';
+import { LockPerson, Fingerprint, Person } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 const SignUp = () => {
   
-  const paperStyle = { backgroundColor: '#ADD8E6', padding: 20, height:'60vh', width: 400, margin: '20px auto' };
-  const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '10px', backgroundColor: '#FFD700', padding: 0 };
-  const textFieldStyle = { backgroundColor: '#FFFAFA', margin: '8px 0' };
-  const avatarStyle = { height: '70px', width: '70px', bgcolor: '#191970' };
-  const lockPersonStyle = { fontSize: '2em', color: 'white' };
+  const paperStyle = { backgroundColor: 'white', padding: 20, height:'60vh', width: 400, margin: '20px auto' };
+  const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '30px', backgroundColor: '#10B65A', padding: 0 };
+  const textFieldStyle = { backgroundColor: 'white', margin: '8px 0' };
+  const avatarStyle = { height: '70px', width: '70px', bgcolor: '#7D8655', fontSize: 30 };
+  const personStyle = { fontSize: '2em', color: 'white' };
   const fingerprintStyle = { fontSize: '40px', color: 'black' };
 
   return (
     <Grid>
-      <Paper elevation={10} style={paperStyle}>
+      <Paper elevation={0} style={paperStyle}>
         <Grid align='center'>
           <Avatar sx={avatarStyle}>
-            <LockPerson sx={lockPersonStyle} />
+            <Person sx={personStyle} />
           </Avatar>
           <h1><b>SIGN UP</b></h1>
         </Grid>

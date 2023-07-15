@@ -6,17 +6,14 @@ import { Home, Twitter, Facebook, Instagram, MailOutline, Menu, Search } from '@
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const iconStyle = { marginRight: 2, fontSize: 40, color: '#2196f3' };
+  const iconStyle = { marginRight: 2, fontSize: 40, color: '#333' };
 
   return (
     <footer className="footer">
 
       <IconButton component={Link} to={{ pathname: '/' }} rel='noopener noreferrer'>
-        <Home sx={{ color: "#333", fontSize: 40 }} />
+        <Home sx={iconStyle} />
       </ IconButton>
-
-
-
       
       {/* target="_blank" is a special keyword that will open links in a 
       new tab every time */}

@@ -1,16 +1,16 @@
 import React from 'react';
 import './Login.css';
 import { Grid, Paper, Avatar, TextField, Button, Box, IconButton } from '@mui/material';
-import { LockPerson, Fingerprint } from '@mui/icons-material';
+import { LockPerson, Fingerprint, Key } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 const Login = () => {
   
   const paperStyle = { backgroundColor: 'white', padding: 20, height:'50vh', width: 400, margin: '20px auto' };
-  const buttonStyle = { margin: '8px 0', height: '5vh', borderRadius: '30px', backgroundColor: '#FFD700', padding: 0 };
+  const buttonStyle = { margin: '8px 0', height: '5vh', borderRadius: '30px', backgroundColor: '#10B65A', padding: 0 };
   const textFieldStyle = { backgroundColor: 'white', margin: '8px 0', };
-  const avatarStyle = { height: '70px', width: '70px', bgcolor: '#191970' };
+  const avatarStyle = { height: '70px', width: '70px', bgcolor: '#7D8655' };
   const lockPersonStyle = { fontSize: '2em', color: 'white' };
-  const fingerprintStyle = { fontSize: '40px', color: 'black' };
+  const keyStyle = { fontSize: '40px', color: '#3C4A3E' };
 
   return (
     <Grid>
@@ -25,7 +25,7 @@ const Login = () => {
         <TextField label='password' variant="outlined" placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required/>
         <Box textAlign='center'>
           <Button type='submit' style={buttonStyle} fullWidth>
-            <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "black", fontSize: '20px'}}><b>Continue</b></p>
+            <Key sx={keyStyle}/>&nbsp;<p style={{color: "#3C4A3E", fontSize: '20px'}}><b>Continue</b></p>
           </Button>         
         </Box>
         <br/> 
