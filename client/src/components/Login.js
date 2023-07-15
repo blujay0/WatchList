@@ -16,7 +16,7 @@ const Login = () => {
           <Avatar style={avatarStyle}>
             <LockPersonIcon />
           </Avatar>
-          <h2>LOG IN</h2>
+          <h2><b>LOG IN</b></h2>
         </Grid>
         <TextField label='Email' placeholder='Enter email' fullWidth required/>
         <TextField label='Password' placeholder='Enter password' type="password" fullWidth required/>

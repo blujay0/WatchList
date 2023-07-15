@@ -34,7 +34,10 @@ function App() {
          <Route exact path="/watches/:id">
            {/* <WatchPage /> */}
          </Route>
-         <Route exact path="/watches/:id">
+         <Route exact path="/cart">
+            <Cart/>
+         </Route>
+         <Route exact path="/about">
            <About />
          </Route>
        </Switch>    
