@@ -1,6 +1,6 @@
 import React from 'react';
 import './SignUp.css';
-import { Grid, Paper, Avatar, TextField, Button, IconButton } from '@mui/material';
+import { Grid, Paper, Avatar, TextField, Button, Box, IconButton } from '@mui/material';
 import { LockPerson, Fingerprint } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 const SignUp = () => {
@@ -25,9 +25,11 @@ const SignUp = () => {
         <TextField label='email' placeholder='Enter email' style={textFieldStyle} fullWidth required/>
         <TextField label='address' placeholder='Enter your address' style={textFieldStyle} fullWidth required/>        
         <TextField label='password' placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required/>
-        <Button type='submit' style={buttonStyle} fullWidth>
-          <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "black", fontSize: '20px'}}><b>Register</b></p>
-        </Button>
+        <Box>
+          <Button type='submit' style={buttonStyle} fullWidth>
+              <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "black", fontSize: '20px'}}><b>Register</b></p>
+          </Button>          
+        </Box>  
         Already Have an Account? <Link to="/login">Log In</Link>
       </Paper>
     </Grid>
