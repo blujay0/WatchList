@@ -16,8 +16,6 @@ const Navbar = () => {
         </Link>
     </ IconButton>
 
-
-
     <Link to="/login" className="nav-links">
       <p>Login</p>
     </Link>
