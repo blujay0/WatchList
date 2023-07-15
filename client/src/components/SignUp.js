@@ -1,6 +1,6 @@
 import React from 'react';
 import './SignUp.css';
-import { Grid, Paper, Avatar, TextField, Button, Box, IconButton } from '@mui/material';
+import { Grid, Paper, Avatar, TextField, Button, Box, IconButton, Divider } from '@mui/material';
 import { LockPerson, Fingerprint, Person } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 const SignUp = () => {
@@ -30,8 +30,12 @@ const SignUp = () => {
               <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>Register</b></p>
           </Button>          
         </Box>
-        <br/>   
-        <p style={{fontSize: '18px'}}>Already Have an Account? <Link to="/login">Log In</Link></p>
+        <br/>
+        <br/>
+        <Divider>OR</Divider>
+        <br/>
+        <br/>     
+        <center style={{fontSize: '20px'}}>Already Have an Account? <Link to="/login">Log In</Link></center>
       </Paper>
     </Grid>
   );
