@@ -1,5 +1,6 @@
 import "./Footer.css"
 import { Link } from "react-router-dom" // Link component replaces the anchor tags
+import { TwitterIcon, FacebookIcon, InstagramIcon, MailOutlineIcon } from '@mui/icons-material'
 
 function Footer() {
   return <nav className="footer">
