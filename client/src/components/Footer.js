@@ -1,5 +1,5 @@
 import "./Footer.css"
-import { Link } from "react-router-dom" // Link component replaces the anchor tags
+import { Link, Router } from "react-router-dom" // Link component replaces the anchor tags
 import { Twitter, Facebook, Instagram, MailOutline } from '@mui/icons-material'
 
 const Footer = () => {
@@ -7,7 +7,6 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-
       <Link to="/" className="site-title">
         WatchList
       </Link>
@@ -32,28 +31,33 @@ const Footer = () => {
       know where the visitor came from. And in Google Analytics, this 
       visit will be shown as Direct Traffic, not Referral. */}
 
-      <a href='https://twitter.com' target="_blank" rel='noreferrer'>
+      {/* Update as of 2021: All current versions of major browsers now 
+      automatically use the behavior of rel="noopener" for any target="_blank" 
+      link, nullifying this issue. See more at chromestatus.com.*/}
+
+      <Link to='https://twitter.com' target="_blank" rel='noopener noreferrer'>
         <Twitter sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
-      </a>
+      </Link>
 
-      <a href='https://facebook.com' target="_blank" rel='noreferrer'>
+      <Link to='https://facebook.com' target="_blank" rel='noopener noreferrer'>
         <Facebook sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
-      </a>
+      </Link>
 
-      <a href='https://instagram.com' target="_blank" rel='noreferrer'>
+      <Link to='https://instagram.com' target="_blank" rel='noopener noreferrer'>
         <Instagram sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
-      </a>
+      </Link>
 
-      <a href='https://gmail.com/' target="_blank" rel='noreferrer'>
+      <a href='https://gmail.com/' target="_blank" rel='noopener noreferrer'>
         <MailOutline sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
       </a>
+
 
       <p>&copy; 2023-{currentYear} WatchList, Inc.</p> 
 
       {/* <a href='#root'>
         <button className="back-button" style={{marginLeft: '10px'}}> Back to Top</button>
       </a>       */}
-      
+
     </footer>
   )
 }
