@@ -8,8 +8,9 @@ const Login = () => {
   const paperStyle = { backgroundColor: '#ADD8E6', padding: 20, height:'50vh', width: 300, margin: '20px auto' };
   const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '10px', backgroundColor: '#4682BF', padding: 0 };
   const textFieldStyle = { backgroundColor: '#FFFAFA', margin: '8px 0' };
-  const avatarStyle = { height: '70px', width: '70px', color: '#556B2F' };
+  const avatarStyle = { height: '70px', width: '70px', bgcolor: '#191970' };
   const lockPersonStyle = { fontSize: '2em', color: 'white' };
+  // const fingerprintStyle;
 
   return (
     <Grid>
@@ -23,7 +24,7 @@ const Login = () => {
         <TextField label='Email' placeholder='Enter email' style={textFieldStyle} fullWidth required/>
         <TextField label='Password' placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required/>
         <Button type='submit' style={buttonStyle} fullWidth>
-          <Fingerprint fontSize="large" color='success'/>&nbsp;<h2>Continue</h2>
+          <Fingerprint fontSize="large" fill='white'/>&nbsp;<h2>Continue</h2>
         </Button>
         Need an Account? <Link to="/signup">Sign Up</Link>
       </Paper>
