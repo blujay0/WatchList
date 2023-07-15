@@ -42,7 +42,7 @@ function Footer() {
       <a href='https://gmail.com/' target="_blank" rel='noreferrer'>
         <MailOutline sx={{mr: 2, fontSize: 40, color: '#2196f3'}} />
       </a>
-      <p>&copy; Guitar Trader, Inc.</p> 
+      <p>&copy; 2023-{currentYear} WatchList, Inc.</p> 
       {/* <a href='#root'>
         <button className="back-button" style={{marginLeft: '10px'}}> Back to Top</button>
       </a>       */}
