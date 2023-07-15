@@ -21,9 +21,10 @@ const SignUp = () => {
           </Avatar>
           <h1><b>SIGN UP</b></h1>
         </Grid>
-        <TextField label='Name' placeholder='First and last name' style={textFieldStyle} fullWidth required/>
-        <TextField label='Email' placeholder='Enter email' style={textFieldStyle} fullWidth required/>
-        <TextField label='Password' placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required/>
+        <TextField label='name' placeholder='First and last name' style={textFieldStyle} fullWidth required/>
+        <TextField label='email' placeholder='Enter email' style={textFieldStyle} fullWidth required/>
+        <TextField label='address' placeholder='Enter your address' style={textFieldStyle} fullWidth required/>        
+        <TextField label='password' placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required/>
         <Button type='submit' style={buttonStyle} fullWidth>
           <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "black", fontSize: '20px'}}><b>Register</b></p>
         </Button>
