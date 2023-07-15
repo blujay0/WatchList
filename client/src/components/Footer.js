@@ -2,7 +2,7 @@ import "./Footer.css"
 import { Link } from "react-router-dom" // Link component replaces the anchor tags
 
 import { IconButton, BottomNavigation, BottomNavigationAction, AppBar, Box, Toolbar, Typography, InputBase, styled, alpha } from '@mui/material'
-import { Twitter, Facebook, Instagram, MailOutline, Menu, Search } from '@mui/icons-material'
+import { Home, Twitter, Facebook, Instagram, MailOutline, Menu, Search } from '@mui/icons-material'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,9 +10,11 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <Link to="/" className="site-title" rel='noopener noreferrer'>
-        WatchList
-      </Link>
+
+      <IconButton component={Link} to={{ pathname: '/' }} rel='noopener noreferrer'>
+        <Home sx={{ color: "white", fontSize: 40 }} />
+      </ IconButton>
+
 
 
       
@@ -56,12 +58,14 @@ const Footer = () => {
         <MailOutline sx={iconStyle} />
       </IconButton>
 
-      <div>
+      <p style={{ fontSize: '20px' }}>
         <Link to="/about" rel='noopener noreferrer'>
           About
         </Link>
-      </div>
-      <p>&copy; 2023-{currentYear} WatchList, Inc.</p> 
+      </p>
+
+
+      <p style={{ fontSize: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', }}>&copy; 2023-{currentYear} WatchList, Inc.</p> 
 
       {/* <a href='#root'>
         <button className="back-button" style={{marginLeft: '10px'}}> Back to Top</button>
