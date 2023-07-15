@@ -55,9 +55,9 @@ const Footer = () => {
         <Instagram sx={iconStyle} />
       </IconButton>
 
-      <a href='https://gmail.com/' target="_blank" rel='noopener noreferrer'>
+      <IconButton component={Link} to={{ pathname: 'https://gmail.com' }} target="_blank" rel='noopener noreferrer'>
         <MailOutline sx={iconStyle} />
-      </a>
+      </IconButton>
 
 
       <p>&copy; 2023-{currentYear} WatchList, Inc.</p> 
