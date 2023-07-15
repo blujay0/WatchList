@@ -7,8 +7,8 @@ const Login = () => {
   
   const paperStyle = {backgroundColor: '#ADD8E6', padding: 20, height:'70vh', width: 280, margin: '20px auto'};
   const avatarStyle = {backgroundColor:'#1bbd7e'};
-  const buttonStyle = {margin: '8px 0'}
-  const textFieldStyle = {backgroundColor: '#FFFAFA'}
+  const buttonStyle = {margin: '8px 0', borderRadius: '10px'};
+  const textFieldStyle = {backgroundColor: '#FFFAFA', margin: '8px 0'};
 
   return (
     <Grid>
