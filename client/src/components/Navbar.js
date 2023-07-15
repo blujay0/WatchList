@@ -16,9 +16,6 @@ function Navbar() {
       <li>
         <a href="/cart">Cart</a>
       </li>
-      <li>
-        <a href="/about">About</a>
-      </li>
     </ul>
   </nav>
 }
