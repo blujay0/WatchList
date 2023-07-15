@@ -1,8 +1,8 @@
 import React from 'react';
 import './Login.css';
-import { Grid, Paper, Avatar, TextField, Button, Link} from '@mui/material';
+import { Grid, Paper, Avatar, TextField, Button} from '@mui/material';
 import LockPersonIcon from '@mui/icons-material/LockPerson';
-
+import { Link } from 'react-router-dom';
 const Login = () => {
   
   const paperStyle = {padding: 20, height:'70vh', width: 280, margin: '20px auto'};
@@ -21,7 +21,7 @@ const Login = () => {
         <TextField label='Email' placeholder='Enter email' fullWidth required/>
         <TextField label='Password' placeholder='Enter password' type="password" fullWidth required/>
         <Button type='submit' variant='contained' style={buttonStyle} color='primary' fullWidth>Continue</Button>
-        Need an Account? <Link href="">Sign Up</Link>
+        Need an Account? <Link to="/signup">Sign Up</Link>
       </Paper>
     </Grid>
   );
