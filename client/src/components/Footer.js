@@ -1,13 +1,11 @@
 import "./Footer.css"
 import { Link } from "react-router-dom" // Link component replaces the anchor tags
-import { IconButton, BottomNavigation } from '@mui/material'
+import { IconButton, BottomNavigation, BottomNavigationAction } from '@mui/material'
 import { Twitter, Facebook, Instagram, MailOutline } from '@mui/icons-material'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const iconStyle = { mr: 2, fontSize: 40, color: '#2196f3' };
-
-
 
   return (
     <footer className="footer">
