@@ -8,15 +8,16 @@ const Login = () => {
   const paperStyle = {backgroundColor: '#ADD8E6', padding: 20, height:'50vh', width: 300, margin: '20px auto'};
   const buttonStyle = {margin: '8px 0', height:'5vh', borderRadius: '10px', backgroundColor: '#4682BF', padding: 0};
   const textFieldStyle = {backgroundColor: '#FFFAFA', margin: '8px 0'};
+  const avatarStyle = { height: '70px', width: '70px', color: '#556B2F' }
 
   return (
     <Grid>
       <Paper elevation={10} style={paperStyle}>
         <Grid align='center'>
-          <Avatar>
-            <LockPerson fontSize="medium"/>
+          <Avatar sx={avatarStyle}>
+            <LockPerson fontSize="large" />
           </Avatar>
-          <h2><b>LOG IN</b></h2>
+          <h1><b>LOG IN</b></h1>
         </Grid>
         <TextField label='Email' placeholder='Enter email' style={textFieldStyle} fullWidth required/>
         <TextField label='Password' placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required/>
