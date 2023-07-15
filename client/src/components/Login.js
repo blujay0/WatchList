@@ -10,7 +10,7 @@ const Login = () => {
   const textFieldStyle = { backgroundColor: '#FFFAFA', margin: '8px 0' };
   const avatarStyle = { height: '70px', width: '70px', bgcolor: '#191970' };
   const lockPersonStyle = { fontSize: '2em', color: 'white' };
-  // const fingerprintStyle;
+  const fingerprintStyle = { fontSize: '40px', color: '#9ACD32' };
 
   return (
     <Grid>
@@ -24,7 +24,7 @@ const Login = () => {
         <TextField label='Email' placeholder='Enter email' style={textFieldStyle} fullWidth required/>
         <TextField label='Password' placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required/>
         <Button type='submit' style={buttonStyle} fullWidth>
-          <Fingerprint fontSize="large" fill='white'/>&nbsp;<h2>Continue</h2>
+          <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}>Continue</p>
         </Button>
         Need an Account? <Link to="/signup">Sign Up</Link>
       </Paper>
