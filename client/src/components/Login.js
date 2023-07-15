@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Login = () => {
   
   const paperStyle = { backgroundColor: '#ADD8E6', padding: 20, height:'50vh', width: 400, margin: '20px auto' };
-  const buttonStyle = { margin: '8px 0', height: '5vh', width: '20vh', borderRadius: '10px', backgroundColor: '#FFD700', padding: 0 };
+  const buttonStyle = { margin: '8px 0', height: '5vh', borderRadius: '10px', backgroundColor: '#FFD700', padding: 0 };
   const textFieldStyle = { backgroundColor: '#FFFAFA', margin: '8px 0' };
   const avatarStyle = { height: '70px', width: '70px', bgcolor: '#191970' };
   const lockPersonStyle = { fontSize: '2em', color: 'white' };
