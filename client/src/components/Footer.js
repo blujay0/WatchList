@@ -1,6 +1,6 @@
 import "./Footer.css"
 import { Link } from "react-router-dom" // Link component replaces the anchor tags
-import { IconButton } from '@mui/material'
+import { IconButton, BottomNavigation } from '@mui/material'
 import { Twitter, Facebook, Instagram, MailOutline } from '@mui/icons-material'
 
 const Footer = () => {
