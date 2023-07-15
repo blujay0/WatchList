@@ -5,7 +5,7 @@ import { LockPerson, Fingerprint } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 const SignUp = () => {
   
-  const paperStyle = { backgroundColor: '#ADD8E6', padding: 20, height:'50vh', width: 300, margin: '20px auto' };
+  const paperStyle = { backgroundColor: '#ADD8E6', padding: 20, height:'60vh', width: 400, margin: '20px auto' };
   const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '10px', backgroundColor: '#FFD700', padding: 0 };
   const textFieldStyle = { backgroundColor: '#FFFAFA', margin: '8px 0' };
   const avatarStyle = { height: '70px', width: '70px', bgcolor: '#191970' };
