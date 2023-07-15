@@ -12,7 +12,7 @@ const Footer = () => {
     <footer className="footer">
 
       <IconButton component={Link} to={{ pathname: '/' }} rel='noopener noreferrer'>
-        <Home sx={{ color: "#7D8655", fontSize: 40 }} />
+        <Home sx={{ color: "#333", fontSize: 40 }} />
       </ IconButton>
 
 

@@ -4,19 +4,19 @@ import { Link } from "react-router-dom" // Link component replaces the anchor ta
 const Navbar = () => {
   return <nav className="nav">
     <Link to="/" className="site-title">
-      WatchList
+      <h3>WatchList</h3>
     </Link>
     
     <Link to="/login" className="nav-links">
-      Login
+      <p>Login</p>
     </Link>
     
     <Link to="/signup" className="nav-links">
-      SignUp
+      <p>SignUp</p>
     </Link>
 
     <Link to="/cart" className="nav-links">
-      Cart
+      <p>Cart</p>
     </Link>
 
   </nav>
