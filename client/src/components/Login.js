@@ -1,6 +1,6 @@
 import React from 'react';
 import './Login.css';
-import { Grid, Paper, Avatar, TextField, Button, Box, IconButton } from '@mui/material';
+import { Grid, Paper, Avatar, TextField, Button, Box, IconButton, Divider } from '@mui/material';
 import { LockPerson, Fingerprint, Key } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 const Login = () => {
@@ -28,8 +28,12 @@ const Login = () => {
             <Key sx={keyStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>Continue</b></p>
           </Button>         
         </Box>
+        <br/>
+        <br/>
+        <Divider>OR</Divider>
+        <br/>
         <br/> 
-        <p style={{fontSize: '18px'}}>Need an Account? <Link to="/signup">Sign Up</Link></p>
+        <center style={{fontSize: '20px'}}>Need an Account? <Link to="/signup">Sign Up</Link></center>
       </Paper>
     </Grid>
   );
