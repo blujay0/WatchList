@@ -29,7 +29,7 @@ const Login = () => {
           </Button>         
         </Box>
         <br/> 
-        Need an Account? <Link to="/signup">Sign Up</Link>
+        <p style={{fontSize: '18px'}}>Need an Account? <Link to="/signup">Sign Up</Link></p>
       </Paper>
     </Grid>
   );

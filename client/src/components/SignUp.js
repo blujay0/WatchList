@@ -31,7 +31,7 @@ const SignUp = () => {
           </Button>          
         </Box>
         <br/>   
-        Already Have an Account? <Link to="/login">Log In</Link>
+        <p style={{fontSize: '18px'}}>Already Have an Account? <Link to="/login">Log In</Link></p>
       </Paper>
     </Grid>
   );
