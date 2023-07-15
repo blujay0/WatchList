@@ -1,7 +1,7 @@
 import "./Footer.css"
 import { Link } from "react-router-dom" // Link component replaces the anchor tags
 
-function Navbar() {
+function Footer() {
   return <nav className="footer">
     <Link to="/" className="site-title">
       WatchList
@@ -12,4 +12,4 @@ function Navbar() {
   </nav>
 }
 
-export default Navbar
+export default Footer
