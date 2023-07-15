@@ -47,13 +47,13 @@ const Footer = () => {
         <Twitter sx={iconStyle} />
       </IconButton>
 
-      <Link to='https://facebook.com' target="_blank" rel='noopener noreferrer'>
+      <IconButton component={Link} to={{ pathname: 'https://facebook.com'}} target="_blank" rel='noopener noreferrer'>
         <Facebook sx={iconStyle} />
-      </Link>
+      </IconButton>
 
-      <Link to='https://instagram.com' target="_blank" rel='noopener noreferrer'>
+      <IconButton component={Link} to={{ pathname: 'https://instagram.com'}} target="_blank" rel='noopener noreferrer'>
         <Instagram sx={iconStyle} />
-      </Link>
+      </IconButton>
 
       <a href='https://gmail.com/' target="_blank" rel='noopener noreferrer'>
         <MailOutline sx={iconStyle} />
