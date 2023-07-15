@@ -29,7 +29,8 @@ const SignUp = () => {
           <Button type='submit' style={buttonStyle} fullWidth>
               <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "black", fontSize: '20px'}}><b>Register</b></p>
           </Button>          
-        </Box>  
+        </Box>
+        <br/>   
         Already Have an Account? <Link to="/login">Log In</Link>
       </Paper>
     </Grid>

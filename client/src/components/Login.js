@@ -26,9 +26,9 @@ const Login = () => {
         <Box textAlign='center'>
           <Button type='submit' style={buttonStyle} fullWidth>
             <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "black", fontSize: '20px'}}><b>Continue</b></p>
-          </Button><br/>          
+          </Button>         
         </Box>
-
+        <br/> 
         Need an Account? <Link to="/signup">Sign Up</Link>
       </Paper>
     </Grid>
