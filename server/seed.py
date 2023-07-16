@@ -62,6 +62,10 @@ with app.app_context():  # necessary to be in context of your application
 
     db.session.add_all(products)
     db.session.commit()
+    
+    c1 = Customer(
+        name= , email= , address= , password= , create_at= , updated_at= ,
+    )
 
 if __name__ == "__main__":
     fake = Faker()
