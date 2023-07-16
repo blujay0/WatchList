@@ -260,8 +260,9 @@ with app.app_context():  # necessary to be in context of your application
     #     name= , email= , address= , password= , create_at= , updated_at= ,
     # )
 
-if __name__ == "__main__":
-    fake = Faker()
-    with app.app_context():
-        print("Starting seed...")
-        # Seed code goes here!
+# may need for later use
+# if __name__ == "__main__":
+#     fake = Faker()
+#     with app.app_context():
+#         print("Starting seed...")
+#         # Seed code goes here!
