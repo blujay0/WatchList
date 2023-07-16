@@ -70,6 +70,7 @@ class Product(db.Model):
     product_price = db.Column(db.String, nullable=False)
     inventory = db.Column(db.Integer, nullable=False)
     product_description = db.Column(db.String, nullable=False)
+    image = db.Column(db.String, nullable=False)
 
     # relationships
     order_details = db.relationship("OrderDetail", back_populates="product")
