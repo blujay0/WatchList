@@ -73,61 +73,61 @@ with app.app_context():  # necessary to be in context of your application
     p5 = Product(
         maker="Timex",
         model="manual",
-        product_name="Marlin",
-        product_price=200,
+        product_name="Expedition North Field",
+        product_price=160,
         inventory=fake.random_int(1, 10000),
-        product_description="Housed within the safety of a diminutive 34mm wide stainless steel case that only measures 41mm in length, the modern Marlin still feels very much of the midcentury, presenting an impressively inexpensive take on the Don Draper design language that seems to be permeating our vintage-obsessed cultural marketplace. Equipped with a heavily-domed acrylic crystal, a range of intriguing dial finishes and colors, and a reliable but simple Seagull caliber from China, the Timex Marlin is the definitive hand-winding dress watch for its staggeringly-low $200 retail price.",
-        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Timex-marlin-handwound-2.jpg?v=1649256945/200",
+        product_description="Where the first two watches on our list of hand-winders are definitively in the dress category, the Timex Expedition North Field Mechanical provides a much sportier aesthetic with capable specs to boot. Put simply, most manually-wound watches are dressier as brands assume those with more athletic or outdoorsy proclivities will also value the utility provided by an automatic caliber. But this straightforward field watch from Timex pairs 100 meters of water resistance with a sapphire crystal while maintaining the same attention-grabbing $200 price point as its dressier cousin in the Marlin. In addition, the North Field is more modern, providing elements of classic military field watches of decades past with enough novelty to stand alone as a modern piece.",
+        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Timex-blue-2.jpg?v=1649173383/200",
     )
 
     p6 = Product(
-        maker="Timex",
+        maker="Orient",
         model="automatic",
-        product_name="Marlin",
-        product_price=200,
+        product_name="Kamasu Blue Dial",
+        product_price=335,
         inventory=fake.random_int(1, 10000),
-        product_description="Housed within the safety of a diminutive 34mm wide stainless steel case that only measures 41mm in length, the modern Marlin still feels very much of the midcentury, presenting an impressively inexpensive take on the Don Draper design language that seems to be permeating our vintage-obsessed cultural marketplace. Equipped with a heavily-domed acrylic crystal, a range of intriguing dial finishes and colors, and a reliable but simple Seagull caliber from China, the Timex Marlin is the definitive hand-winding dress watch for its staggeringly-low $200 retail price.",
-        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Timex-marlin-handwound-2.jpg?v=1649256945/200",
+        product_description="On the smaller end of the case size spectrum, the Orient Kamasu offers a vaguely Submariner-esque design format with a traditional 3 o’clock crown position but differs in its angular dial markings and impressive finishing for this price point. For smaller wrists, the Kamasu presents an especially pleasing option, pairing a 41.8mm diameter that wears smaller with a curt 46mm lug to lug measurement that feels like a slightly-downsized take on the aforementioned Rolex Submariner. In this price range, the hacking hand-winding F6922 caliber and sapphire crystals are stand-outs, as is the well-done bracelet that complements the overall look. This one isn’t technically ISO 6425-certified as a dive watch, but for anyone entering the watch hobby from the aquatic perspective, the Kamasu is an excellent place to start.",
+        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Orient-Kamasu-2.jpg?v=1649189641/200",
     )
 
     p7 = Product(
-        maker="Timex",
+        maker="anOrdain",
         model="manual",
-        product_name="Marlin",
-        product_price=200,
+        product_name="Model 1 Iron Cream",
+        product_price=2200,
         inventory=fake.random_int(1, 10000),
-        product_description="Housed within the safety of a diminutive 34mm wide stainless steel case that only measures 41mm in length, the modern Marlin still feels very much of the midcentury, presenting an impressively inexpensive take on the Don Draper design language that seems to be permeating our vintage-obsessed cultural marketplace. Equipped with a heavily-domed acrylic crystal, a range of intriguing dial finishes and colors, and a reliable but simple Seagull caliber from China, the Timex Marlin is the definitive hand-winding dress watch for its staggeringly-low $200 retail price.",
-        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Timex-marlin-handwound-2.jpg?v=1649256945/200",
+        product_description="The Model 1 Iron Cream is a hand-wound three-hander with central seconds. It’s powered by a Sellita SW210-1, a competitor to ETA’s 2801-2. Remember, the 2801-2 is the base that Hamilton’s H-50 is based upon. Unlike the H-50, the power reserve is only 42 hours, requiring daily winding.",
+        image="https://static.fratello.com/2022/10/anOrdain-Model-1-Iron-Creme-Small-Staged.jpg/200",
     )
 
     p8 = Product(
-        maker="Timex",
+        maker="Zelos",
         model="automatic",
-        product_name="Marlin",
-        product_price=200,
+        product_name="Mako V3",
+        product_price=449,
         inventory=fake.random_int(1, 10000),
-        product_description="Housed within the safety of a diminutive 34mm wide stainless steel case that only measures 41mm in length, the modern Marlin still feels very much of the midcentury, presenting an impressively inexpensive take on the Don Draper design language that seems to be permeating our vintage-obsessed cultural marketplace. Equipped with a heavily-domed acrylic crystal, a range of intriguing dial finishes and colors, and a reliable but simple Seagull caliber from China, the Timex Marlin is the definitive hand-winding dress watch for its staggeringly-low $200 retail price.",
-        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Timex-marlin-handwound-2.jpg?v=1649256945/200",
+        product_description="Acting as one of the smaller dive watches in the Zelos collection, the Mako V3’s list of specifications reads like a watch costing multiple times the watch’s $450 price point. With surface-hardened titanium for the case and bracelet, a micro-adjusting clasp, a nine-series Miyota caliber, Seiko-rivaling luminescent material, and a beautifully-executed colorful dial finish, the Mako V3 is an affordable dive watch to consider for anyone looking to check the boxes with specifications while wearing an interesting modern dive watch.",
+        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Zelos-Mako-2.jpg?v=1649189970/200",
     )
 
     p9 = Product(
-        maker="Timex",
+        maker="Stowa ",
         model="manual",
-        product_name="Marlin",
-        product_price=200,
+        product_name="Marine Classic 36 Roman",
+        product_price=1100,
         inventory=fake.random_int(1, 10000),
-        product_description="Housed within the safety of a diminutive 34mm wide stainless steel case that only measures 41mm in length, the modern Marlin still feels very much of the midcentury, presenting an impressively inexpensive take on the Don Draper design language that seems to be permeating our vintage-obsessed cultural marketplace. Equipped with a heavily-domed acrylic crystal, a range of intriguing dial finishes and colors, and a reliable but simple Seagull caliber from China, the Timex Marlin is the definitive hand-winding dress watch for its staggeringly-low $200 retail price.",
-        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Timex-marlin-handwound-2.jpg?v=1649256945/200",
+        product_description="The Marine Classic 36 Roman Hand Wound uses an ETA/Peseux 7001 hand-wind caliber. The 42-hour power reserve calls for daily winding. The Peseux 7001 has a long history and is found — usually extremely modified — in some of the most unlikely watches. But in this case, it’s been left original except for Stowa’s brand engraving visible on one of the bridges through the transparent case back.",
+        image="https://static.fratello.com/2022/10/Stowa-Marine-Classic-36-hand-wound-front-e1664520327388.jpg/200",
     )
 
     p10 = Product(
-        maker="Timex",
+        maker="Baltic",
         model="automatic",
-        product_name="Marlin",
-        product_price=200,
+        product_name="HMS002",
+        product_price=400,
         inventory=fake.random_int(1, 10000),
-        product_description="Housed within the safety of a diminutive 34mm wide stainless steel case that only measures 41mm in length, the modern Marlin still feels very much of the midcentury, presenting an impressively inexpensive take on the Don Draper design language that seems to be permeating our vintage-obsessed cultural marketplace. Equipped with a heavily-domed acrylic crystal, a range of intriguing dial finishes and colors, and a reliable but simple Seagull caliber from China, the Timex Marlin is the definitive hand-winding dress watch for its staggeringly-low $200 retail price.",
-        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Timex-marlin-handwound-2.jpg?v=1649256945/200",
+        product_description="The HMS002 provides a refined option pairing a traditional take on a sector dial with more modern typography for an intriguing overall design. With a very traditional set of dimensions headlined by a 38mm diameter, restrained 47mm lug-to-lug, and 12mm thickness, even including the box-section acrylic crystal, the HMS002 does well in playing the part of a vintage watch on the wrist. Galvanizing the impressive value proposition is the inclusion of an 8-series Miyota automatic caliber to this charming microbrand dress watch from France.",
+        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Baltic-Watch-2.jpg?v=1649252817/200",
     )
 
     p11 = Product(
