@@ -18,6 +18,9 @@ Flask-Migrate, and SQLAlchemy-Serializer instead of
 SQLAlchemy and Alembic in your models
 """
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.ext.associationproxy import association_proxy
+
+# from sqlalchemy.orm import back_populates
 
 db = SQLAlchemy()  # an instance of the SQLAlchemy class is our database
 
@@ -36,7 +39,7 @@ class Customer(db.Model):
 
     # relationships
     cart_items = db.relationship("CartItem", back_populates="customer")
-    orders = db.relationship("Order", back_populates="customer")
+    order = db.relationship("Order", back_populates="customer")
 
     # validations
 
@@ -70,9 +73,11 @@ class Product(db.Model):
     product_price = db.Column(db.String, nullable=False)
     inventory = db.Column(db.Integer, nullable=False)
     product_description = db.Column(db.String, nullable=False)
+    image = db.Column(db.String, nullable=False)
 
     # relationships
     order_details = db.relationship("OrderDetail", back_populates="product")
+    cart_items = db.relationship("CartItem", back_populates="product")
 
     # validations
 
@@ -111,6 +116,7 @@ class Order(db.Model):
     # relationships
     order_details = db.relationship("OrderDetail", back_populates="order")
     customer = db.relationship("Customer", back_populates="order")
+    cart_items = association_proxy("customers", "cart_item")
 
     # validations
 
@@ -174,7 +180,7 @@ class OrderDetail(db.Model):
     quantity = db.Column(db.Integer, nullable=False)
 
     # relationships
-    customer = db.relationship("Customer", back_populates="cart_items")
+    order = db.relationship("Order", back_populates="cart_items")
     product = db.relationship("Product", back_populates="cart_items")
 
     # serializations
