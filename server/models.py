@@ -116,6 +116,7 @@ class Order(db.Model):
     # relationships
     order_details = db.relationship("OrderDetail", back_populates="order")
     customer = db.relationship("Customer", back_populates="order")
+    cart_items = association_proxy("customers", "cart_item")
 
     # validations
 
