@@ -344,6 +344,20 @@ with app.app_context():  # necessary to be in context of your application
         product_id=randint(1, 20), order_id=randint(1, 6), quantity=randint(1, 10)
     )
 
+    order_details = [o1, o2, o3, o4, o5, o6]
+
+    db.session.add_all(order_details)
+    db.session.commit()
+
+    ci1 = CartItem(customer_id=randint(1, 2), product_id=randint(1, 20))
+
+    ci2 = CartItem(customer_id=randint(1, 2), product_id=randint(1, 20))
+
+    cart_items = [ci1, ci2]
+
+    db.session.add_all(cart_items)
+    db.session.commit()
+
 # may need for later use
 # if __name__ == "__main__":
 #     fake = Faker()
