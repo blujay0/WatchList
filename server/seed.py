@@ -324,6 +324,26 @@ with app.app_context():  # necessary to be in context of your application
     db.session.add_all(orders)
     db.session.commit()
 
+    od1 = OrderDetail(
+        product_id=randint(1, 20), order_id=randint(1, 6), quantity=randint(1, 10)
+    )
+
+    od2 = OrderDetail(
+        product_id=randint(1, 20), order_id=randint(1, 6), quantity=randint(1, 10)
+    )
+
+    od3 = OrderDetail(
+        product_id=randint(1, 20), order_id=randint(1, 6), quantity=randint(1, 10)
+    )
+
+    od4 = OrderDetail(
+        product_id=randint(1, 20), order_id=randint(1, 6), quantity=randint(1, 10)
+    )
+
+    od5 = OrderDetail(
+        product_id=randint(1, 20), order_id=randint(1, 6), quantity=randint(1, 10)
+    )
+
 # may need for later use
 # if __name__ == "__main__":
 #     fake = Faker()
