@@ -278,6 +278,42 @@ with app.app_context():  # necessary to be in context of your application
         updated_at=fake.date_time(),
     )
 
+    o1 = Order(
+        customer_id=randint(1, 2),
+        date=fake.date_time(),
+        total_amount=fake.random_int(min=160, max=30000),
+    )
+
+    o2 = Order(
+        customer_id=randint(1, 2),
+        date=fake.date_time(),
+        total_amount=fake.random_int(min=160, max=30000),
+    )
+
+    o3 = Order(
+        customer_id=randint(1, 2),
+        date=fake.date_time(),
+        total_amount=fake.random_int(min=160, max=30000),
+    )
+
+    o4 = Order(
+        customer_id=randint(1, 2),
+        date=fake.date_time(),
+        total_amount=fake.random_int(min=160, max=30000),
+    )
+
+    o5 = Order(
+        customer_id=randint(1, 2),
+        date=fake.date_time(),
+        total_amount=fake.random_int(min=160, max=30000),
+    )
+
+    o6 = Order(
+        customer_id=randint(1, 2),
+        date=fake.date_time(),
+        total_amount=fake.random_int(min=160, max=30000),
+    )
+
 # may need for later use
 # if __name__ == "__main__":
 #     fake = Faker()
