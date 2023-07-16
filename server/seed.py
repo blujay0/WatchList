@@ -256,9 +256,27 @@ with app.app_context():  # necessary to be in context of your application
     db.session.add_all(products)
     db.session.commit()
 
-    # c1 = Customer(
-    #     name= , email= , address= , password= , create_at= , updated_at= ,
-    # )
+    c1 = Customer(
+        name=fake.name(),
+        email=fake.email(),
+        address=fake.address(),
+        password=fake.password(
+            length=12, special_chars=True, upper_case=True, lower_case=True
+        ),
+        created_at=fake.date_time(),
+        updated_at=fake.date_time(),
+    )
+
+    c2 = Customer(
+        name=fake.name(),
+        email=fake.email(),
+        address=fake.address(),
+        password=fake.password(
+            length=12, special_chars=True, upper_case=True, lower_case=True
+        ),
+        created_at=fake.date_time(),
+        updated_at=fake.date_time(),
+    )
 
 # may need for later use
 # if __name__ == "__main__":
