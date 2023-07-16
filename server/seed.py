@@ -131,13 +131,13 @@ with app.app_context():  # necessary to be in context of your application
     )
 
     p11 = Product(
-        maker="Timex",
+        maker="Oris",
         model="manual",
-        product_name="Marlin",
-        product_price=200,
+        product_name="Big Crown ProPilot X Calibre 115",
+        product_price=8000,
         inventory=fake.random_int(1, 10000),
-        product_description="Housed within the safety of a diminutive 34mm wide stainless steel case that only measures 41mm in length, the modern Marlin still feels very much of the midcentury, presenting an impressively inexpensive take on the Don Draper design language that seems to be permeating our vintage-obsessed cultural marketplace. Equipped with a heavily-domed acrylic crystal, a range of intriguing dial finishes and colors, and a reliable but simple Seagull caliber from China, the Timex Marlin is the definitive hand-winding dress watch for its staggeringly-low $200 retail price.",
-        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Timex-marlin-handwound-2.jpg?v=1649256945/200",
+        product_description="The ProPilot X Calibre 115 is an intense watch. I'd call it beautiful, but beauty is in the eye of the beholder. The views from both the top and the bottom reveal a watch that's as much a visual lesson in watchmaking as it is an exploration of brutalism as an art form. The extra-large mainspring is visible at 12 o'clock. The brass gear train in the lower half peeks out from behind the running seconds between 7 and 8 o'clock and the power-reserve indicator. And the red jewel of the balance wheel is visible at 6 o'clock just below the text 'Big Crown ProPilot X'.",
+        image="https://image.s5a.com/is/image/saks/0400018040529_NOCOLOR?wid=484&hei=646&qlt=90&resMode=sharp2&op_usm=0.9,1.0,8,0/200",
     )
 
     p12 = Product(
