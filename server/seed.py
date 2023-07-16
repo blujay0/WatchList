@@ -319,6 +319,10 @@ with app.app_context():  # necessary to be in context of your application
         total_amount=fake.random_int(min=160, max=30000),
     )
 
+    orders = [o1, o2, o3, o4, o5, o6]
+
+    db.session.add_all(orders)
+    db.session.commit()
 
 # may need for later use
 # if __name__ == "__main__":
