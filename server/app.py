@@ -36,11 +36,14 @@ api = Api(app)  # instantiate new instance of Api class
 
 
 # Views go here!
-class Products(
-    Resource
-):  # this is not your model, but a new class that represents the information you will be accessing
-    def get(self):  # self is the instance of the class
-        products = Products.query.all()
+# the Products class is not your model, but a new class that represents the information you will be accessing
+class Products(Resource):
+    # self is the instance of the class
+    def get(self):
+        # the as_dict() method that you built in models is used here b/c you can only serialize if it is converted to a dictionary
+        products = [product.as_dict() for product in Products.query.all()]
+
+        # you can also just 'return products, 200' but make_response is preferred
         return make_response(products, 200)
 
 
