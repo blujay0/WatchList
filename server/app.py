@@ -46,6 +46,20 @@ class Products(Resource):
         return make_response(products, 200)
 
 
+class Profile(Resource):
+    def get(self):
+        pass
+
+    def post(self):
+        pass
+
+    def patch(self):
+        pass
+
+    def delete(self):
+        pass
+
+
 # api.add_resource() tells the api to look at a specified resource (connects to resource);
 # 1st arg: which resource you're adding, 2nd arg: the endpoint
 api.add_resource(Products, "/products")
