@@ -161,73 +161,73 @@ with app.app_context():  # necessary to be in context of your application
     )
 
     p14 = Product(
-        maker="Timex",
+        maker="Sternglas",
         model="automatic",
-        product_name="Marlin",
-        product_price=200,
+        product_name="Naos Automatik",
+        product_price=439,
         inventory=fake.random_int(1, 10000),
-        product_description="Housed within the safety of a diminutive 34mm wide stainless steel case that only measures 41mm in length, the modern Marlin still feels very much of the midcentury, presenting an impressively inexpensive take on the Don Draper design language that seems to be permeating our vintage-obsessed cultural marketplace. Equipped with a heavily-domed acrylic crystal, a range of intriguing dial finishes and colors, and a reliable but simple Seagull caliber from China, the Timex Marlin is the definitive hand-winding dress watch for its staggeringly-low $200 retail price.",
-        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Timex-marlin-handwound-2.jpg?v=1649256945/200",
+        product_description="Sternglas offers a similar take on the basic Bauhaus design principles in a less expensive, microbrand package. In particular, the Naos Automatik comes in with a Miyota automatic caliber, anti-reflective coated sapphire crystal, and a pleasing, pared-back dial design that evokes watches like the Junghans Max Bill Auto. Priced right around $400, the Sternglas Naos collection, and especially this automatic variant, offer a more refined option with German roots without the higher cost typically associated with major German brands.",
+        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Sternglas-2.jpg?v=1649252267/200",
     )
 
     p15 = Product(
-        maker="Timex",
+        maker="Nomos",
         model="manual",
-        product_name="Marlin",
-        product_price=200,
+        product_name="Club Ref. 703",
+        product_price=1850,
         inventory=fake.random_int(1, 10000),
-        product_description="Housed within the safety of a diminutive 34mm wide stainless steel case that only measures 41mm in length, the modern Marlin still feels very much of the midcentury, presenting an impressively inexpensive take on the Don Draper design language that seems to be permeating our vintage-obsessed cultural marketplace. Equipped with a heavily-domed acrylic crystal, a range of intriguing dial finishes and colors, and a reliable but simple Seagull caliber from China, the Timex Marlin is the definitive hand-winding dress watch for its staggeringly-low $200 retail price.",
-        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Timex-marlin-handwound-2.jpg?v=1649256945/200",
+        product_description="Powering this Nomos watch 703 is Nomos’s in-house-made Alpha caliber, visible through the transparent case back. Though it has departed sufficiently enough from the caliber it was built off of to be called its own, the Peseux 7001 DNA is still present. Most notably, perhaps, is with the small running seconds at 6 o’clock and power reserve of 43 hours.",
+        image="https://static.fratello.com/2022/10/Nomos-703-club-front.jpg/200",
     )
 
     p16 = Product(
-        maker="Timex",
+        maker="Invicta",
         model="automatic",
-        product_name="Marlin",
-        product_price=200,
+        product_name="Pro Diver",
+        product_price=100,
         inventory=fake.random_int(1, 10000),
-        product_description="Housed within the safety of a diminutive 34mm wide stainless steel case that only measures 41mm in length, the modern Marlin still feels very much of the midcentury, presenting an impressively inexpensive take on the Don Draper design language that seems to be permeating our vintage-obsessed cultural marketplace. Equipped with a heavily-domed acrylic crystal, a range of intriguing dial finishes and colors, and a reliable but simple Seagull caliber from China, the Timex Marlin is the definitive hand-winding dress watch for its staggeringly-low $200 retail price.",
-        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Timex-marlin-handwound-2.jpg?v=1649256945/200",
+        product_description="As far as styling goes, the Pro Diver is an acceptable 40mm Sub design, featuring all the stylistic hallmarks of the classic look from the aluminum bezel, to the hands, and even the style of the dial text. As far as automatic watches go, I’d recommend the Invicta Pro Diver to anyone that wanted a mechanical timepiece first with any sort of unique design flourishes second – this is an automatic watch that is under the radar stylistically enough to go with whatever you’re wearing and whatever you’re doing.",
+        image="https://twobrokewatchsnobs.com/wp-content/uploads/2017/01/Invicta-Pro-Diver-Review-Dial-1024x711.jpg.webp/200",
     )
 
     p17 = Product(
-        maker="Timex",
+        maker="Hamilton",
         model="manual",
-        product_name="Marlin",
-        product_price=200,
+        product_name="Khaki Field",
+        product_price=500,
         inventory=fake.random_int(1, 10000),
-        product_description="Housed within the safety of a diminutive 34mm wide stainless steel case that only measures 41mm in length, the modern Marlin still feels very much of the midcentury, presenting an impressively inexpensive take on the Don Draper design language that seems to be permeating our vintage-obsessed cultural marketplace. Equipped with a heavily-domed acrylic crystal, a range of intriguing dial finishes and colors, and a reliable but simple Seagull caliber from China, the Timex Marlin is the definitive hand-winding dress watch for its staggeringly-low $200 retail price.",
-        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Timex-marlin-handwound-2.jpg?v=1649256945/200",
+        product_description="For under $500, the Hamilton Khaki Field Mechanical is perhaps the best Swiss mechanical watch on the market, full stop. It contains a modified Swiss ETA 2801 caliber that Hamilton calls the H-50, which drops the beat frequency from the standard 28,000 VPH to 21,600 VPH to stretch the power reserve out to an impressive 80 hours. And the longer power reserve here is especially impactful with this being a hand-wound watch. Beyond the movement, the Khaki Field Mechanical leans into Hamilton’s impressive history of supplying field watches to the U.S. and other Allied military organizations in World War II, with this basic dial design dating back decades. In the modern world, the Khaki Field Mechanical (you can learn more about it here) is an impressive value with a lot to offer for both military missions as well as life’s everyday operations.",
+        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Hamilton-Khaki-Field-Manual-2.jpg?v=1649188187/200",
     )
 
     p18 = Product(
-        maker="Timex",
+        maker="Tissot",
         model="automatic",
-        product_name="Marlin",
-        product_price=200,
+        product_name="Everytime Swissmatic",
+        product_price=450,
         inventory=fake.random_int(1, 10000),
-        product_description="Housed within the safety of a diminutive 34mm wide stainless steel case that only measures 41mm in length, the modern Marlin still feels very much of the midcentury, presenting an impressively inexpensive take on the Don Draper design language that seems to be permeating our vintage-obsessed cultural marketplace. Equipped with a heavily-domed acrylic crystal, a range of intriguing dial finishes and colors, and a reliable but simple Seagull caliber from China, the Timex Marlin is the definitive hand-winding dress watch for its staggeringly-low $200 retail price.",
-        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Timex-marlin-handwound-2.jpg?v=1649256945/200",
+        product_description="The Sistem 51 movement’s big move is that it is incredibly simple in terms of the number of components and can also be constructed and adjusted completely by machine, facilitating easier and therefore cheaper mass production. The Everytime offers versatile looks with a minimal dial design and straightforward dimensions to pair with this intriguing caliber, bringing a mechanical automatic watch from a major Swiss brand to an unexpected price point and even undercutting many microbrands in the process.",
+        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Tissot-Everytime-Swissmatic-2.jpg?v=1649254878/200",
     )
 
     p19 = Product(
-        maker="Timex",
+        maker="Fears",
         model="manual",
-        product_name="Marlin",
-        product_price=200,
+        product_name="Brunswick",
+        product_price=3200,
         inventory=fake.random_int(1, 10000),
-        product_description="Housed within the safety of a diminutive 34mm wide stainless steel case that only measures 41mm in length, the modern Marlin still feels very much of the midcentury, presenting an impressively inexpensive take on the Don Draper design language that seems to be permeating our vintage-obsessed cultural marketplace. Equipped with a heavily-domed acrylic crystal, a range of intriguing dial finishes and colors, and a reliable but simple Seagull caliber from China, the Timex Marlin is the definitive hand-winding dress watch for its staggeringly-low $200 retail price.",
-        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Timex-marlin-handwound-2.jpg?v=1649256945/200",
+        product_description="The Fear Brunswick takes the standard of a time-only, manual-wind watch and elevates it. The 316L surgical steel cushion case is made in Germany. It’s a symmetrical 38 × 38mm. The white dial is hand-polished lacquer with multiple layers and has a recessed running seconds sub-dial at 6 o’clock. The black strap is made in Belgium from leather from Britain’s oldest vegetable tanner. And the watch comes in a solid English Ash wooden box stained “Fears Blue” with cream suede lining and cushion. Premium features for what would otherwise be a fairly simple watch.",
+        image="https://static.fratello.com/2022/10/Fears_Brunswick_White_Face_Manual_Wind_Watch_1.jpg/200",
     )
 
     p20 = Product(
-        maker="Timex",
+        maker="Bulova",
         model="automatic",
-        product_name="Marlin",
-        product_price=200,
+        product_name="Sutton 2021",
+        product_price=395,
         inventory=fake.random_int(1, 10000),
-        product_description="Housed within the safety of a diminutive 34mm wide stainless steel case that only measures 41mm in length, the modern Marlin still feels very much of the midcentury, presenting an impressively inexpensive take on the Don Draper design language that seems to be permeating our vintage-obsessed cultural marketplace. Equipped with a heavily-domed acrylic crystal, a range of intriguing dial finishes and colors, and a reliable but simple Seagull caliber from China, the Timex Marlin is the definitive hand-winding dress watch for its staggeringly-low $200 retail price.",
-        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Timex-marlin-handwound-2.jpg?v=1649256945/200",
+        product_description="The Sutton model is a Cartier Tank-style watch with impressive finishing for the price, including a guilloché-style dial texture (here achieved with a pressing process), and stepped Art Deco case flanks. While it might be a polarizing feature within the watch community, the Sutton also exhibits an “open heart” feature exposing the balance with a cutaway on the front of the dial and allowing the mechanical Miyota caliber 82S0 to shine. Applied Arabic indices, simple baton hands, and a classic alligator grain leather strap round out this attractive modern take on a Bulova design dating back to 1948 and looking just as relevant today at least in more refined settings.",
+        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Bulova-Sutton-2.jpg?v=1649252209/200",
     )
 
     products = [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]
