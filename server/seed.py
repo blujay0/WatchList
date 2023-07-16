@@ -278,6 +278,11 @@ with app.app_context():  # necessary to be in context of your application
         updated_at=fake.date_time(),
     )
 
+    customers = [c1, c2]
+
+    db.session.add_all(customers)
+    db.session.commit()
+
     o1 = Order(
         customer_id=randint(1, 2),
         date=fake.date_time(),
@@ -313,6 +318,7 @@ with app.app_context():  # necessary to be in context of your application
         date=fake.date_time(),
         total_amount=fake.random_int(min=160, max=30000),
     )
+
 
 # may need for later use
 # if __name__ == "__main__":
