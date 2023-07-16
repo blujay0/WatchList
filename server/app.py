@@ -32,7 +32,21 @@ app.config["SQLALCHEMY_ECHO"] = True
 migrate = Migrate(app, db)
 db.init_app(app)
 
+api = Api(app)  # instantiate new instance of Api class
+
+
 # Views go here!
+class Products(
+    Resource
+):  # this is not your model, but a new class that represents the information you will be accessing
+    def get(self):  # self is the instance of the class
+        products = Products.query.all()
+        return make_response(products, 200)
+
+
+# api.add_resource() tells the api to look at a specified resource (connects to resource);
+# 1st arg: which resource you're adding, 2nd arg: the endpoint
+api.add_resource(Products, "/products")
 
 
 if __name__ == "__main__":
