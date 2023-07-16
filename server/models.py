@@ -19,6 +19,8 @@ SQLAlchemy and Alembic in your models
 """
 from flask_sqlalchemy import SQLAlchemy
 
+db = SQLAlchemy()
+
 
 # Models go here!
 class Customer(db.Model):
