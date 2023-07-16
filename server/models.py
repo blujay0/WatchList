@@ -38,7 +38,7 @@ class Customer(db.Model):
 
     # relationships
     cart_items = db.relationship("CartItem", back_populates="customer")
-    orders = db.relationship("Order", back_populates="customer")
+    order = db.relationship("Order", back_populates="customer")
 
     # validations
 
@@ -76,6 +76,7 @@ class Product(db.Model):
 
     # relationships
     order_details = db.relationship("OrderDetail", back_populates="product")
+    cart_items = db.relationship("CartItem", back_populates="product")
 
     # validations
 
