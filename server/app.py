@@ -21,8 +21,7 @@ from flask_restful import Api, Resource
 from time import time
 from flask_migrate import Migrate
 
-# from config import app, db, api
-from models import db, Customer, Order, CartItem, OrderDetail, Product
+from models import db
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///store.db"
@@ -50,6 +49,8 @@ class Products(Resource):
 # api.add_resource() tells the api to look at a specified resource (connects to resource);
 # 1st arg: which resource you're adding, 2nd arg: the endpoint
 api.add_resource(Products, "/products")
+api.add_resource(Customer, "/customer")
+api.add_resource(Orders, "/orders")
 
 
 if __name__ == "__main__":
