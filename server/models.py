@@ -17,9 +17,7 @@ remember that you will need to use Flask-SQLAlchemy,
 Flask-Migrate, and SQLAlchemy-Serializer instead of 
 SQLAlchemy and Alembic in your models
 """
-from sqlalchemy_serializer import SerializerMixin
-
-from config import db
+from flask_sqlalchemy import SQLAlchemy
 
 
 # Models go here!
