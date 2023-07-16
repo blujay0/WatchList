@@ -64,13 +64,13 @@ class Product(db.Model):
     __tablename__ = "products"
 
     id = db.Column(db.Integer, primary_key=True)
+    image = db.Column(db.String, nullable=False)
     maker = db.Column(db.String, nullable=False)
     model = db.Column(db.String, nullable=False)
     product_name = db.Column(db.String, nullable=False)
     product_price = db.Column(db.String, nullable=False)
     inventory = db.Column(db.Integer, nullable=False)
     product_description = db.Column(db.String, nullable=False)
-    image = db.Column(db.String, nullable=False)
 
     # relationships
     order_details = db.relationship("OrderDetail", back_populates="product")
