@@ -28,7 +28,7 @@ from flask_migrate import Migrate
 
 # Local imports
 # from config import app, db, api
-from models import User, Recipe
+from models import db, Customer, Order, CartItem, OrderDetail, Product
 
 # Views go here!
 
