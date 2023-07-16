@@ -17,7 +17,8 @@ from flask import (
 )
 
 # imports
-from flask_restful import Resource
+from flask_restful import Api, Resource
+from time import time
 from flask_migrate import Migrate
 
 # from config import app, db, api
@@ -32,6 +33,7 @@ migrate = Migrate(app, db)
 db.init_app(app)
 
 # Views go here!
+
 
 if __name__ == "__main__":
     app.run(port=5555, debug=True)
