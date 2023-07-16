@@ -12,6 +12,8 @@ flask-restful = "*"
 flask-cors = "*"
 
 [dev-packages]
+ipdb = "*"
+faker = "*"
 
 [requires]
 python_version = "3.8"
