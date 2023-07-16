@@ -19,7 +19,7 @@ SQLAlchemy and Alembic in your models
 """
 from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
+db = SQLAlchemy()  # an instance of the SQLAlchemy class is our database
 
 
 # Models go here!
