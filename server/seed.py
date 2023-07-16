@@ -41,13 +41,13 @@ with app.app_context():  # necessary to be in context of your application
     )
 
     p2 = Product(
-        maker="Hamilton",
-        model="manual",
-        product_name="Khaki Field",
-        product_price=500,
+        maker="Seiko",
+        model="automatic",
+        product_name="SRPD25",
+        product_price=525,
         inventory=fake.random_int(1, 10000),
-        product_description="For under $500, the Hamilton Khaki Field Mechanical is perhaps the best Swiss mechanical watch on the market, full stop. It contains a modified Swiss ETA 2801 caliber that Hamilton calls the H-50, which drops the beat frequency from the standard 28,000 VPH to 21,600 VPH to stretch the power reserve out to an impressive 80 hours. And the longer power reserve here is especially impactful with this being a hand-wound watch. Beyond the movement, the Khaki Field Mechanical leans into Hamilton’s impressive history of supplying field watches to the U.S. and other Allied military organizations in World War II, with this basic dial design dating back decades. In the modern world, the Khaki Field Mechanical (you can learn more about it here) is an impressive value with a lot to offer for both military missions as well as life’s everyday operations.",
-        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Hamilton-Khaki-Field-Manual-2.jpg?v=1649188187/200",
+        product_description="Among the pantheon of great Seiko dive watches, there are a few that stand apart thanks to their more extreme designs and intriguing history. One is the so-called “Tuna,” which features a two-part case with a shroud, and the other is the venerable “Monster,” a watch that looks truly unlike any other and boasts its own cult-like enthusiast following. The modern Monster follows closely in the footsteps of the original, released way back in 2000, upgraded with a hacking and hand-winding 4R36 caliber. And while Seiko dive watches generally have an impressive reputation for utilizing the brand’s own Lumibrite luminescent material, the Monster family for whatever reason historically gets a heaping helping, with this watch offering monstrously (sorry) bright incandescent in reduced lighting conditions. Add to that an iconic but polarizing visual design format, and you have one of the best modern dive watches in this price range, assuming you’re on board with the more extreme look.",
+        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Seiko-Diver-1.jpg?v=1649188682/200",
     )
 
     p3 = Product(
@@ -62,7 +62,7 @@ with app.app_context():  # necessary to be in context of your application
 
     p4 = Product(
         maker="Timex",
-        model="manual",
+        model="automatic",
         product_name="Marlin",
         product_price=200,
         inventory=fake.random_int(1, 10000),
@@ -82,7 +82,7 @@ with app.app_context():  # necessary to be in context of your application
 
     p6 = Product(
         maker="Timex",
-        model="manual",
+        model="automatic",
         product_name="Marlin",
         product_price=200,
         inventory=fake.random_int(1, 10000),
@@ -102,7 +102,7 @@ with app.app_context():  # necessary to be in context of your application
 
     p8 = Product(
         maker="Timex",
-        model="manual",
+        model="automatic",
         product_name="Marlin",
         product_price=200,
         inventory=fake.random_int(1, 10000),
@@ -122,7 +122,7 @@ with app.app_context():  # necessary to be in context of your application
 
     p10 = Product(
         maker="Timex",
-        model="manual",
+        model="automatic",
         product_name="Marlin",
         product_price=200,
         inventory=fake.random_int(1, 10000),
@@ -142,7 +142,7 @@ with app.app_context():  # necessary to be in context of your application
 
     p12 = Product(
         maker="Hamilton",
-        model="manual",
+        model="automatic",
         product_name="Khaki Field",
         product_price=500,
         inventory=fake.random_int(1, 10000),
@@ -162,7 +162,7 @@ with app.app_context():  # necessary to be in context of your application
 
     p14 = Product(
         maker="Timex",
-        model="manual",
+        model="automatic",
         product_name="Marlin",
         product_price=200,
         inventory=fake.random_int(1, 10000),
@@ -182,7 +182,7 @@ with app.app_context():  # necessary to be in context of your application
 
     p16 = Product(
         maker="Timex",
-        model="manual",
+        model="automatic",
         product_name="Marlin",
         product_price=200,
         inventory=fake.random_int(1, 10000),
@@ -202,7 +202,7 @@ with app.app_context():  # necessary to be in context of your application
 
     p18 = Product(
         maker="Timex",
-        model="manual",
+        model="automatic",
         product_name="Marlin",
         product_price=200,
         inventory=fake.random_int(1, 10000),
@@ -222,7 +222,7 @@ with app.app_context():  # necessary to be in context of your application
 
     p20 = Product(
         maker="Timex",
-        model="manual",
+        model="automatic",
         product_name="Marlin",
         product_price=200,
         inventory=fake.random_int(1, 10000),
