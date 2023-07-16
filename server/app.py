@@ -46,6 +46,11 @@ class Products(Resource):
         return make_response(products, 200)
 
 
+class ProductByID(Resource):
+    def get(self, id):
+        pass
+
+
 class Profile(Resource):
     def get(self):
         pass
@@ -60,11 +65,26 @@ class Profile(Resource):
         pass
 
 
+class Cart(Resource):
+    def get(self):
+        pass
+
+
 # api.add_resource() tells the api to look at a specified resource (connects to resource);
 # 1st arg: which resource you're adding, 2nd arg: the endpoint
 api.add_resource(Products, "/products")
-api.add_resource(Customer, "/customer")
-api.add_resource(Orders, "/orders")
+
+api.add_resource(ProductByID, "/products/<int:id>")
+
+api.add_resource(Profile, "/profile")
+
+api.add_resource(Cart, "/cart")
+
+api.add_resource(Login, "/login")
+
+api.add_resource(SignUp, "/signup")
+
+api.add_resource(Logout, "/logout")
 
 
 if __name__ == "__main__":
