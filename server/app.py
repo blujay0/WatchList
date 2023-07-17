@@ -50,11 +50,6 @@ class ProductByID(Resource):
     def get(self, id):
         pass
 
-
-class Profile(Resource):
-    def get(self):
-        pass
-
     def post(self):
         pass
 
@@ -65,9 +60,39 @@ class Profile(Resource):
         pass
 
 
+# class Profile(Resource):
+#     def get(self):
+#         pass
+
+#     def post(self):
+#         pass
+
+#     def patch(self):
+#         pass
+
+#     def delete(self):
+#         pass
+
+
 class Cart(Resource):
     def get(self):
         pass
+
+
+class Login(Resource):
+    def post(self):
+        pass
+
+
+class SignUp(Resource):
+    def post(self):
+        pass
+
+
+class Logout(Resource):
+    def post(self):
+        session.clear()
+        return make_response({}, 202)
 
 
 # api.add_resource() tells the api to look at a specified resource (connects to resource);
