@@ -43,7 +43,7 @@ class Products(Resource):
     def get(self):
         try:
             # the as_dict() method that you built in models is used here b/c you can only serialize if it is converted to a dictionary
-            products = [product.as_dict() for product in Products.query.all()]
+            products = [product.as_dict() for product in Product.query.all()]
 
             # you can also just 'return products, 200' but make_response is preferred
             return make_response(products, 200)
@@ -111,9 +111,9 @@ class Logout(Resource):
 
 # api.add_resource() tells the api to look at a specified resource (connects to resource);
 # 1st arg: which resource you're adding, 2nd arg: the endpoint
-api.add_resource(Products, "/watches")
+api.add_resource(Products, "/products")
 
-api.add_resource(ProductByID, "/watches/<int:id>")
+api.add_resource(ProductByID, "/products/<int:id>")
 
 api.add_resource(Profile, "/profile")
 
