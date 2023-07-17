@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import WatchList from "./WatchList"
 import WatchPage from "./WatchPage"
 import Cart from "./Cart"
-import Customer from "./Customer"
+// import Customer from "./Customer"
 import Login from "./Login"
 import SignUp from "./SignUp"
 import Navbar from "./Navbar.js"
