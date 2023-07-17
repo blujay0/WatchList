@@ -30,35 +30,35 @@ const App = () => {
     // use React Fragment to wrap <Navbar/> and <Switch/>
     <>
       <Navbar />
-       <Switch>
-         <Route exact path="/">
-           <ProductsPage products={products} />
-         </Route>
+      <Switch>
+        <Route exact path="/">
+          <ProductsPage products={products} />
+        </Route>
 
-         <Route exact path="/products/:id">
-           {/* <Product /> */}
-         </Route>
+        <Route exact path="/products/:id">
+          {/* <Product /> */}
+        </Route>
 
-         <Route exact path="/login">
-           <Login />
-         </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
 
-         <Route exact path="/signup">
-           <SignUp/>
-         </Route>
+        <Route exact path="/signup">
+          <SignUp/>
+        </Route>
 
-         <Route exact path="/profile">
-           {/* <Profile /> */}
-         </Route>
+        <Route exact path="/profile">
+          {/* <Profile /> */}
+        </Route>
 
-         <Route exact path="/cart">
-            <Cart/>
-         </Route>
+        <Route exact path="/cart">
+          <Cart/>
+        </Route>
 
-         <Route exact path="/about">
-           <About />
-         </Route>
-        </Switch>
+        <Route exact path="/about">
+          <About />
+        </Route>
+      </Switch>
        <Footer />    
     </>
 
