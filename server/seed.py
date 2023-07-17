@@ -284,37 +284,37 @@ with app.app_context():  # necessary to be in context of your application
     db.session.commit()
 
     o1 = Order(
-        customer_id=randint(c1.id),
+        customer_id=(c1.id),
         date=fake.date_time(),
         total_amount=fake.random_int(min=160, max=30000),
     )
 
     o2 = Order(
-        customer_id=randint(c1.id),
+        customer_id=(c1.id),
         date=fake.date_time(),
         total_amount=fake.random_int(min=160, max=30000),
     )
 
     o3 = Order(
-        customer_id=randint(c1.id),
+        customer_id=(c1.id),
         date=fake.date_time(),
         total_amount=fake.random_int(min=160, max=30000),
     )
 
     o4 = Order(
-        customer_id=randint(c2.id),
+        customer_id=(c2.id),
         date=fake.date_time(),
         total_amount=fake.random_int(min=160, max=30000),
     )
 
     o5 = Order(
-        customer_id=randint(c2.id),
+        customer_id=(c2.id),
         date=fake.date_time(),
         total_amount=fake.random_int(min=160, max=30000),
     )
 
     o6 = Order(
-        customer_id=randint(c2.id),
+        customer_id=(c2.id),
         date=fake.date_time(),
         total_amount=fake.random_int(min=160, max=30000),
     )
@@ -324,34 +324,26 @@ with app.app_context():  # necessary to be in context of your application
     db.session.add_all(orders)
     db.session.commit()
 
-    od1 = OrderDetail(
-        product_id=randint(1, 20), order_id=randint(1, 6), quantity=randint(1, 10)
-    )
+    od1 = OrderDetail(product_id=p2.id, order_id=o1.id, quantity=randint(1, 10))
 
-    od2 = OrderDetail(
-        product_id=randint(1, 20), order_id=randint(1, 6), quantity=randint(1, 10)
-    )
+    od2 = OrderDetail(product_id=p5.id, order_id=o2.id, quantity=randint(1, 10))
 
-    od3 = OrderDetail(
-        product_id=randint(1, 20), order_id=randint(1, 6), quantity=randint(1, 10)
-    )
+    od3 = OrderDetail(product_id=p11.id, order_id=o3.id, quantity=randint(1, 10))
 
-    od4 = OrderDetail(
-        product_id=randint(1, 20), order_id=randint(1, 6), quantity=randint(1, 10)
-    )
+    od4 = OrderDetail(product_id=p17.id, order_id=o5.id, quantity=randint(1, 10))
 
-    od5 = OrderDetail(
-        product_id=randint(1, 20), order_id=randint(1, 6), quantity=randint(1, 10)
-    )
+    od5 = OrderDetail(product_id=p8.id, order_id=o4.id, quantity=randint(1, 10))
 
-    order_details = [o1, o2, o3, o4, o5, o6]
+    od5 = OrderDetail(product_id=p16.id, order_id=o6.id, quantity=randint(1, 10))
+
+    order_details = [od1, od2, od3, od4, od5]
 
     db.session.add_all(order_details)
     db.session.commit()
 
-    ci1 = CartItem(customer_id=randint(1, 2), product_id=randint(1, 20))
+    ci1 = CartItem(customer_id=c2.id, product_id=p2.id)
 
-    ci2 = CartItem(customer_id=randint(1, 2), product_id=randint(1, 20))
+    ci2 = CartItem(customer_id=c1.id, product_id=p3.id)
 
     cart_items = [ci1, ci2]
 
