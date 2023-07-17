@@ -39,7 +39,7 @@ class Customer(db.Model):
 
     # relationships
     cart_items = db.relationship("CartItem", back_populates="customer")
-    order = db.relationship("Order", back_populates="customer")
+    orders = db.relationship("Order", back_populates="customer")
 
     # validations
 
@@ -115,8 +115,8 @@ class Order(db.Model):
 
     # relationships
     order_details = db.relationship("OrderDetail", back_populates="order")
-    customer = db.relationship("Customer", back_populates="order")
-    cart_items = association_proxy("customers", "cart_item")
+    customer = db.relationship("Customer", back_populates="orders")
+    # cart_items = association_proxy("customers", "cart_item")
 
     # validations
 
@@ -180,8 +180,8 @@ class OrderDetail(db.Model):
     quantity = db.Column(db.Integer, nullable=False)
 
     # relationships
-    order = db.relationship("Order", back_populates="cart_items")
-    product = db.relationship("Product", back_populates="cart_items")
+    order = db.relationship("Order", back_populates="order_details")
+    product = db.relationship("Product", back_populates="order_details")
 
     # serializations
 
