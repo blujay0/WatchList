@@ -35,15 +35,21 @@ api = Api(app)  # instantiate new instance of Api class
 
 
 # Views go here!
+
+
 # the Products class is not your model, but a new class that represents the information you will be accessing
 class Products(Resource):
     # self is the instance of the class
     def get(self):
-        # the as_dict() method that you built in models is used here b/c you can only serialize if it is converted to a dictionary
-        products = [product.as_dict() for product in Products.query.all()]
+        try:
+            # the as_dict() method that you built in models is used here b/c you can only serialize if it is converted to a dictionary
+            products = [product.as_dict() for product in Products.query.all()]
 
-        # you can also just 'return products, 200' but make_response is preferred
-        return make_response(products, 200)
+            # you can also just 'return products, 200' but make_response is preferred
+            return make_response(products, 200)
+
+        except Exception as e:
+            return make_response({"error": e}, 400)
 
 
 class ProductByID(Resource):
@@ -56,11 +62,7 @@ class Profile(Resource):
         pass
 
     def post(self):
-        data = request.get_json()
-        name = data["name"]
-        email = data["email"]
-        address = data["address"]
-        password = data["password"]
+        pass
 
     def patch(self):
         pass
@@ -81,7 +83,20 @@ class Login(Resource):
 
 class SignUp(Resource):
     def post(self):
-        pass
+        data = request.get_json()
+        name = data["name"]
+        email = data["email"]
+        address = data["address"]
+        password = data["password"]
+        try:
+            profile = Profile(
+                name=name, email=email, address=address, password=password
+            )
+            db.session.add(profile)
+            db.session.commit()
+        except:
+            db.session.rollback()
+            return make_response({"error": "Something went wrong!"}, 400)
 
 
 class Logout(Resource):
