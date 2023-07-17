@@ -21,7 +21,7 @@ from flask_restful import Api, Resource
 from time import time
 from flask_migrate import Migrate
 
-from models import db
+from models import db, CartItem, Customer, OrderDetail, Order, Product
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///store.db"
@@ -54,7 +54,11 @@ class Products(Resource):
 
 class ProductByID(Resource):
     def get(self, id):
-        pass
+        try:
+            product = Product.query.filter(Product.id == id).first().to_dict()
+            return make_response(product, 200)
+        except Exception as e:
+            return make_response({"error": e}, 400)
 
 
 class Profile(Resource):
