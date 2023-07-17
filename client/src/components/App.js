@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
-import WatchCard from "./WatchCard"
-import Watch from "./Watch"
-import WatchPage from "./WatchPage"
+import ProductCard from "./ProductCard"
+import Product from "./Product"
+import ProductsPage from "./ProductsPage"
 import Cart from "./Cart"
 // import Customer from "./Customer"
 import Login from "./Login"
@@ -14,14 +14,14 @@ import Profile from "./Profile.js"
 
 const App = () => {
   // Code goes here!
-  const [watches, setWatches] = useState([]);
+  const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   
   // GET watches
   useEffect(() => {
-    fetch("http://localhost:5000/watches")
+    fetch("http://localhost:5000/products")
       .then((resp) => resp.json())
-      .then((watches) => setWatches(watches))
+      .then((products) => setProducts(products))
       .catch(err => console.log(err))
   }, []);
 
@@ -32,11 +32,11 @@ const App = () => {
       <Navbar />
        <Switch>
          <Route exact path="/">
-           <WatchPage watches={watches} />
+           <ProductsPage products={products} />
          </Route>
 
-         <Route exact path="/watches/:id">
-           {/* <Watch /> */}
+         <Route exact path="/products/:id">
+           {/* <Product /> */}
          </Route>
 
          <Route exact path="/login">

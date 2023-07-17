@@ -1,0 +1,49 @@
+.main {
+  text-align: center;
+  border: #1D267D solid 3.5px;
+  padding: 1rem;
+  width: 15rem;
+  height: 25rem;
+  display: inline-grid;
+  margin: 1rem 2rem;
+  box-shadow: 3px 4px #980505;
+  font-weight: bolder;
+  border-radius: 2.5rem;
+  background-color: #93BFCF; 
+  color: black;
+}
+
+.cart-button {
+  margin-top: 10px;
+  margin-right: 10px;
+  font-size: 25px;
+  border: #980505;
+  transition-duration: 0.5s;
+  border-radius: 2.5rem;
+}
+
+.cart-button:hover {
+  background-color: #980505;
+  color: white;
+}
+
+/* .trash-button {
+  margin-top: 10px;
+  margin-right: 10px;
+  font-size: 25px;
+  border: #980505;
+  transition-duration: 0.5s;
+  border-radius: 2.5rem;
+}
+
+.trash-button:hover {
+  background-color: #980505;
+  color: white;
+} */
+
+img {
+  width: 100%;
+  max-width: 202px;
+  max-height: 202px;
+  border-radius: 2.5rem;
+}
