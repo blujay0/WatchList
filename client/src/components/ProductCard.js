@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
         <div>Maker: {maker}</div>
         <div>Model: {model}</div>
         <div>Name: {product_name}</div>
-        <div>Price: {product_price}</div>
+        <div>Price: ${product_price}</div>
         <div>Description: {product_description}</div>
         <button className='cart-button' onClick={handleAddToCart}>🛒</button>
       </main>
