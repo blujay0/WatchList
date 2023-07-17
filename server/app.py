@@ -56,7 +56,11 @@ class Profile(Resource):
         pass
 
     def post(self):
-        pass
+        data = request.get_json()
+        name = data["name"]
+        email = data["email"]
+        address = data["address"]
+        password = data["password"]
 
     def patch(self):
         pass
