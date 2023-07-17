@@ -13,6 +13,17 @@ import Profile from "./Profile.js"
 
 const App = () => {
   // Code goes here!
+  const [watches, setWatches] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+  
+  // GET watches
+  useEffect(() => {
+    fetch("http://localhost:5000/watches")
+      .then((resp) => resp.json())
+      .then((watches) => setWatches(watches))
+      .catch(err => console.log(err))
+  }, []);
+
   return (
     // keep navbar outside of <Switch> so it stays in place when page changes
     // use React Fragment to wrap <Navbar/> and <Switch/>
