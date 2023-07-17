@@ -284,37 +284,37 @@ with app.app_context():  # necessary to be in context of your application
     db.session.commit()
 
     o1 = Order(
-        customer_id=randint(1, 2),
+        customer_id=randint(c1.id),
         date=fake.date_time(),
         total_amount=fake.random_int(min=160, max=30000),
     )
 
     o2 = Order(
-        customer_id=randint(1, 2),
+        customer_id=randint(c1.id),
         date=fake.date_time(),
         total_amount=fake.random_int(min=160, max=30000),
     )
 
     o3 = Order(
-        customer_id=randint(1, 2),
+        customer_id=randint(c1.id),
         date=fake.date_time(),
         total_amount=fake.random_int(min=160, max=30000),
     )
 
     o4 = Order(
-        customer_id=randint(1, 2),
+        customer_id=randint(c2.id),
         date=fake.date_time(),
         total_amount=fake.random_int(min=160, max=30000),
     )
 
     o5 = Order(
-        customer_id=randint(1, 2),
+        customer_id=randint(c2.id),
         date=fake.date_time(),
         total_amount=fake.random_int(min=160, max=30000),
     )
 
     o6 = Order(
-        customer_id=randint(1, 2),
+        customer_id=randint(c2.id),
         date=fake.date_time(),
         total_amount=fake.random_int(min=160, max=30000),
     )
