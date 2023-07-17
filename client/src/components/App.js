@@ -19,7 +19,7 @@ const App = () => {
   
   // GET watches
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("/products")
       .then((resp) => resp.json())
       .then((products) => setProducts(products))
       .catch(err => console.log(err))
@@ -28,7 +28,7 @@ const App = () => {
   return (
     // keep navbar outside of <Switch> so it stays in place when page changes
     // use React Fragment to wrap <Navbar/> and <Switch/>
-    <>
+    <div>
       <Navbar />
       <Switch>
         <Route exact path="/">
@@ -59,10 +59,10 @@ const App = () => {
           <About />
         </Route>
       </Switch>
-       <Footer />    
-    </>
+      <Footer />    
+    </div>
 
-  )
+  );
 }
 
 export default App;
