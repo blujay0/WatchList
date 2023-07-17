@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
-import WatchList from "./WatchList"
+import WatchCard from "./WatchCard"
 import WatchPage from "./WatchPage"
 import Cart from "./Cart"
 // import Customer from "./Customer"
