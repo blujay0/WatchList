@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import WatchCard from "./WatchCard"
+import Watch from "./Watch"
 import WatchPage from "./WatchPage"
 import Cart from "./Cart"
 // import Customer from "./Customer"
@@ -31,11 +32,11 @@ const App = () => {
       <Navbar />
        <Switch>
          <Route exact path="/">
-           {/* <WatchList watches={watches} /> */}
+           <WatchPage watches={watches} />
          </Route>
 
          <Route exact path="/watches/:id">
-           {/* <WatchPage /> */}
+           {/* <Watch /> */}
          </Route>
 
          <Route exact path="/login">
