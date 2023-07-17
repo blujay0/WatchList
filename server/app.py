@@ -111,9 +111,9 @@ class Logout(Resource):
 
 # api.add_resource() tells the api to look at a specified resource (connects to resource);
 # 1st arg: which resource you're adding, 2nd arg: the endpoint
-api.add_resource(Products, "/products")
+api.add_resource(Products, "/watches")
 
-api.add_resource(ProductByID, "/products/<int:id>")
+api.add_resource(ProductByID, "/watches/<int:id>")
 
 api.add_resource(Profile, "/profile")
 
