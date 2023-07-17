@@ -50,6 +50,11 @@ class ProductByID(Resource):
     def get(self, id):
         pass
 
+
+class Profile(Resource):
+    def get(self):
+        pass
+
     def post(self):
         pass
 
@@ -58,20 +63,6 @@ class ProductByID(Resource):
 
     def delete(self):
         pass
-
-
-# class Profile(Resource):
-#     def get(self):
-#         pass
-
-#     def post(self):
-#         pass
-
-#     def patch(self):
-#         pass
-
-#     def delete(self):
-#         pass
 
 
 class Cart(Resource):
