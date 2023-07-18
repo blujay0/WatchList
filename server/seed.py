@@ -278,13 +278,112 @@ with app.app_context():  # necessary to be in context of your application
         updated_at=fake.date_time(),
     )
 
-    customers = [c1, c2]
+    c3 = Customer(
+        name=fake.name(),
+        email=fake.email(),
+        address=fake.address(),
+        password=fake.password(
+            length=12, special_chars=True, upper_case=True, lower_case=True
+        ),
+        created_at=fake.date_time(),
+        updated_at=fake.date_time(),
+    )
+
+    c4 = Customer(
+        name=fake.name(),
+        email=fake.email(),
+        address=fake.address(),
+        password=fake.password(
+            length=12, special_chars=True, upper_case=True, lower_case=True
+        ),
+        created_at=fake.date_time(),
+        updated_at=fake.date_time(),
+    )
+
+    c5 = Customer(
+        name=fake.name(),
+        email=fake.email(),
+        address=fake.address(),
+        password=fake.password(
+            length=12, special_chars=True, upper_case=True, lower_case=True
+        ),
+        created_at=fake.date_time(),
+        updated_at=fake.date_time(),
+    )
+
+    c6 = Customer(
+        name=fake.name(),
+        email=fake.email(),
+        address=fake.address(),
+        password=fake.password(
+            length=12, special_chars=True, upper_case=True, lower_case=True
+        ),
+        created_at=fake.date_time(),
+        updated_at=fake.date_time(),
+    )
+
+    c6 = Customer(
+        name=fake.name(),
+        email=fake.email(),
+        address=fake.address(),
+        password=fake.password(
+            length=12, special_chars=True, upper_case=True, lower_case=True
+        ),
+        created_at=fake.date_time(),
+        updated_at=fake.date_time(),
+    )
+
+    c7 = Customer(
+        name=fake.name(),
+        email=fake.email(),
+        address=fake.address(),
+        password=fake.password(
+            length=12, special_chars=True, upper_case=True, lower_case=True
+        ),
+        created_at=fake.date_time(),
+        updated_at=fake.date_time(),
+    )
+
+    c8 = Customer(
+        name=fake.name(),
+        email=fake.email(),
+        address=fake.address(),
+        password=fake.password(
+            length=12, special_chars=True, upper_case=True, lower_case=True
+        ),
+        created_at=fake.date_time(),
+        updated_at=fake.date_time(),
+    )
+
+    c9 = Customer(
+        name=fake.name(),
+        email=fake.email(),
+        address=fake.address(),
+        password=fake.password(
+            length=12, special_chars=True, upper_case=True, lower_case=True
+        ),
+        created_at=fake.date_time(),
+        updated_at=fake.date_time(),
+    )
+
+    c10 = Customer(
+        name=fake.name(),
+        email=fake.email(),
+        address=fake.address(),
+        password=fake.password(
+            length=12, special_chars=True, upper_case=True, lower_case=True
+        ),
+        created_at=fake.date_time(),
+        updated_at=fake.date_time(),
+    )
+
+    customers = [c1, c2, c3, c4, c5, c6, c7, c8, c9, c10]
 
     db.session.add_all(customers)
     db.session.commit()
 
     o1 = Order(
-        customer_id=(c1.id),
+        customer_id=(c3.id),
         date=fake.date_time(),
         total_amount=fake.random_int(min=160, max=30000),
     )
@@ -296,7 +395,7 @@ with app.app_context():  # necessary to be in context of your application
     )
 
     o3 = Order(
-        customer_id=(c1.id),
+        customer_id=(c4.id),
         date=fake.date_time(),
         total_amount=fake.random_int(min=160, max=30000),
     )
@@ -308,25 +407,49 @@ with app.app_context():  # necessary to be in context of your application
     )
 
     o5 = Order(
-        customer_id=(c2.id),
+        customer_id=(c5.id),
         date=fake.date_time(),
         total_amount=fake.random_int(min=160, max=30000),
     )
 
     o6 = Order(
-        customer_id=(c2.id),
+        customer_id=(c9.id),
         date=fake.date_time(),
         total_amount=fake.random_int(min=160, max=30000),
     )
 
-    orders = [o1, o2, o3, o4, o5, o6]
+    o7 = Order(
+        customer_id=(c10.id),
+        date=fake.date_time(),
+        total_amount=fake.random_int(min=160, max=30000),
+    )
+
+    o8 = Order(
+        customer_id=(c8.id),
+        date=fake.date_time(),
+        total_amount=fake.random_int(min=160, max=30000),
+    )
+
+    o9 = Order(
+        customer_id=(c6.id),
+        date=fake.date_time(),
+        total_amount=fake.random_int(min=160, max=30000),
+    )
+
+    o10 = Order(
+        customer_id=(c7.id),
+        date=fake.date_time(),
+        total_amount=fake.random_int(min=160, max=30000),
+    )
+
+    orders = [o1, o2, o3, o4, o5, o6, o7, o8, o9, o10]
 
     db.session.add_all(orders)
     db.session.commit()
 
     od1 = OrderDetail(product_id=p2.id, order_id=o1.id, quantity=randint(1, 10))
 
-    od2 = OrderDetail(product_id=p5.id, order_id=o2.id, quantity=randint(1, 10))
+    od2 = OrderDetail(product_id=p5.id, order_id=o7.id, quantity=randint(1, 10))
 
     od3 = OrderDetail(product_id=p11.id, order_id=o3.id, quantity=randint(1, 10))
 
@@ -334,18 +457,34 @@ with app.app_context():  # necessary to be in context of your application
 
     od5 = OrderDetail(product_id=p8.id, order_id=o4.id, quantity=randint(1, 10))
 
-    od5 = OrderDetail(product_id=p16.id, order_id=o6.id, quantity=randint(1, 10))
+    od5 = OrderDetail(product_id=p16.id, order_id=o8.id, quantity=randint(1, 10))
 
-    order_details = [od1, od2, od3, od4, od5]
+    od6 = OrderDetail(product_id=p16.id, order_id=o10.id, quantity=randint(1, 10))
+
+    od7 = OrderDetail(product_id=p16.id, order_id=o9.id, quantity=randint(1, 10))
+
+    order_details = [od1, od2, od3, od4, od5, od6, od7]
 
     db.session.add_all(order_details)
     db.session.commit()
 
     ci1 = CartItem(customer_id=c2.id, product_id=p2.id)
 
-    ci2 = CartItem(customer_id=c1.id, product_id=p3.id)
+    ci2 = CartItem(customer_id=c1.id, product_id=p13.id)
 
-    cart_items = [ci1, ci2]
+    ci3 = CartItem(customer_id=c1.id, product_id=p20.id)
+
+    ci4 = CartItem(customer_id=c1.id, product_id=p18.id)
+
+    ci5 = CartItem(customer_id=c1.id, product_id=p4.id)
+
+    ci6 = CartItem(customer_id=c1.id, product_id=p3.id)
+
+    ci7 = CartItem(customer_id=c1.id, product_id=p11.id)
+
+    ci8 = CartItem(customer_id=c1.id, product_id=p10.id)
+
+    cart_items = [ci1, ci2, ci3, ci4, ci5, ci6, ci7, ci8]
 
     db.session.add_all(cart_items)
     db.session.commit()
