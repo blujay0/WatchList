@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
-import ProductCard from "./ProductCard"
+// import ProductCard from "./ProductCard"
 import Product from "./Product"
 import ProductsPage from "./ProductsPage"
 import Cart from "./Cart"
-// import Customer from "./Customer"
 import Login from "./Login"
 import SignUp from "./SignUp"
 import Navbar from "./Navbar.js"
@@ -36,7 +35,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/products/:id">
-          {/* <Product /> */}
+          <Product products={products}/>
         </Route>
 
         <Route exact path="/login">
