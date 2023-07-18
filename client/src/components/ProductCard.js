@@ -21,6 +21,7 @@ const ProductCard = ({ product }) => {
         <div>Price: ${product_price}</div>
         {/* <div>Description: {product_description}</div> */}
         <button className='cart-button' onClick={handleAddToCart}>🛒</button>
+        {/* React has an 'as' prop that can instruct a component to render as something else */}
         <button className='detail-button' onClick={() => history.push(`/products/${id}`)}>Details</button>
       </main>
     </div>
