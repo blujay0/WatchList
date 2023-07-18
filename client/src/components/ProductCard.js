@@ -1,15 +1,11 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import './ProductCard.css'
 
 const ProductCard = ({ product }) => {
-  const { maker, model, product_name, product_price, product_description, image } = product
+  const { id, maker, model, product_name, product_price, product_description, image } = product
 
   const history = useHistory();
-
-  const handleDetailsClick = () => {
-    history.push(`/products/${product.id}`);
-  }
 
   const handleAddToCart = () => {
     const cartProduct = { maker, model, product_name, product_price, image };
@@ -25,7 +21,7 @@ const ProductCard = ({ product }) => {
         <div>Price: ${product_price}</div>
         {/* <div>Description: {product_description}</div> */}
         <button className='cart-button' onClick={handleAddToCart}>🛒</button>
-        <button className='detail-button' onClick={handleDetailsClick}>Details</button>
+        <button className='detail-button' onClick={() => history.push(`/products/${id}`)}>Details</button>
       </main>
     </div>
   )
