@@ -6,7 +6,7 @@ const Product = () => {
   const { productId } = useParams();
 
   useEffect(() => {
-    // console.log(productId);
+    console.log(productId);
     fetch(`/products/${productId}`)
     .then(resp => {
       if (resp.ok) { // if response is one of 200 status code
@@ -16,7 +16,6 @@ const Product = () => {
       }
     })
     .catch(console.error)
-    
   }, [productId])
   
   const { id, maker, model, product_name, product_price, product_description, image } = product

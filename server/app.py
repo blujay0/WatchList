@@ -61,7 +61,7 @@ class ProductByID(Resource):
             return make_response({"error": e}, 400)
 
 
-class Profile(Resource):
+class Customer(Resource):
     def get(self):
         pass
 
@@ -85,6 +85,12 @@ class Login(Resource):
         pass
 
 
+class Logout(Resource):
+    def post(self):
+        session.clear()
+        return make_response({}, 202)
+
+
 class SignUp(Resource):
     def post(self):
         data = request.get_json()
@@ -103,19 +109,13 @@ class SignUp(Resource):
             return make_response({"error": "Something went wrong!"}, 400)
 
 
-class Logout(Resource):
-    def post(self):
-        session.clear()
-        return make_response({}, 202)
-
-
 # api.add_resource() tells the api to look at a specified resource (connects to resource);
 # 1st arg: which resource you're adding, 2nd arg: the endpoint
 api.add_resource(Products, "/products")
 
 api.add_resource(ProductByID, "/products/<int:id>")
 
-api.add_resource(Profile, "/profile")
+api.add_resource(Customer, "/customer/<int:id>")
 
 api.add_resource(Cart, "/cart")
 
