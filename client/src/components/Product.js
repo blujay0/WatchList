@@ -6,7 +6,7 @@ const Product = ({ product }) => {
   const {prodId} = useParams()
 
   useEffect(() => {
-    fetch(`/products/${prodId}`)
+    fetch(`/products/${prodId.id}`)
     .then(resp => {
       if (resp.ok) {
         resp.json().then(setProductDetails);
