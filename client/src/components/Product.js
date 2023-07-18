@@ -6,8 +6,19 @@ const Product = () => {
 
   useEffect(() => {
     fetch(`/products/${prodId}`)
-  })
+    .then(resp => {
+      if (resp.ok) {
+        resp.json().then(setProductDetails);
+      } else {
+        console.error("Unable to set concerts");
+      }
+    })
+    .catch(console.error)
+  }, [prodId])
   
+  const handleDelete = (e) => {
+    return null
+  }
 
 } 
 // ${prodId} 
