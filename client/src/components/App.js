@@ -35,7 +35,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/products/:id">
-          <Product products={products}/>
+          <Product />
         </Route>
 
         <Route exact path="/login">
