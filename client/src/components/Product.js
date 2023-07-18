@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useHistory } from 'react-router-dom'
 const Product = ({ product }) => {
+  const [error, setError] = useState(null)
   const [productDetails, setProductDetails] = useState([])
   const {prodId} = useParams()
 
@@ -10,7 +11,7 @@ const Product = ({ product }) => {
       if (resp.ok) {
         resp.json().then(setProductDetails);
       } else {
-        console.error("Unable to set concerts");
+        resp.json().then(error => setError(error.message));
       }
     })
     .catch(console.error)
@@ -21,8 +22,8 @@ const Product = ({ product }) => {
   return (
     <Product id={id}>
       <div>
-        <img src={image} alt={maker} />
         <h1>{maker} {product_name}</h1>
+        <img src={image} alt={maker} />
         <h3>Model: {model}</h3>
         <h3>Price: {product_price}</h3>
         <p>{product_description}</p>
@@ -31,5 +32,5 @@ const Product = ({ product }) => {
   )
 
 } 
-// ${prodId} 
+
 export default Product;
