@@ -5,9 +5,13 @@ import './ProductCard.css'
 const ProductCard = ({ product }) => {
   const { id, maker, model, product_name, product_price, product_description, image } = product
 
-  // const history = useHistory();
+  const history = useHistory();
 
-  const productPath = `/products/${product.id}`
+  const productDetails = () => {
+    history.push(`/products/${id}`)
+  }
+
+  // const productPath = `/products/${id}`
 
   const handleAddToCart = () => {
     const cartProduct = { maker, model, product_name, product_price, image };
@@ -24,9 +28,7 @@ const ProductCard = ({ product }) => {
         {/* <div>Description: {product_description}</div> */}
         <button className='cart-button' onClick={handleAddToCart}>🛒</button>
         {/* React has an 'as' prop that can instruct a component to render as something else */}
-        <Link to={productPath}>
-          <button className='detail-button'>Details</button>
-        </Link>
+        <button className='details-button' onClick={productDetails}>Details</button>
       </main>
     </div>
   )

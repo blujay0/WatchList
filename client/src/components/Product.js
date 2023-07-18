@@ -1,23 +1,25 @@
 import { useEffect, useState } from "react";
 import { useParams, useHistory } from 'react-router-dom'
-const Product = ({ product }) => {
+const Product = () => {
   const [error, setError] = useState(null)
-  const [productDetails, setProductDetails] = useState([])
-  const {prodId} = useParams()
+  const [product, setProduct] = useState({})
+  const { productId } = useParams();
 
   useEffect(() => {
-    fetch(`/products/${prodId.id}`)
+    // console.log(productId);
+    fetch(`/products/${productId}`)
     .then(resp => {
-      if (resp.ok) {
-        resp.json().then(setProductDetails);
+      if (resp.ok) { // if response is one of 200 status code
+        resp.json().then(setProduct); // set product state to response which is a single product
       } else {
         resp.json().then(error => setError(error.message));
       }
     })
     .catch(console.error)
-  }, [prodId])
+    
+  }, [productId])
   
-  const {id, maker, model, product_name, product_price, product_description, image } = productDetails
+  const { id, maker, model, product_name, product_price, product_description, image } = product
 
   return (
     <Product id={id}>
@@ -30,7 +32,6 @@ const Product = ({ product }) => {
       </div>
     </Product>
   )
-
 } 
 
 export default Product;

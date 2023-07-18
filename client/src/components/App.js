@@ -34,7 +34,7 @@ const App = () => {
           <ProductsPage products={products} />
         </Route>
 
-        <Route exact path="/products/:id">
+        <Route exact path="/products/:productId">
           <Product />
         </Route>
 
@@ -54,9 +54,9 @@ const App = () => {
           <Cart/>
         </Route>
 
-        <Route exact path="/about">
+        {/* <Route exact path="/about">
           <About />
-        </Route>
+        </Route> */}
       </Switch>
       <Footer />    
     </div>
