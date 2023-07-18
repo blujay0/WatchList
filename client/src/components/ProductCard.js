@@ -11,12 +11,12 @@ const ProductCard = ({ product }) => {
   return (
     <div className="main">
       <main>
-        <img src={image} alt={maker}/>
+        <img src={image} alt={maker} width="200" height="200"/>
         <div>Maker: {maker}</div>
         <div>Model: {model}</div>
         <div>Name: {product_name}</div>
         <div>Price: ${product_price}</div>
-        <div>Description: {product_description}</div>
+        {/* <div>Description: {product_description}</div> */}
         <button className='cart-button' onClick={handleAddToCart}>🛒</button>
       </main>
     </div>
