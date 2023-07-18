@@ -2,7 +2,7 @@ import React from 'react';
 import ProductCard from './ProductCard'
 
 const ProductsPage = ({ products }) => {
-  const mappedProducts = products.map((product) => <ProductCard key={product.id} product={product}/>)
+  const mappedProducts = products.map((product, index) => <ProductCard key={index} product={product}/>)
 
   return (
     <div>
