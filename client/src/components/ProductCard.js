@@ -3,7 +3,7 @@ import { useHistory, Link } from 'react-router-dom';
 import './ProductCard.css'
 
 const ProductCard = ({ product }) => {
-  const { id, maker, model, product_name, product_price, product_description, image } = product
+  const { product_id, maker, model, product_name, product_price, product_description, image } = product
 
   // const history = useHistory();
 
@@ -11,7 +11,7 @@ const ProductCard = ({ product }) => {
   //   history.push(`/products/${id}`)
   // }
 
-  const productPath = `/products/${id}`
+  const productPath = `/products/${product_id}`
 
   const handleAddToCart = () => {
     const cartProduct = { maker, model, product_name, product_price, image };
