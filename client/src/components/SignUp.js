@@ -18,19 +18,19 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-      const formData = {
-        name: name,
-        email: email,
-        address: address,
-        password: password
-      }
-      fetch(`/signup`, {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData)
-      });   
+    const formData = {
+      name: name,
+      email: email,
+      address: address,
+      password: password
+    }
+    fetch(`/signup`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData)
+    });   
   }
 
   return (
