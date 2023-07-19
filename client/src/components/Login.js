@@ -14,6 +14,7 @@ const Login = () => {
   const avatarStyle = { height: '70px', width: '70px', bgcolor: '#273248' };
   const lockPersonStyle = { fontSize: '2em', color: 'white' };
   const keyStyle = { fontSize: '40px', color: 'white' };
+
   const initialValues={
     email:'',
     password:'',
@@ -21,7 +22,21 @@ const Login = () => {
   const validationSchema=Yup.object({
     username: Yup.string().email('please enter valid email')
   })
-  const onSubmit=(values,props)=>{}
+
+  const handleSubmit = (values, { setSubmitting }) => {
+    // alert(JSON.stringify(values))
+    const formData = {
+      email: values.email, // in values obj
+      password: values.password // in values obj
+    }
+    fetch(`/login`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData)
+    });    
+  }
 
   return (
     <Grid>
@@ -32,7 +47,7 @@ const Login = () => {
           </Avatar>
           <h1><b>LOG IN</b></h1>
         </Grid>
-        <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+        <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
           {(props)=>(
             <Form>
               {console.log(props)}

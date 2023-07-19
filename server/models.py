@@ -102,6 +102,7 @@ class Product(db.Model):
             "product_price": self.product_price,
             "inventory": self.inventory,
             "product_description": self.product_description,
+            "image": self.image,
         }
 
 

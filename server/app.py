@@ -20,6 +20,7 @@ from flask import (
 from flask_restful import Api, Resource
 from time import time
 from flask_migrate import Migrate
+from flask_bcrypt import Bcrypt
 
 from models import db, CartItem, Customer, OrderDetail, Order, Product
 
@@ -30,7 +31,7 @@ app.config["SQLALCHEMY_ECHO"] = True
 
 migrate = Migrate(app, db)
 db.init_app(app)
-
+bcrypt = Bcrypt(app)
 api = Api(app)  # instantiate new instance of Api class
 
 
@@ -55,13 +56,13 @@ class Products(Resource):
 class ProductByID(Resource):
     def get(self, id):
         try:
-            product = Product.query.filter(Product.id == id).first().to_dict()
+            product = Product.query.filter(Product.id == id).first().as_dict()
             return make_response(product, 200)
         except Exception as e:
             return make_response({"error": e}, 400)
 
 
-class Customer(Resource):
+class Customers(Resource):
     def get(self):
         pass
 
@@ -82,7 +83,24 @@ class Cart(Resource):
 
 class Login(Resource):
     def post(self):
-        pass
+        data = (
+            request.get_json()
+        )  # give me json part of json data (requests can have other info)
+        email = data["email"]
+        password = data["password"]
+        # write a query to get object associated with email address, if email doens't exist customer is none
+        customer = Customer.query.filter(Customer.email == email).first()
+        if customer:
+            # successful log customer in
+            if bcrypt.check_password_hash(customer.password, password):
+                print("logged in")
+                return "logged in"
+            else:
+                print("bad password")
+                return {"error": "invalid credentials"}
+        else:
+            print("bad email")
+            return {"error": "invalid credentials"}
 
 
 class Logout(Resource):
@@ -99,13 +117,17 @@ class SignUp(Resource):
         address = data["address"]
         password = data["password"]
         try:
-            profile = Profile(
-                name=name, email=email, address=address, password=password
+            profile = Customer(
+                name=name,
+                email=email,
+                address=address,
+                password=bcrypt.generate_password_hash(password),
             )
             db.session.add(profile)
             db.session.commit()
         except:
             db.session.rollback()
+            raise
             return make_response({"error": "Something went wrong!"}, 400)
 
 
@@ -115,7 +137,7 @@ api.add_resource(Products, "/products")
 
 api.add_resource(ProductByID, "/products/<int:id>")
 
-api.add_resource(Customer, "/customer/<int:id>")
+api.add_resource(Customers, "/customer/<int:id>")
 
 api.add_resource(Cart, "/cart")
 

@@ -16,12 +16,12 @@ const Product = () => {
       }
     })
     .catch(console.error)
+    
   }, [productId])
   
   const { id, maker, model, product_name, product_price, product_description, image } = product
 
   return (
-    <Product id={id}>
       <div>
         <h1>{maker} {product_name}</h1>
         <img src={image} alt={maker} />
@@ -29,7 +29,6 @@ const Product = () => {
         <h3>Price: {product_price}</h3>
         <p>{product_description}</p>
       </div>
-    </Product>
   )
 } 
 
