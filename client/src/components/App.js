@@ -9,7 +9,7 @@ import SignUp from "./SignUp"
 import Navbar from "./Navbar.js"
 import Footer from "./Footer.js"
 import About from "./About.js"
-import Profile from "./Customer.js"
+import Customer from "./Customer.js"
 
 const App = () => {
   // Code goes here!
@@ -48,7 +48,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/customer">
-          <Profile />
+          <Customer />
         </Route>
 
         <Route exact path="/cart">
