@@ -24,18 +24,7 @@ const Login = () => {
   })
 
   const handleSubmit = (values, { setSubmitting }) => { // parameters are from formik docs
-    // // alert(JSON.stringify(values))
-    // const formData = {
-    //   email: values.email, // in values obj
-    //   password: values.password // in values obj
-    // }
-    // fetch(`/login`, {
-    //   method: 'POST',
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(formData)
-    // });    
+   
   }
 
   return (
