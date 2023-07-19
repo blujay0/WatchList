@@ -17,7 +17,20 @@ const SignUp = () => {
   const fingerprintStyle = { fontSize: '40px', color: 'white' };
 
   const handleSubmit = (e) => {
-
+    e.preventDefault()
+      const formData = {
+        name: name,
+        email: email,
+        address: address,
+        password: password
+      }
+      fetch(`/signup`, {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData)
+      });   
   }
 
   return (
