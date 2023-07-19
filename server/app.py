@@ -82,25 +82,26 @@ class Cart(Resource):
 
 
 class Login(Resource):
-    def post(self):
-        data = (
-            request.get_json()
-        )  # give me json part of json data (requests can have other info)
-        email = data["email"]
-        password = data["password"]
-        # write a query to get object associated with email address, if email doens't exist customer is none
-        customer = Customer.query.filter(Customer.email == email).first()
-        if customer:
-            # successful log customer in
-            if bcrypt.check_password_hash(customer.password, password):
-                print("logged in")
-                return "logged in"
-            else:
-                print("bad password")
-                return {"error": "invalid credentials"}
-        else:
-            print("bad email")
-            return {"error": "invalid credentials"}
+    pass
+    # def post(self):
+    #     data = (
+    #         request.get_json()
+    #     )  # give me json part of data (requests can have other info)
+    #     email = data["email"]
+    #     password = data["password"]
+    #     # write a query to get object associated with email address, if email doesn't exist customer is none
+    #     customer = Customer.query.filter(Customer.email == email).first()
+    #     if customer:
+    #         # successful log customer in
+    #         if bcrypt.check_password_hash(customer.password, password):
+    #             print("logged in")
+    #             return "logged in"
+    #         else:
+    #             print("bad password")
+    #             return {"error": "invalid credentials"}
+    #     else:
+    #         print("bad email")
+    #         return {"error": "invalid credentials"}
 
 
 class Logout(Resource):
@@ -111,24 +112,25 @@ class Logout(Resource):
 
 class SignUp(Resource):
     def post(self):
-        data = request.get_json()
-        name = data["name"]
-        email = data["email"]
-        address = data["address"]
-        password = data["password"]
-        try:
-            profile = Customer(
-                name=name,
-                email=email,
-                address=address,
-                password=bcrypt.generate_password_hash(password),
-            )
-            db.session.add(profile)
-            db.session.commit()
-        except:
-            db.session.rollback()
-            raise
-            return make_response({"error": "Something went wrong!"}, 400)
+        pass
+        # data = request.get_json()
+        # name = data["name"]
+        # email = data["email"]
+        # address = data["address"]
+        # password = data["password"]
+        # try:
+        #     profile = Customer(
+        #         name=name,
+        #         email=email,
+        #         address=address,
+        #         password=bcrypt.generate_password_hash(password),
+        #     )
+        #     db.session.add(profile)
+        #     db.session.commit()
+        # except:
+        #     db.session.rollback()
+        #     raise
+        #     return make_response({"error": "Something went wrong!"}, 400)
 
 
 # api.add_resource() tells the api to look at a specified resource (connects to resource);
