@@ -24,7 +24,7 @@ const ProductCard = ({ product }) => {
         <div>Maker: {maker}</div>
         <div>Model: {model}</div>
         <div>Name: {product_name}</div>
-        <div>Price: ${product_price}</div>
+        <div>Price: {product_price}</div>
         {/* <div>Description: {product_description}</div> */}
         <button className='cart-button' onClick={handleAddToCart}>🛒</button>
         {/* React has an 'as' prop that can instruct a component to render as something else */}
