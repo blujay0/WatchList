@@ -24,6 +24,7 @@ const App = () => {
       .catch(err => console.log(err))
   }, []);
 
+
   return (
     // keep navbar outside of <Switch> so it stays in place when page changes
     // use React Fragment to wrap <Navbar/> and <Switch/>
