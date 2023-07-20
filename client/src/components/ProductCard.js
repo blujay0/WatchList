@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import './ProductCard.css'
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, setCartItems, cartItems }) => {
   const { product_id, maker, model, product_name, product_price, product_description, image } = product
 
   // const history = useHistory();
@@ -14,7 +14,9 @@ const ProductCard = ({ product }) => {
   const productPath = `/products/${product_id}`
 
   const handleAddToCart = () => {
-    const cartProduct = { maker, model, product_name, product_price, image };
+    const cartProduct = { product_id, maker, model, product_name, product_price };
+    setCartItems([...cartItems, cartProduct])
+    console.log(cartItems);
   }
 
   return (

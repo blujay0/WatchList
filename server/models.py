@@ -24,7 +24,6 @@ from sqlalchemy.ext.associationproxy import association_proxy
 
 db = SQLAlchemy()  # an instance of the SQLAlchemy class is our database
 
-
 # Models go here!
 class Customer(db.Model):
     __tablename__ = "customers"

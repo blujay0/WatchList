@@ -82,8 +82,6 @@ class Cart(Resource):
 
 
 class Login(Resource):
-    pass
-
     def post(self):
         data = (
             request.get_json()
@@ -94,9 +92,11 @@ class Login(Resource):
         customer = Customer.query.filter(Customer.email == email).first()
         if customer:
             # successful log customer in
-            if bcrypt.check_password_hash(customer.password, password):
+            if bcrypt.check_password_hash(
+                customer.password, password
+            ):  # check arg1 against arg2
                 print("logged in")
-                return "logged in"
+                return {"customer": customer.name}
             else:
                 print("bad password")
                 return {"error": "invalid credentials"}
@@ -113,7 +113,7 @@ class Logout(Resource):
 
 class SignUp(Resource):
     def post(self):
-        pass
+        # pass
         data = request.get_json()
         name = data["name"]
         email = data["email"]
@@ -130,7 +130,7 @@ class SignUp(Resource):
             db.session.commit()
         except:
             db.session.rollback()
-            raise
+            raise  # raises a specific exception when a condition is met or the code encounters an error
             return make_response({"error": "Something went wrong!"}, 400)
 
 

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-const Login = () => {
+const Login = ({ setCustomer }) => {
   
   const paperStyle = { backgroundColor: 'white', padding: 20, height:'50vh', width: 400, margin: '20px auto' };
   const buttonStyle = { margin: '8px 0', height: '5vh', borderRadius: '30px', backgroundColor: '#627C79', padding: 0 };
@@ -24,7 +24,7 @@ const Login = () => {
   })
 
   const handleSubmit = (values, { setSubmitting }) => { // parameters are from formik docs
-    alert(JSON.stringify(values)) // see what data is being returned
+    // alert(JSON.stringify(values)) // uncomment to see what data is being returned
     const formData = {
       email: values.email, // in values obj
       password: values.password // in values obj
@@ -35,7 +35,16 @@ const Login = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData)
-    }); 
+    })
+    .then(resp => {
+      // console.log(resp)
+      if (resp.ok) { // if response is one of 200 status code
+        resp.json().then((data) => {setCustomer(data.customer)}); // set product state to response which is a customer
+      } else {
+        resp.json().then(error => alert(error.error));
+      }
+    })
+    .catch(console.error)
   }
 
   return (
