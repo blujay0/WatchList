@@ -21,8 +21,8 @@ from flask_restful import Api, Resource
 from time import time
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
-
 from models import db, CartItem, Customer, OrderDetail, Order, Product
+import re
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///store.db"
@@ -62,23 +62,46 @@ class ProductByID(Resource):
             return make_response({"error": e}, 400)
 
 
-class Customers(Resource):
+class Customer(Resource):  # digital identity
     def get(self):
-        pass
+        if session.get("id"):
+            return make_response(
+                db.session.get(Customer, session["name"]).as_dict(), 200
+            )
+        return make_response()
 
     def post(self):
-        pass
+        try:
+            if ():
+                pass
+            if not ():
+                db.session.add
+                db.session.commit()
+                return make_response()
+            else:
+                pass
+                return make_response()
+        except Exception as e:
+            return make_response()
 
     def patch(self):
-        pass
+        if customer := db.session.get(Customer, session.get("id")):
+            pass
+        db.session.add(customer)
+        db.session.commit()
+        return make_response(customer.to_dict(), 200)
 
     def delete(self):
-        pass
+        if customer := db.session.get(Customer, session.get("id")):
+            db.session.delete(customer)
+            db.session.commit()
+            return make_response({}, 204)
 
 
 class Cart(Resource):
     def get(self):
         pass
+        return make_response()
 
 
 class Login(Resource):
@@ -113,7 +136,6 @@ class Logout(Resource):
 
 class SignUp(Resource):
     def post(self):
-        # pass
         data = request.get_json()
         name = data["name"]
         email = data["email"]
@@ -140,7 +162,7 @@ api.add_resource(Products, "/products")
 
 api.add_resource(ProductByID, "/products/<int:id>")
 
-api.add_resource(Customers, "/customer/<int:id>")
+api.add_resource(Customer, "/customer/<int:id>")
 
 api.add_resource(Cart, "/cart")
 
