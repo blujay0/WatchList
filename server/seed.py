@@ -24,6 +24,7 @@ from models import db, Customer, Order, CartItem, OrderDetail, Product
 fake = Faker()
 
 with app.app_context():  # necessary to be in context of your application
+    # query.delete() deletes existing records from the table
     Customer.query.delete()
     Order.query.delete()
     CartItem.query.delete()
@@ -227,7 +228,7 @@ with app.app_context():  # necessary to be in context of your application
         product_price="$395",
         inventory=fake.random_int(1, 10000),
         product_description="The Sutton model is a Cartier Tank-style watch with impressive finishing for the price, including a guilloché-style dial texture (here achieved with a pressing process), and stepped Art Deco case flanks. While it might be a polarizing feature within the watch community, the Sutton also exhibits an “open heart” feature exposing the balance with a cutaway on the front of the dial and allowing the mechanical Miyota caliber 82S0 to shine. Applied Arabic indices, simple baton hands, and a classic alligator grain leather strap round out this attractive modern take on a Bulova design dating back to 1948 and looking just as relevant today at least in more refined settings.",
-        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Bulova-Sutton-2.jpg?v=1649252209/200",
+        image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Bulova-Sutton-2.jpg?v=1649252209",
     )
 
     products = [

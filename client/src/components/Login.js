@@ -39,7 +39,7 @@ const Login = ({ setCustomer }) => {
     .then(resp => {
       // console.log(resp)
       if (resp.ok) { // if response is one of 200 status code
-        resp.json().then((data) => {setCustomer(data.customer)}); // set product state to response which is a customer
+        resp.json().then((data) => {setCustomer(data.customer)}); // set data to response which is a customer
       } else {
         resp.json().then(error => alert(error.error));
       }

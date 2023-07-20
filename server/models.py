@@ -19,10 +19,12 @@ SQLAlchemy and Alembic in your models
 """
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.associationproxy import association_proxy
+import re
 
 # from sqlalchemy.orm import back_populates
 
 db = SQLAlchemy()  # an instance of the SQLAlchemy class is our database
+
 
 # Models go here!
 class Customer(db.Model):

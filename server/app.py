@@ -38,36 +38,11 @@ api = Api(app)  # instantiate new instance of Api class
 # Views go here!
 
 
-# the Products class is not your model, but a new class that represents the information you will be accessing
-class Products(Resource):
-    # self is the instance of the class
-    def get(self):
-        try:
-            # the as_dict() method that you built in models is used here b/c you can only serialize if it is converted to a dictionary
-            products = [product.as_dict() for product in Product.query.all()]
-
-            # you can also just 'return products, 200' but make_response is preferred
-            return make_response(products, 200)
-
-        except Exception as e:
-            return make_response({"error": e}, 400)
-
-
-class ProductByID(Resource):
-    def get(self, id):
-        try:
-            product = Product.query.filter(Product.id == id).first().as_dict()
-            return make_response(product, 200)
-        except Exception as e:
-            return make_response({"error": e}, 400)
-
-
+# the Customer class is not your model, but a new class that represents the information you will be accessing
 class Customer(Resource):  # digital identity
     def get(self):
         if session.get("id"):
-            return make_response(
-                db.session.get(Customer, session["name"]).as_dict(), 200
-            )
+            return make_response(db.session.get(Customer, session["id"]).as_dict(), 200)
         return make_response()
 
     def post(self):
@@ -99,7 +74,15 @@ class Customer(Resource):  # digital identity
 
 
 class Cart(Resource):
-    def get(self):
+    # def get(self):
+    #     pass
+    #     return make_response()
+
+    def post(self):  # for posting to cart items server
+        pass
+        return make_response()
+
+    def delete(self):
         pass
         return make_response()
 
@@ -134,6 +117,30 @@ class Logout(Resource):
         return make_response({}, 202)
 
 
+# the Products class is not your model, but a new class that represents the information you will be accessing
+class Products(Resource):
+    # self is the instance of the class
+    def get(self):
+        try:
+            # the as_dict() method that you built in models is used here b/c you can only serialize if it is converted to a dictionary
+            products = [product.as_dict() for product in Product.query.all()]
+
+            # you can also just 'return products, 200' but make_response is preferred
+            return make_response(products, 200)
+
+        except Exception as e:
+            return make_response({"error": e}, 400)
+
+
+class ProductByID(Resource):
+    def get(self, id):
+        try:
+            product = Product.query.filter(Product.id == id).first().as_dict()
+            return make_response(product, 200)
+        except Exception as e:
+            return make_response({"error": e}, 400)
+
+
 class SignUp(Resource):
     def post(self):
         data = request.get_json()
@@ -159,7 +166,6 @@ class SignUp(Resource):
 # api.add_resource() tells the api to look at a specified resource (connects to resource);
 # 1st arg: which resource you're adding, 2nd arg: the endpoint
 api.add_resource(Products, "/products")
-
 api.add_resource(ProductByID, "/products/<int:id>")
 
 api.add_resource(Customer, "/customer/<int:id>")
