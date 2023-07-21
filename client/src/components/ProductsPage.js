@@ -6,7 +6,7 @@ const ProductsPage = ({ products, customer, setCartItems, cartItems }) => {
 
   return (
     <div>
-      <h1>Logged in as: {customer}</h1>
+      {/* <h1>Logged in as: {customer}</h1> */}
       <div>
         {mappedProducts}
       </div>
