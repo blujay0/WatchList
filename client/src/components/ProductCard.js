@@ -14,9 +14,17 @@ const ProductCard = ({ product, setCartItems, cartItems }) => {
   const productPath = `/products/${product_id}`
 
   const handleAddToCart = () => {
-    const cartProduct = { product_id, maker, model, product_name, product_price };
-    setCartItems([...cartItems, cartProduct])
-    console.log(cartItems);
+    const formData = {
+      product_id: product_id, // in values obj
+    }
+
+    fetch(`/cart`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData)
+    })  
   }
 
   return (

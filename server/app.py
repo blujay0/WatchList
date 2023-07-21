@@ -27,7 +27,8 @@ import re
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///store.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SQLALCHEMY_ECHO"] = True
+app.config["SQLALCHEMY_ECHO"] = False
+app.config["SECRET_KEY"] = "key"
 
 migrate = Migrate(app, db)
 db.init_app(app)
@@ -39,23 +40,24 @@ api = Api(app)  # instantiate new instance of Api class
 
 
 # the Customer class is not your model, but a new class that represents the information you will be accessing
-class Customer(Resource):  # digital identity
+class CustomerByID(Resource):  # for Profiles
     def get(self):
+        # retrieve
         if session.get("id"):
             return make_response(db.session.get(Customer, session["id"]).as_dict(), 200)
         return make_response()
 
     def post(self):
         try:
-            if ():
-                pass
-            if not ():
-                db.session.add
-                db.session.commit()
-                return make_response()
-            else:
-                pass
-                return make_response()
+            if session.get("id"):
+                data = request.get_json()
+                if not ():
+                    db.session.add
+                    db.session.commit()
+                    return make_response()
+                else:
+                    pass
+                    return make_response()
         except Exception as e:
             return make_response()
 
@@ -74,17 +76,45 @@ class Customer(Resource):  # digital identity
 
 
 class Cart(Resource):
-    # def get(self):
-    #     pass
-    #     return make_response()
+    # 1. get id of user which comes from session
+    # 2. enter record into cartitems table with product.id
+    # backedn gets id for customer.id and product.id comes from client when button is clicked when fetch called
+    def get(self):
+        if "id" in session:
+            customer_id = session["id"]
+            # products = [product.as_dict() for product in Product.query.all()]
+            cartItems = [
+                cartItem.as_dict()
+                for cartItem in CartItem.query.filter(
+                    CartItem.customer_id == customer_id
+                ).all()
+            ]
+
+        return make_response(cartItems, 200)
 
     def post(self):  # for posting to cart items server
-        pass
-        return make_response()
+        if "id" in session:
+            data = request.get_json()
+            customer_id = session["id"]
+            product_id = data["product_id"]
+            cartItem = CartItem(customer_id=customer_id, product_id=product_id)
+
+            db.session.add(cartItem)
+            db.session.commit()
+        return make_response("cart item added successfully")
 
     def delete(self):
-        pass
-        return make_response()
+        if "id" in session:
+            data = request.get_json()
+            customer_id = session["id"]
+            product_id = data["product_id"]
+            cartItem = CartItem.query.filter(
+                CartItem.customer_id == customer_id, CartItem.product_id == product_id
+            ).first()
+
+            db.session.delete(cartItem)
+            db.session.commit()
+        return make_response("")
 
 
 class Login(Resource):
@@ -101,7 +131,8 @@ class Login(Resource):
             if bcrypt.check_password_hash(
                 customer.password, password
             ):  # check arg1 against arg2
-                print("logged in")
+                session["id"] = customer.id
+                session["name"] = customer.name
                 return {"customer": customer.name}
             else:
                 print("bad password")
@@ -112,8 +143,14 @@ class Login(Resource):
 
 
 class Logout(Resource):
+    # both server and client can delete cookies
+    # flask session on server is different than client-side session
     def post(self):
         session.clear()
+        print("session data")
+        print("cookie cleared!")
+        print(session["id"])
+        print(session["name"])
         return make_response({}, 202)
 
 
@@ -131,6 +168,35 @@ class Products(Resource):
         except Exception as e:
             return make_response({"error": e}, 400)
 
+    # create new product
+    def post(self):
+        # get data sent from client
+        data = request.get_json()
+        # set client sent values to keys
+
+        maker = data["maker"]
+        model = data["model"]
+        product_name = data["product_name"]
+        product_price = data["product_price"]
+        inventory = data["inventory"]
+        product_description = data["product_description"]
+        image = data["image"]
+
+        # use the class to create an instance of the class
+        product = Product(
+            maker=maker,
+            model=model,
+            product_name=product_name,
+            product_price=product_price,
+            inventory=inventory,
+            product_description=product_description,
+            image=image,
+        )
+
+        db.session.add(product)
+        db.session.commit()  # saves to database
+        return make_response(product.as_dict(), 201)
+
 
 class ProductByID(Resource):
     def get(self, id):
@@ -139,6 +205,40 @@ class ProductByID(Resource):
             return make_response(product, 200)
         except Exception as e:
             return make_response({"error": e}, 400)
+
+    # id parameter comes from client side page where client makes fetch request
+    def patch(self, id):
+        data = request.get_json()
+        product_name = data["product_name"]
+        maker = data["maker"]
+        image = data["image"]
+
+        # add more fields as necessary
+        # consider what happens when client does not provide value for a field
+
+        product.product_name = product_name
+        product.maker = maker
+        product.image = image
+        product = Product.query.filter(Product.id == id).first()
+
+        # below is the same thing done above
+        # for key, value in request.get_json().items():
+        #     setattr(product, key, value)
+
+        # no need for db.session.add()
+        db.session.commit()
+        return make_response(product.as_dict(), 200)
+
+    def delete(self, id):
+        # query
+        product = Product.query.filter(Product.id == id).first()
+
+        # session commands
+        db.session.delete(product)
+        db.session.commit()
+
+        # return response
+        return make_response({}, 204)
 
 
 class SignUp(Resource):
@@ -168,7 +268,7 @@ class SignUp(Resource):
 api.add_resource(Products, "/products")
 api.add_resource(ProductByID, "/products/<int:id>")
 
-api.add_resource(Customer, "/customer/<int:id>")
+api.add_resource(CustomerByID, "/customer/<int:id>")
 
 api.add_resource(Cart, "/cart")
 

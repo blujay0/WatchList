@@ -2,13 +2,13 @@ import React from 'react'
 
 const Logout = ({updateCustomer, setCustomer}) => { // updateCustomer is not defined yet, but remember you will implement useContext
   const handleClick = async () => {
-      // const resp = await fetch("/logout", {
-      //     method: "POST"
-      // })
+      const resp = await fetch("/logout", {
+          method: "POST"
+      })
       // if(resp.ok) {
       //   updateCustomer(false)  
       // }
-      setCustomer(null);
+      // setCustomer(null);
   }
 
 return (
