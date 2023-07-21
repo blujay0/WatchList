@@ -47,26 +47,26 @@ class CustomerByID(Resource):  # for Profiles
             return make_response(db.session.get(Customer, session["id"]).as_dict(), 200)
         return make_response()
 
-    def post(self):
-        try:
-            if session.get("id"):
-                data = request.get_json()
-                if not ():
-                    db.session.add
-                    db.session.commit()
-                    return make_response()
-                else:
-                    pass
-                    return make_response()
-        except Exception as e:
-            return make_response()
+        # def post(self):
+        #     try:
+        #         if session.get("id"):
+        #             data = request.get_json()
+        #             if not ():
+        #                 db.session.add
+        #                 db.session.commit()
+        #                 return make_response()
+        #             else:
+        #                 pass
+        #                 return make_response()
+        #     except Exception as e:
+        #         return make_response()
 
-    def patch(self):
-        if customer := db.session.get(Customer, session.get("id")):
-            pass
-        db.session.add(customer)
-        db.session.commit()
-        return make_response(customer.to_dict(), 200)
+        # def patch(self):
+        #     if customer := db.session.get(Customer, session.get("id")):
+        #         pass
+        #     db.session.add(customer)
+        #     db.session.commit()
+        #     return make_response(customer.to_dict(), 200)
 
     def delete(self):
         if customer := db.session.get(Customer, session.get("id")):
@@ -82,7 +82,6 @@ class Cart(Resource):
     def get(self):
         if "id" in session:
             customer_id = session["id"]
-            # products = [product.as_dict() for product in Product.query.all()]
             cartItems = [
                 cartItem.as_dict()
                 for cartItem in CartItem.query.filter(
