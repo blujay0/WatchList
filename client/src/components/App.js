@@ -42,7 +42,6 @@ const App = () => {
           {/* the following line not necessary as sessions are used now */}
           {/* {!customer ? <Redirect to='/login' /> : } */}
           <ProductsPage products={products} customer={customer} setCartItems={setCartItems} cartItems={cartItems}/>          
-
         </Route>
 
         <Route exact path="/products/:productId">
@@ -72,6 +71,8 @@ const App = () => {
         <Route exact path="/edit-product">
           <EditProduct />
         </Route>
+
+        
 
         {/* <Route exact path="/about">
           <About />
