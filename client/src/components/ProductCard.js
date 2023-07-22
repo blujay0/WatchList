@@ -13,11 +13,11 @@ const ProductCard = ({ product, setCartItems, cartItems }) => {
 
   const productPath = `/products/${product_id}`
 
+  // POST fetch fires when button is clicked and adds specific item to cartItems table
   const handleAddToCart = () => {
     const formData = {
       product_id: product_id, // in values obj
     }
-
     fetch(`/cart`, {
       method: 'POST',
       headers: {
@@ -36,6 +36,7 @@ const ProductCard = ({ product, setCartItems, cartItems }) => {
         <div>Name: {product_name}</div>
         <div>Price: {product_price}</div>
         {/* <div>Description: {product_description}</div> */}
+        {/*  */}
         <button className='cart-button' onClick={handleAddToCart}>🛒</button>
         {/* React has an 'as' prop that can instruct a component to render as something else */}
         <Link to={productPath} className="btn btn-primary">Details</Link>

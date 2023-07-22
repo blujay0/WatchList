@@ -248,13 +248,13 @@ class SignUp(Resource):
         address = data["address"]
         password = data["password"]
         try:
-            profile = Customer(
+            new_customer = Customer(
                 name=name,
                 email=email,
                 address=address,
                 password=bcrypt.generate_password_hash(password),
             )
-            db.session.add(profile)
+            db.session.add(new_customer)
             db.session.commit()
         except:
             db.session.rollback()

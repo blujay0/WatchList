@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './Cart.css';
 
-function Cart(  ) { 
+function Cart(  ) {
+  // creates state for cartItems returned from GET fetch below
   const [ cartItems, setCartItems ] = useState([])
+
   const removeCartItem = (product_id) => {
     const formData = {
       product_id: product_id, // in values obj
@@ -13,14 +15,17 @@ function Cart(  ) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData)
-    })  
+    })
+    // filter in the items that do not match the id of the item that the remove was clicked on
     setCartItems(cartItems.filter((item) => item.product_id !== product_id))
   }
 
-  useEffect(() => {
+  // GET fetch retrieves every item from that was added to the cartItems table
+    useEffect(() => {
     fetch(`/cart`)
     .then(resp => {
       if (resp.ok) {
+        // console.log(resp.product_id.product_name)
         resp.json().then((data) => {setCartItems(data)});
       }
     })
