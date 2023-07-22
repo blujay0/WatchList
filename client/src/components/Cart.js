@@ -20,6 +20,10 @@ function Cart(  ) {
     setCartItems(cartItems.filter((item) => item.product_id !== product_id))
   }
 
+  const handleCheckout = () => {
+    // const 
+  }
+
   // GET fetch retrieves every item from that was added to the cartItems table
     useEffect(() => {
     fetch(`/cart`)
@@ -37,6 +41,7 @@ function Cart(  ) {
       {console.log('CART ITEMS')}
       {console.log(cartItems)}
       {cartItems && cartItems.map((item, index) => <div key={index}>{item.product_id}<button onClick={() => removeCartItem(item.product_id)}>Remove</button></div>)}
+      {<div style={{marginTop: "10px"}}><button onClick={handleCheckout}>Checkout</button></div>}
     </div>
   );
 }

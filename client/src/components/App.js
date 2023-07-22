@@ -11,6 +11,7 @@ import Navbar from "./Navbar.js"
 import Footer from "./Footer.js"
 import About from "./About.js"
 import Customer from "./Customer.js"
+import EditProduct from "./EditProduct.js"
 
 const App = () => {
   // Code goes here!
@@ -67,6 +68,11 @@ const App = () => {
         <Route exact path="/logout">
           <Logout setCustomer={setCustomer}/>
         </Route>
+
+        <Route exact path="/edit-product">
+          <EditProduct />
+        </Route>
+
         {/* <Route exact path="/about">
           <About />
         </Route> */}
