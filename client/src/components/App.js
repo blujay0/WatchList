@@ -12,6 +12,7 @@ import Footer from "./Footer.js"
 import About from "./About.js"
 import Customer from "./Customer.js"
 import EditProduct from "./EditProduct.js"
+import Order from "./Order.js"
 
 const App = () => {
   // Code goes here!
@@ -72,7 +73,9 @@ const App = () => {
           <EditProduct />
         </Route>
 
-        
+        <Route exact path="/order">
+          <Order />
+        </Route>
 
         {/* <Route exact path="/about">
           <About />

@@ -36,6 +36,10 @@ const Navbar = () => {
       <p>Edit Product</p>
     </Link>
 
+    <Link to="/order" className="nav-links">
+      <p>Orders</p>
+    </Link>
+
     </nav>  
   )
 }
