@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Grid, Paper, Avatar, TextField, Button, Box, IconButton, Divider } from '@mui/material';
-import { Notes, PostAdd } from '@mui/icons-material';
+import { Add, PlusOne } from '@mui/icons-material';
 
 const ListProduct = () => {
   const [maker, setMaker] = useState();
@@ -16,8 +16,8 @@ const ListProduct = () => {
   const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '30px', backgroundColor: '#627C79', padding: 0 };
   const textFieldStyle = { backgroundColor: 'white', margin: '8px 0' };
   const avatarStyle = { height: '70px', width: '70px', bgcolor: '#273248', fontSize: 30 };
-  const notesStyle = { fontSize: '2em', color: 'white' };
-  const postAddStyle = { fontSize: '40px', color: 'white' };
+  const addStyle = { fontSize: '2em', color: 'white' };
+  const plusOneStyle = { fontSize: '40px', color: 'white' };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,24 +32,26 @@ const ListProduct = () => {
       product_name: productName,
       product_price: productPrice,
     }
+
+    fetch(`/products`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+    .then( resp => resp.json())
+    .then( newProduct => console.log(newProduct))
   }
 
-  fetch(`/products`, {
-    method: 'POST',
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formData),
-  })
-  .then( resp => resp.json())
-  .then( newProduct => onAddItem(newProduct))
+
 
   return(
     <Grid>
       <Paper elevation={0} style={paperStyle}>
         <Grid align='center'>
           <Avatar sx={avatarStyle}>
-            <Notes sx={notesStyle} />
+            <PlusOne sx={plusOneStyle} />
           </Avatar>
           <h1><b>List Watch</b></h1>
         </Grid>
@@ -63,7 +65,7 @@ const ListProduct = () => {
           <TextField onChange={e => setImage(e.target.value)} label='image' placeholder='Enter image url' style={textFieldStyle} fullWidth required/>        
           <Box textAlign="center">
             <Button onClick={handleSubmit} type='submit' style={buttonStyle} fullWidth>
-                <PostAdd sx={postAddStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>Edit</b></p>
+                <Add sx={addStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>List</b></p>
             </Button>          
           </Box>
         </form>
