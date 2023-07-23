@@ -21,14 +21,11 @@ function Cart(  ) {
   }
 
   const handleCheckout = () => {
-    fetch(`/order`, {
+    fetch(`/orders`, {
       method:"POST",
       header: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        
-      })
     })
   }
 

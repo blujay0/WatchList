@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"; // Link component replaces the anchor t
 import { IconButton } from '@mui/material';
 import { Watch } from '@mui/icons-material';
 
-const Navbar = () => {
+const Navbar = ({ customer }) => {
   const iconStyle = { marginRight: 2, fontSize: 40, color: 'white' };
 
   return (
@@ -16,13 +16,15 @@ const Navbar = () => {
         </Link>
     </ IconButton>
 
-    <Link to="/login" className="nav-links">
+    {/* if customer does not exist, show login link */}
+    {!customer && <Link to="/login" className="nav-links">
       <p>Login</p>
-    </Link>
+    </Link>}
 
-    <Link to="/logout" className="nav-links">
+    {/* if customer exists, show logout link */}
+    {customer && <Link to="/logout" className="nav-links">
       <p>Logout</p>
-    </Link>
+    </Link>}
 
     <Link to="/signup" className="nav-links">
       <p>SignUp</p>

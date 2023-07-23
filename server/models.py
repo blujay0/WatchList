@@ -71,7 +71,7 @@ class Product(db.Model):
     maker = db.Column(db.String, nullable=False)
     model = db.Column(db.String, nullable=False)
     product_name = db.Column(db.String, nullable=False)
-    product_price = db.Column(db.String, nullable=False)
+    product_price = db.Column(db.Integer, nullable=False)
     inventory = db.Column(db.Integer, nullable=False)
     product_description = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=False)
@@ -132,11 +132,20 @@ class Order(db.Model):
         )
 
     def as_dict(self):
+        # order_details = []
+        # for order_detail in self.order_details:
+        #     order_details.append(order_detail.as_dict())
+
+        # self.order_details refers to the order_details attribute in line 119
         return {
             "order_id": self.id,
             "customer_id": self.customer_id,
             "date": self.date,
-            "total_amount": self.total_amt,
+            "total_amount": self.total_amount,
+            # sets order_details attribute to a list of order_details
+            "order_details": [
+                order_detail.as_dict() for order_detail in self.order_details
+            ],
         }
 
 
@@ -199,7 +208,7 @@ class OrderDetail(db.Model):
 
     def as_dict(self):
         return {
-            "cart_item_id": self.id,
-            "customer_id": self.customer_id,
+            "id": self.id,
             "product_id": self.product_id,
+            "quantity": self.quantity,
         }

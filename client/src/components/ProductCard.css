@@ -22,12 +22,12 @@
   border-radius: 2.5rem;
 }
 
-/* .cart-button:hover {
+.cart-button:hover {
   background-color: #980505;
   color: white;
-} */
+}
 
-/* .trash-button {
+.trash-button {
   margin-top: 10px;
   margin-right: 10px;
   font-size: 25px;
@@ -39,7 +39,7 @@
 .trash-button:hover {
   background-color: #980505;
   color: white;
-} */
+}
 
 img {
   width: 100%;

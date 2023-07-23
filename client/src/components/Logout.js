@@ -8,7 +8,7 @@ const Logout = ({updateCustomer, setCustomer}) => { // updateCustomer is not def
       // if(resp.ok) {
       //   updateCustomer(false)  
       // }
-      // setCustomer(null);
+      setCustomer(null);
   }
 
 return (

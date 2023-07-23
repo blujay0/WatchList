@@ -18,14 +18,18 @@ const App = () => {
   // Code goes here!
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  const [customer, setCustomer] = useState(''); // set customer id
+  const [customer, setCustomer] = useState(null); // set customer id
   
   // GET watches
-  useEffect(() => {
+  const getProducts = () => {
     fetch("/products")
       .then((resp) => resp.json())
       .then((products) => setProducts(products))
       .catch(err => console.log(err))
+  }
+
+  useEffect(() => {
+    getProducts();
   }, []);
 
   return (
@@ -35,14 +39,14 @@ const App = () => {
      dynamically redirect a user from a route to a new route
     */
     <div>
-      <Navbar />
+      <Navbar customer={customer}/>
       <Switch>
         {/* for now: to see cart functionality work, move <ProductsPage /> out 
         of the ternary and comment out the ternary all within the same <Route /> */}
         <Route exact path="/">
           {/* the following line not necessary as sessions are used now */}
           {/* {!customer ? <Redirect to='/login' /> : } */}
-          <ProductsPage products={products} customer={customer} setCartItems={setCartItems} cartItems={cartItems}/>          
+          <ProductsPage getProducts={getProducts} products={products} customer={customer} setCartItems={setCartItems} cartItems={cartItems}/>          
         </Route>
 
         <Route exact path="/products/:productId">

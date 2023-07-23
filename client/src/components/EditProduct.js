@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Grid, Paper, Avatar, TextField, Button, Box, IconButton, Divider } from '@mui/material';
-import { LockPerson, Fingerprint, Person, Notes, PostAdd } from '@mui/icons-material';
+import { Notes, PostAdd } from '@mui/icons-material';
 
 const EditProduct = () => {
   const [id, setID] = useState();
@@ -20,9 +20,9 @@ const EditProduct = () => {
   const postAddStyle = { fontSize: '40px', color: 'white' };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+
     const formData = {
-      id: id,
       maker: maker,
       model: model,
       product_name: productName,
@@ -51,8 +51,7 @@ const EditProduct = () => {
           <h1><b>Edit Product</b></h1>
         </Grid>
         <form>
-          <TextField onChange={e => setID(e.target.value)} label='id' placeholder='Enter product id' style={textFieldStyle} fullWidth required/>
-          <TextField onChange={e => setMaker(e.target.value)} label='maker' placeholder='Enter product ' style={textFieldStyle} fullWidth required/>
+          <TextField onChange={e => setMaker(e.target.value)} label='maker' placeholder='Enter product ' style={textFieldStyle} value={1} fullWidth required/>
           <TextField onChange={e => setModel(e.target.value)} label='model' placeholder='Enter product model' style={textFieldStyle} fullWidth required/>
           <TextField onChange={e => setProductName(e.target.value)} label='product_name' placeholder='Enter product name' style={textFieldStyle} fullWidth required/>        
           <TextField onChange={e => setProductPrice(e.target.value)} label='product_price' placeholder='Enter price' style={textFieldStyle} fullWidth required/>
@@ -60,7 +59,7 @@ const EditProduct = () => {
           <TextField onChange={e => setProductDescription(e.target.value)} label='product_description' placeholder='Enter short description' style={textFieldStyle} fullWidth required/>
           <TextField onChange={e => setImage(e.target.value)} label='image' placeholder='Enter image url' style={textFieldStyle} fullWidth required/>        
           <Box textAlign="center">
-            <Button type='submit' style={buttonStyle} fullWidth>
+            <Button onClick={handleSubmit} type='submit' style={buttonStyle} fullWidth>
                 <PostAdd sx={postAddStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>Edit</b></p>
             </Button>          
           </Box>

@@ -148,8 +148,6 @@ class Logout(Resource):
         session.clear()
         print("session data")
         print("cookie cleared!")
-        print(session["id"])
-        print(session["name"])
         return make_response({}, 202)
 
 
@@ -268,33 +266,69 @@ class SignUp(Resource):
 
 
 class Orders(Resource):
+    def get(self):
+        # user-specific info always needs this
+        if "id" in session:
+            customer_id = session["id"]
+
+            # get order for particular user
+            orders = Order.query.filter(Order.customer_id == customer_id).all()
+
+            return make_response([order.as_dict() for order in orders])
+
     def post(self):
-        try:
-            # get data sent from client
-            data = request.get_json()
-            # set client sent values to keys
+        if "id" in session:
+            customer_id = session["id"]
 
-            customer_id = data["customer_id"]
-            date = data["date"]
-            total_amount = data["total_amount"]
+            # get cart items
+            cartItems = CartItem.query.filter(CartItem.customer_id == customer_id).all()
 
-            # use the MODEL class to create an instance of the class
-            order = Order(
-                customer_id=customer_id,
-                date=date,
-                total_amount=total_amount,
-            )
+            total_amount = 0
+
+            order = Order(customer_id=customer_id)
+
+            # for each item in cartItems, create an Order Details obj
+            # appending to the order, the OrderDetails
+            for item in cartItems:
+                order.order_details.append(
+                    OrderDetail(
+                        quantity=1,
+                        product=item.product,
+                    )
+                )
+                total_amount += item.product.product_price
+
+            order.total_amount = total_amount
 
             db.session.add(order)
-            db.session.commit()  # saves to database
-            return make_response(order.as_dict(), 201)
+            # clears the cart after add to session
+            CartItem.query.filter(CartItem.customer_id == customer_id).delete()
+            db.session.commit()
 
-        except Exception as e:
-            return make_response({"error": str(e)}, 400)
+            return make_response({})
 
+        # try:
+        #     # get data sent from client
+        #     data = request.get_json()
+        #     # set client sent values to keys
 
-class OrderDetails(Resource):
-    pass
+        #     customer_id = data["customer_id"]
+        #     date = data["date"]
+        #     total_amount = data["total_amount"]
+
+        #     # use the MODEL class to create an instance of the class
+        #     order = Order(
+        #         customer_id=customer_id,
+        #         date=date,
+        #         total_amount=total_amount,
+        #     )
+
+        #     db.session.add(order)
+        #     db.session.commit()  # saves to database
+        #     return make_response(order.as_dict(), 201)
+
+        # except Exception as e:
+        #     return make_response({"error": str(e)}, 400)
 
 
 # api.add_resource() tells the api to look at a specified resource (connects to resource);
@@ -312,9 +346,7 @@ api.add_resource(SignUp, "/signup")
 
 api.add_resource(Logout, "/logout")
 
-api.add_resource(Order, "")
-
-api.add_resource(OrderDetail, "")
+api.add_resource(Orders, "/orders")
 
 
 if __name__ == "__main__":
