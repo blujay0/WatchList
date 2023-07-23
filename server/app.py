@@ -78,7 +78,7 @@ class CustomerByID(Resource):  # for Profiles
 class Cart(Resource):
     # 1. get id of user which comes from session
     # 2. enter record into cartitems table with product.id
-    # backedn gets id for customer.id and product.id comes from client when button is clicked when fetch called
+    # backend gets id for customer.id and product.id comes from client when button is clicked when fetch called
     def get(self):
         if "id" in session:
             customer_id = session["id"]
