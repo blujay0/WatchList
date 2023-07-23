@@ -45,7 +45,8 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           {/* if customer not logged in, redirect to login page */}
-          {!customer ? <Redirect to='/login' /> : <ProductsPage getProducts={getProducts} products={products} customer={customer} setCartItems={setCartItems} cartItems={cartItems}/>}
+          {/* {!customer ? <Redirect to='/login' /> : <ProductsPage getProducts={getProducts} products={products} customer={customer} setCartItems={setCartItems} cartItems={cartItems}/>} */}
+          <ProductsPage getProducts={getProducts} products={products} customer={customer} setCartItems={setCartItems} cartItems={cartItems}/>
         </Route>
 
         <Route exact path="/products/:productId">

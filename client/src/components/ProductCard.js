@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import './ProductCard.css'
 
-const ProductCard = ({ getProducts, product, setCartItems, cartItems }) => {
+const ProductCard = ({ customer, getProducts, product, setCartItems, cartItems }) => {
   const { product_id, maker, model, product_name, product_price, product_description, image } = product
 
   // const history = useHistory();
@@ -51,7 +51,7 @@ const ProductCard = ({ getProducts, product, setCartItems, cartItems }) => {
         <Link to={productPath} className="btn btn-primary">Details</Link>&nbsp;
         <br/>
         <br/>
-        <Link to={productEditPath} className="btn btn-primary">Edit Product</Link>
+        {customer && <Link to={productEditPath} className="btn btn-primary">Edit Product</Link>}
       </main>
     </div>
   )

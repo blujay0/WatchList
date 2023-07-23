@@ -41,7 +41,6 @@ const ListProduct = () => {
       body: JSON.stringify(formData),
     })
     .then( resp => resp.json())
-    .then( newProduct => console.log(newProduct))
   }
 
 
