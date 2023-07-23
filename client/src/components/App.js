@@ -43,8 +43,6 @@ const App = () => {
     <div>
       <Navbar customer={customer}/>
       <Switch>
-        {/* for now: to see cart functionality work, move <ProductsPage /> out 
-        of the ternary and comment out the ternary all within the same <Route /> */}
         <Route exact path="/">
           {/* if customer not logged in, redirect to login page */}
           {!customer ? <Redirect to='/login' /> : <ProductsPage getProducts={getProducts} products={products} customer={customer} setCartItems={setCartItems} cartItems={cartItems}/>}
