@@ -46,9 +46,8 @@ const App = () => {
         {/* for now: to see cart functionality work, move <ProductsPage /> out 
         of the ternary and comment out the ternary all within the same <Route /> */}
         <Route exact path="/">
-          {/* the following line not necessary as sessions are used now */}
-          {/* {!customer ? <Redirect to='/login' /> : } */}
-          <ProductsPage getProducts={getProducts} products={products} customer={customer} setCartItems={setCartItems} cartItems={cartItems}/>          
+          {/* if customer not logged in, redirect to login page */}
+          {!customer ? <Redirect to='/login' /> : <ProductsPage getProducts={getProducts} products={products} customer={customer} setCartItems={setCartItems} cartItems={cartItems}/>}
         </Route>
 
         <Route exact path="/products/:productId">
