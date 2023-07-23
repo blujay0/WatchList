@@ -13,6 +13,8 @@ const ProductCard = ({ getProducts, product, setCartItems, cartItems }) => {
 
   const productPath = `/products/${product_id}`
 
+  const productEditPath = `/edit-product`
+
   const handleDelete = () => {
     fetch(`/products/${product_id}`, {
       method: "DELETE",
@@ -46,7 +48,10 @@ const ProductCard = ({ getProducts, product, setCartItems, cartItems }) => {
         <button className='cart-button' onClick={handleAddToCart}>🛒</button>
         <button className='trash-button' onClick={handleDelete}>🗑️</button>    
         {/* React has an 'as' prop that can instruct a component to render as something else */}
-        <Link to={productPath} className="btn btn-primary">Details</Link>
+        <Link to={productPath} className="btn btn-primary">Details</Link>&nbsp;
+        <br/>
+        <br/>
+        <Link to={productEditPath} className="btn btn-primary">Edit Product</Link>
       </main>
     </div>
   )

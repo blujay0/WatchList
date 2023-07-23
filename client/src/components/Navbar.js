@@ -28,17 +28,17 @@ const Navbar = ({ customer }) => {
       <p>Logout</p>
     </Link>}
 
-    <Link to="/signup" className="nav-links">
+    {!customer && <Link to="/signup" className="nav-links">
       <p>SignUp</p>
     </Link>
-
+}
     {customer && <Link to="/cart" className="nav-links">
       <p>Cart</p>
     </Link>}
 
-    {customer && <Link to="/edit-product" className="nav-links">
+    {/* {customer && <Link to="/edit-product" className="nav-links">
       <p>Edit Product</p>
-    </Link>}
+    </Link>} */}
 
     {customer && <Link to="/order" className="nav-links">
       <p>Orders</p>
