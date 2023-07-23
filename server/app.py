@@ -45,7 +45,7 @@ class CustomerByID(Resource):  # for Profiles
         # retrieve
         if session.get("id"):
             return make_response(db.session.get(Customer, session["id"]).as_dict(), 200)
-        return make_response()
+        return make_response({"error": "something wrong occured!"}, 404)
 
         # def post(self):
         #     try:
@@ -181,7 +181,7 @@ class Products(Resource):
         product_description = data["product_description"]
         image = data["image"]
 
-        # use the class to create an instance of the class
+        # use the MODEL class to create an instance of the class
         product = Product(
             maker=maker,
             model=model,
@@ -262,6 +262,36 @@ class SignUp(Resource):
             return make_response({"error": "Something went wrong!"}, 400)
 
 
+class Orders(Resource):
+    def post(self):
+        try:
+            # get data sent from client
+            data = request.get_json()
+            # set client sent values to keys
+
+            customer_id = data["customer_id"]
+            date = data["date"]
+            total_amount = data["total_amount"]
+
+            # use the MODEL class to create an instance of the class
+            order = Order(
+                customer_id=customer_id,
+                date=date,
+                total_amount=total_amount,
+            )
+
+            db.session.add(order)
+            db.session.commit()  # saves to database
+            return make_response(order.as_dict(), 201)
+
+        except Exception as e:
+            return make_response({"error": str(e)}, 400)
+
+
+class OrderDetails(Resource):
+    pass
+
+
 # api.add_resource() tells the api to look at a specified resource (connects to resource);
 # 1st arg: which resource you're adding, 2nd arg: the endpoint
 api.add_resource(Products, "/products")
@@ -276,6 +306,10 @@ api.add_resource(Login, "/login")
 api.add_resource(SignUp, "/signup")
 
 api.add_resource(Logout, "/logout")
+
+api.add_resource(Order, "")
+
+api.add_resource(OrderDetail, "")
 
 
 if __name__ == "__main__":

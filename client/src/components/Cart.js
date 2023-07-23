@@ -21,7 +21,15 @@ function Cart(  ) {
   }
 
   const handleCheckout = () => {
-    // const 
+    fetch(`/order`, {
+      method:"POST",
+      header: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        
+      })
+    })
   }
 
   // GET fetch retrieves every item from that was added to the cartItems table
