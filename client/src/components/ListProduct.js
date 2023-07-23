@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import { Grid, Paper, Avatar, TextField, Button, Box, IconButton, Divider } from '@mui/material';
 import { Notes, PostAdd } from '@mui/icons-material';
 
-const EditProduct = () => {
-  const [id, setID] = useState();
+const ListProduct = () => {
   const [maker, setMaker] = useState();
   const [model, setModel] = useState();
   const [productName, setProductName] = useState();
@@ -11,6 +10,7 @@ const EditProduct = () => {
   const [inventory, setInventory] = useState();
   const [productDescription, setProductDescription] = useState();
   const [image, setImage] = useState();
+  const [productID, setProductID] = useState();
 
   const paperStyle = { backgroundColor: 'white', padding: 20, height:'60vh', width: 400, margin: '20px auto' };
   const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '30px', backgroundColor: '#627C79', padding: 0 };
@@ -23,25 +23,26 @@ const EditProduct = () => {
     e.preventDefault();
 
     const formData = {
+      image: image,
+      inventory: inventory,
       maker: maker,
       model: model,
+      product_description: productDescription,
+      product_id: productID,
       product_name: productName,
       product_price: productPrice,
-      inventory: inventory,
-      product_description: productDescription,
-      image: image,
-
     }
-
-    fetch(`/products/${id}`, {
-      method: 'PATCH',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData)
-    });
-    
   }
+
+  fetch(`/products`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  })
+  .then( resp => resp.json())
+  .then( newProduct => onAddItem(newProduct))
 
   return(
     <Grid>
@@ -50,7 +51,7 @@ const EditProduct = () => {
           <Avatar sx={avatarStyle}>
             <Notes sx={notesStyle} />
           </Avatar>
-          <h1><b>Edit Product</b></h1>
+          <h1><b>List Watch</b></h1>
         </Grid>
         <form>
           <TextField onChange={e => setMaker(e.target.value)} label='maker' placeholder='Enter product ' style={textFieldStyle} fullWidth required/>
@@ -69,6 +70,7 @@ const EditProduct = () => {
       </Paper>
     </Grid>
   );
+
 }
 
-export default EditProduct;
+export default ListProduct;

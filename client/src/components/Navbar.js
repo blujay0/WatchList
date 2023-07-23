@@ -30,10 +30,14 @@ const Navbar = ({ customer }) => {
 
     {!customer && <Link to="/signup" className="nav-links">
       <p>SignUp</p>
-    </Link>
-}
+    </Link>}
+
     {customer && <Link to="/cart" className="nav-links">
       <p>Cart</p>
+    </Link>}
+
+    {customer && <Link to="/list-product" className="nav-links">
+      <p>List Watch</p>  
     </Link>}
 
     {/* {customer && <Link to="/edit-product" className="nav-links">

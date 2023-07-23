@@ -13,6 +13,7 @@ import About from "./About.js"
 import Customer from "./Customer.js"
 import EditProduct from "./EditProduct.js"
 import Order from "./Order.js"
+import ListProduct from "./ListProduct.js"
 
 const App = () => {
   // Code goes here!
@@ -75,6 +76,10 @@ const App = () => {
 
         <Route exact path="/edit-product">
           <EditProduct />
+        </Route>
+
+        <Route exact path="/list-product">
+          <ListProduct />
         </Route>
 
         <Route exact path="/order">
