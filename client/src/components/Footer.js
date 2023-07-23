@@ -2,18 +2,18 @@ import "./Footer.css"
 import { Link } from "react-router-dom" // Link component replaces the anchor tags
 
 import { IconButton, BottomNavigation, BottomNavigationAction, AppBar, Box, Toolbar, Typography, InputBase, styled, alpha } from '@mui/material'
-import { Home, Twitter, Facebook, Instagram, MailOutline, Menu, Search } from '@mui/icons-material'
+import { Chat, Twitter, Facebook, Instagram, MailOutline, Menu, Search } from '@mui/icons-material'
 
-const Footer = () => {
+const Footer = ({ customer }) => {
   const currentYear = new Date().getFullYear();
   const iconStyle = { marginRight: 2, fontSize: 40, color: 'white' };
 
   return (
     <footer className="footer">
 
-      <IconButton component={Link} to={{ pathname: '/' }} rel='noopener noreferrer'>
-        <Home sx={iconStyle} />
-      </ IconButton>
+      {customer && <IconButton component={Link} to={{ pathname: '/chat' }} target="_blank" rel='noopener noreferrer'>
+        <Chat sx={iconStyle} />
+      </ IconButton>}
       
       {/* target="_blank" is a special keyword that will open links in a 
       new tab every time */}

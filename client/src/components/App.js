@@ -14,6 +14,7 @@ import Customer from "./Customer.js"
 import EditProduct from "./EditProduct.js"
 import Order from "./Order.js"
 import ListProduct from "./ListProduct.js"
+import Chat from "./Chat.js"
 
 const App = () => {
   // Code goes here!
@@ -86,11 +87,15 @@ const App = () => {
           <Order />
         </Route>
 
+        <Route exact path="/chat">
+          <Chat />
+        </Route>
+
         {/* <Route exact path="/about">
           <About />
         </Route> */}
       </Switch>
-      <Footer />    
+      <Footer customer={customer}/>    
     </div>
 
   );
