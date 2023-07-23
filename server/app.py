@@ -88,8 +88,8 @@ class Cart(Resource):
                     CartItem.customer_id == customer_id
                 ).all()
             ]
-
-        return make_response(cartItems, 200)
+            return make_response(cartItems, 200)
+        return make_response({"error": "not found"}, 404)
 
     def post(self):  # for posting to cart items server
         if "id" in session:
@@ -165,7 +165,7 @@ class Products(Resource):
             return make_response(products, 200)
 
         except Exception as e:
-            return make_response({"error": e}, 400)
+            return make_response({"error": e}, 404)
 
     # create new product
     def post(self):
@@ -208,6 +208,8 @@ class ProductByID(Resource):
     # id parameter comes from client side page where client makes fetch request
     def patch(self, id):
         data = request.get_json()
+
+        # assign data values to variables
         product_name = data["product_name"]
         maker = data["maker"]
         image = data["image"]
