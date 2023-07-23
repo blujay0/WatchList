@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { ThemeContext } from './App.js'
 import './Cart.css';
 
 function Cart(  ) {

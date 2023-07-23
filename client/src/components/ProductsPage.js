@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductCard from './ProductCard'
+import { ThemeContext } from './App.js'
 
 const ProductsPage = ({ getProducts, products, customer, setCartItems, cartItems }) => {
   const mappedProducts = products.map((product, index) => <ProductCard key={index} customer={customer} getProducts={getProducts} product={product} setCartItems={setCartItems} cartItems={cartItems} />)

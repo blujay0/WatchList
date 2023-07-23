@@ -1,4 +1,5 @@
 import React from 'react'
+import { ThemeContext } from './App.js'
 
 const Logout = ({updateCustomer, setCustomer}) => { // updateCustomer is not defined yet, but remember you will implement useContext
   const handleClick = async () => {

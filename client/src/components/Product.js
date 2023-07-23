@@ -1,5 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams, useHistory } from 'react-router-dom'
+import { ThemeContext } from './App.js'
+
 const Product = () => {
   const [error, setError] = useState(null)
   const [product, setProduct] = useState({})
