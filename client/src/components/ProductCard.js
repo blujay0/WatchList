@@ -45,8 +45,8 @@ const ProductCard = ({ customer, getProducts, product, setCartItems, cartItems }
         <div>Name: {product_name}</div>
         <div>Price: ${product_price}</div>
         {/* <div>Description: {product_description}</div> */}
-        <button className='cart-button' onClick={handleAddToCart}>🛒</button>
-        <button className='trash-button' onClick={handleDelete}>🗑️</button>    
+        {customer && <button className='cart-button' onClick={handleAddToCart}>🛒</button>}
+        {customer && <button className='trash-button' onClick={handleDelete}>🗑️</button>}    
         {/* React has an 'as' prop that can instruct a component to render as something else */}
         <Link to={productPath} className="btn btn-primary">Details</Link>&nbsp;
         <br/>
