@@ -17,11 +17,13 @@ const Navbar = ({ customer }) => {
     </ IconButton>
 
     {/* if customer does not exist, show login link */}
+    {/*   */}
     {!customer && <Link to="/login" className="nav-links">
       <p>Login</p>
     </Link>}
 
     {/* if customer exists, show logout link */}
+    {/*   */}
     {customer && <Link to="/logout" className="nav-links">
       <p>Logout</p>
     </Link>}
@@ -30,17 +32,17 @@ const Navbar = ({ customer }) => {
       <p>SignUp</p>
     </Link>
 
-    <Link to="/cart" className="nav-links">
+    {customer && <Link to="/cart" className="nav-links">
       <p>Cart</p>
-    </Link>
+    </Link>}
 
-    <Link to="/edit-product" className="nav-links">
+    {customer && <Link to="/edit-product" className="nav-links">
       <p>Edit Product</p>
-    </Link>
+    </Link>}
 
-    <Link to="/order" className="nav-links">
+    {customer && <Link to="/order" className="nav-links">
       <p>Orders</p>
-    </Link>
+    </Link>}
 
     </nav>  
   )
