@@ -43,6 +43,7 @@ api = Api(app)  # instantiate new instance of Api class
 class CustomerByID(Resource):  # for Profiles
     def get(self):
         # retrieve
+        # user-specific info always needs this
         if session.get("id"):
             return make_response(db.session.get(Customer, session["id"]).as_dict(), 200)
         return make_response({"error": "something wrong occured!"}, 404)
@@ -80,6 +81,7 @@ class Cart(Resource):
     # 2. enter record into cartitems table with product.id
     # backend gets id for customer.id and product.id comes from client when button is clicked when fetch called
     def get(self):
+        # user-specific info always needs this
         if "id" in session:
             customer_id = session["id"]
             cartItems = [
@@ -92,6 +94,7 @@ class Cart(Resource):
         return make_response({"error": "not found"}, 404)
 
     def post(self):  # for posting to cart items server
+        # user-specific info always needs this
         if "id" in session:
             data = request.get_json()
             customer_id = session["id"]
@@ -103,6 +106,7 @@ class Cart(Resource):
         return make_response("cart item added successfully")
 
     def delete(self):
+        # user-specific info always needs this
         if "id" in session:
             data = request.get_json()
             customer_id = session["id"]
@@ -277,6 +281,7 @@ class Orders(Resource):
             return make_response([order.as_dict() for order in orders])
 
     def post(self):
+        # user-specific info always needs this
         if "id" in session:
             customer_id = session["id"]
 

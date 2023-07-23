@@ -205,7 +205,7 @@ with app.app_context():  # necessary to be in context of your application
         maker="Tissot",
         model="automatic",
         product_name="Everytime Swissmatic",
-        product_price=45,
+        product_price=450,
         inventory=fake.random_int(1, 10000),
         product_description="The Sistem 51 movement’s big move is that it is incredibly simple in terms of the number of components and can also be constructed and adjusted completely by machine, facilitating easier and therefore cheaper mass production. The Everytime offers versatile looks with a minimal dial design and straightforward dimensions to pair with this intriguing caliber, bringing a mechanical automatic watch from a major Swiss brand to an unexpected price point and even undercutting many microbrands in the process.",
         image="https://cdn.shopify.com/s/files/1/0278/9723/3501/files/Tissot-Everytime-Swissmatic-2.jpg?v=1649254878",
