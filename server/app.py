@@ -242,20 +242,23 @@ class ProductByID(Resource):
 
 class SignUp(Resource):
     def post(self):
-        data = request.get_json()
-        name = data["name"]
-        email = data["email"]
-        address = data["address"]
-        password = data["password"]
         try:
+            data = request.get_json()
+            name = data["name"]
+            email = data["email"]
+            address = data["address"]
+            password = data["password"]
+
             new_customer = Customer(
                 name=name,
                 email=email,
                 address=address,
                 password=bcrypt.generate_password_hash(password),
             )
+
             db.session.add(new_customer)
             db.session.commit()
+
         except:
             db.session.rollback()
             raise  # raises a specific exception when a condition is met or the code encounters an error
