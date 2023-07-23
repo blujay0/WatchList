@@ -3,10 +3,14 @@ import { Grid, Paper, Avatar, TextField, Button, Box, IconButton, Divider } from
 import { LockPerson, Fingerprint, Person, Notes, PostAdd } from '@mui/icons-material';
 
 const EditProduct = () => {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [address, setAddress] = useState();
-  const [password, setPassword] = useState();
+  const [id, setID] = useState();
+  const [maker, setMaker] = useState();
+  const [model, setModel] = useState();
+  const [productName, setProductName] = useState();
+  const [productPrice, setProductPrice] = useState();
+  const [inventory, setInventory] = useState();
+  const [productDescription, setProductDescription] = useState();
+  const [image, setImage] = useState();
 
   const paperStyle = { backgroundColor: 'white', padding: 20, height:'60vh', width: 400, margin: '20px auto' };
   const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '30px', backgroundColor: '#627C79', padding: 0 };
@@ -15,22 +19,27 @@ const EditProduct = () => {
   const notesStyle = { fontSize: '2em', color: 'white' };
   const postAddStyle = { fontSize: '40px', color: 'white' };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   const formData = {
-  //     name: name,
-  //     email: email,
-  //     address: address,
-  //     password: password
-  //   }
-  //   fetch(`/signup`, {
-  //     method: 'POST',
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(formData)
-  //   });   
-  // }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const formData = {
+      id: id,
+      maker: maker,
+      model: model,
+      product_name: productName,
+      product_price: productPrice,
+      inventory: inventory,
+      product_description: productDescription,
+      image: image,
+
+    }
+    fetch(`/products/${id}`, {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData)
+    });   
+  }
 
   return(
     <Grid>
@@ -42,14 +51,14 @@ const EditProduct = () => {
           <h1><b>Edit Product</b></h1>
         </Grid>
         <form>
-          <TextField onChange={e => setName(e.target.value)} label='id' placeholder='Enter product id' style={textFieldStyle} fullWidth required/>
-          <TextField onChange={e => setName(e.target.value)} label='maker' placeholder='Enter product ' style={textFieldStyle} fullWidth required/>
-          <TextField onChange={e => setEmail(e.target.value)} label='model' placeholder='Enter product model' style={textFieldStyle} fullWidth required/>
-          <TextField onChange={e => setAddress(e.target.value)} label='product_name' placeholder='Enter product name' style={textFieldStyle} fullWidth required/>        
-          <TextField onChange={e => setPassword(e.target.value)} label='product_price' placeholder='Enter price' style={textFieldStyle} fullWidth required/>
-          <TextField onChange={e => setName(e.target.value)} label='inventory' placeholder='Enter how many to list' style={textFieldStyle} type="number" fullWidth required/>
-          <TextField onChange={e => setEmail(e.target.value)} label='product_description' placeholder='Enter short description' style={textFieldStyle} fullWidth required/>
-          <TextField onChange={e => setAddress(e.target.value)} label='image' placeholder='Enter image url' style={textFieldStyle} fullWidth required/>        
+          <TextField onChange={e => setID(e.target.value)} label='id' placeholder='Enter product id' style={textFieldStyle} fullWidth required/>
+          <TextField onChange={e => setMaker(e.target.value)} label='maker' placeholder='Enter product ' style={textFieldStyle} fullWidth required/>
+          <TextField onChange={e => setModel(e.target.value)} label='model' placeholder='Enter product model' style={textFieldStyle} fullWidth required/>
+          <TextField onChange={e => setProductName(e.target.value)} label='product_name' placeholder='Enter product name' style={textFieldStyle} fullWidth required/>        
+          <TextField onChange={e => setProductPrice(e.target.value)} label='product_price' placeholder='Enter price' style={textFieldStyle} fullWidth required/>
+          <TextField onChange={e => setInventory(e.target.value)} label='inventory' placeholder='Enter how many to list' style={textFieldStyle} type="number" fullWidth required/>
+          <TextField onChange={e => setProductDescription(e.target.value)} label='product_description' placeholder='Enter short description' style={textFieldStyle} fullWidth required/>
+          <TextField onChange={e => setImage(e.target.value)} label='image' placeholder='Enter image url' style={textFieldStyle} fullWidth required/>        
           <Box textAlign="center">
             <Button type='submit' style={buttonStyle} fullWidth>
                 <PostAdd sx={postAddStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>Edit</b></p>
