@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Grid, Paper, Avatar, TextField, Button, Box, IconButton, Divider } from '@mui/material';
 import { Add, PlusOne } from '@mui/icons-material';
 import { ThemeContext } from './App.js'
+import { useTheme } from './ThemeProvider'
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 const ListProduct = () => {
   const [maker, setMaker] = useState();
@@ -20,6 +22,11 @@ const ListProduct = () => {
   const addStyle = { fontSize: '2em', color: 'white' };
   const plusOneStyle = { fontSize: '40px', color: 'white' };
 
+  const darkTheme = useTheme()
+  const themeStyles = {
+    backgroundColor: darkTheme ? '#008B8B' : '#FFFFFF',
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -34,6 +41,17 @@ const ListProduct = () => {
       product_price: productPrice,
     }
 
+    // useEffect(() => {
+    //   // fetch customer and set customer data to state
+    //   fetch("/customer")
+    //   .then(resp => {
+    //     if (resp.ok) {
+    //       resp.json().then((data) => {setCustomer(data)});
+    //     }
+    //   })
+    //   .catch(err => setCustomer(null))
+    // }, [])
+
     fetch(`/products`, {
       method: 'POST',
       headers: {
@@ -44,35 +62,34 @@ const ListProduct = () => {
     .then( resp => resp.json())
   }
 
-
-
   return(
-    <Grid>
-      <Paper elevation={0} style={paperStyle}>
-        <Grid align='center'>
-          <Avatar sx={avatarStyle}>
-            <PlusOne sx={plusOneStyle} />
-          </Avatar>
-          <h1><b>List Watch</b></h1>
-        </Grid>
-        <form>
-          <TextField onChange={e => setMaker(e.target.value)} label='maker' placeholder='Enter product ' style={textFieldStyle} fullWidth required/>
-          <TextField onChange={e => setModel(e.target.value)} label='model' placeholder='Enter product model' style={textFieldStyle} fullWidth required/>
-          <TextField onChange={e => setProductName(e.target.value)} label='product_name' placeholder='Enter product name' style={textFieldStyle} fullWidth required/>        
-          <TextField onChange={e => setProductPrice(e.target.value)} label='product_price' placeholder='Enter price' style={textFieldStyle} fullWidth required/>
-          <TextField onChange={e => setInventory(e.target.value)} label='inventory' placeholder='Enter how many to list' style={textFieldStyle} type="number" fullWidth required/>
-          <TextField onChange={e => setProductDescription(e.target.value)} label='product_description' placeholder='Enter short description' style={textFieldStyle} fullWidth required/>
-          <TextField onChange={e => setImage(e.target.value)} label='image' placeholder='Enter image url' style={textFieldStyle} fullWidth required/>        
-          <Box textAlign="center">
-            <Button onClick={handleSubmit} type='submit' style={buttonStyle} fullWidth>
-                <Add sx={addStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>List</b></p>
-            </Button>          
-          </Box>
-        </form>
-      </Paper>
-    </Grid>
+    <div styles={themeStyles}>
+      <Grid>
+        <Paper elevation={0} style={paperStyle}>
+          <Grid align='center'>
+            <Avatar sx={avatarStyle}>
+              <PlusOne sx={plusOneStyle} />
+            </Avatar>
+            <h1><b>List Watch</b></h1>
+          </Grid>
+          <form>
+            <TextField onChange={e => setMaker(e.target.value)} label='maker' placeholder='Enter product ' style={textFieldStyle} fullWidth required/>
+            <TextField onChange={e => setModel(e.target.value)} label='model' placeholder='Enter product model' style={textFieldStyle} fullWidth required/>
+            <TextField onChange={e => setProductName(e.target.value)} label='product_name' placeholder='Enter product name' style={textFieldStyle} fullWidth required/>        
+            <TextField onChange={e => setProductPrice(e.target.value)} label='product_price' placeholder='Enter price' style={textFieldStyle} fullWidth required/>
+            <TextField onChange={e => setInventory(e.target.value)} label='inventory' placeholder='Enter how many to list' style={textFieldStyle} type="number" fullWidth required/>
+            <TextField onChange={e => setProductDescription(e.target.value)} label='product_description' placeholder='Enter short description' style={textFieldStyle} fullWidth required/>
+            <TextField onChange={e => setImage(e.target.value)} label='image' placeholder='Enter image url' style={textFieldStyle} fullWidth required/>        
+            <Box textAlign="center">
+              <Button onClick={handleSubmit} type='submit' style={buttonStyle} fullWidth>
+                  <Add sx={addStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>List</b></p>
+              </Button>          
+            </Box>
+          </form>
+        </Paper>
+      </Grid>
+    </div>
   );
-
 }
 
 export default ListProduct;

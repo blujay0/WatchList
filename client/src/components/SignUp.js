@@ -5,6 +5,7 @@ import { LockPerson, Fingerprint, Person } from '@mui/icons-material';
 import { Link, useHistory } from 'react-router-dom';
 import { ThemeContext } from './App.js'
 import { useTheme } from './ThemeProvider'
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 const SignUp = () => {
   const [name, setName] = useState();

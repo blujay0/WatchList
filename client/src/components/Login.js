@@ -15,6 +15,7 @@ const Login = ({ setCustomer }) => {
   const avatarStyle = { height: '70px', width: '70px', bgcolor: '#273248' };
   const lockPersonStyle = { fontSize: '2em', color: 'white' };
   const keyStyle = { fontSize: '40px', color: 'white' };
+
   const history = useHistory();
   const darkTheme = useTheme();
   const themeStyles = {
@@ -25,11 +26,13 @@ const Login = ({ setCustomer }) => {
     email:'',
     password:'',
   }
-  const validationSchema=Yup.object({
-    username: Yup.string().email('please enter valid email')
+
+  const validationSchema=Yup.object().shape({
+    email:Yup.string().email('please enter valid email').required("Required"),
+    password:Yup.string().required("Required").min(5, 'Password is too short - should be 5 characters minimum.')
   })
 
-  const handleSubmit = (values, { setSubmitting }) => { // parameters are from formik docs
+  const handleSubmit = (values, props) => { // parameters are from formik docs
     // alert(JSON.stringify(values)) // uncomment to see what data is being returned
     const formData = {
       email: values.email, 
@@ -46,6 +49,7 @@ const Login = ({ setCustomer }) => {
       // console.log(resp)
       if (resp.ok) { // if response is one of 200 status code
         resp.json().then((data) => {setCustomer(data.customer)}); // set customer to customer attribute of data sent back from request
+        props.resetForm(); // resets form after submit
         history.push('/');
       } else {
         resp.json().then(error => alert(error.error));
@@ -67,9 +71,9 @@ const Login = ({ setCustomer }) => {
           <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
             {(props)=>(
               <Form>
-                {console.log(props)}
+                {/* {console.log(props)} */}
                 <Field as={TextField} label='email' name='email' variant="outlined" placeholder='Enter email' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="email"/>}/>
-                <Field as={TextField} label='password' name='password' variant="outlined" placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required/>
+                <Field as={TextField} label='password' name='password' variant="outlined" placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required helperText={<ErrorMessage name="password"/>}/>
                 <Box textAlign='center'>
                   <Button type='submit' style={buttonStyle} fullWidth>
                     <Key sx={keyStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>Continue</b></p>

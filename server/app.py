@@ -106,6 +106,7 @@ class Cart(Resource):
             db.session.commit()
         return make_response("cart item added successfully", 201)
 
+    # this is for the 'remove' button on each cart item
     def delete(self):
         # user-specific info always needs this
         if "id" in session:
