@@ -39,13 +39,12 @@ api = Api(app)  # instantiate new instance of Api class
 
 
 # Views go here!
-
-
-# the Customer class is not your model, but a new class that represents the information you will be accessing
+# these are not your Model classes and are NEW classes that represent the information you will be accessing
 class CustomerByID(Resource):  # for Profiles
     def get(self):
         # retrieve
         # user-specific info always needs this
+        # get session id
         if session.get("id"):
             return make_response(Customer.query.get(session["id"]).as_dict(), 200)
         return make_response({"error": "something wrong occured!"}, 401)
@@ -131,11 +130,11 @@ class Login(Resource):
         password = data["password"]
         # write a query to get object associated with email address, if email doesn't exist customer is none
         customer = Customer.query.filter(Customer.email == email).first()
+        # if successful log customer in
         if customer:
-            # successful log customer in
-            if bcrypt.check_password_hash(
-                customer.password, password
-            ):  # check arg1 against arg2
+            # check password in database against password input
+            if bcrypt.check_password_hash(customer.password, password):
+                # if matches then session id and name is set to the customer id and name, respectively
                 session["id"] = customer.id
                 session["name"] = customer.name
                 return {"customer": customer.name}
@@ -280,10 +279,11 @@ class SignUp(Resource):
             r = requests.post(
                 "https://api.chatengine.io/users/", data=data, headers=headers
             )
-            print(r.text)
+            # print(r.text)
             return make_response({"message": ""}, 200)
 
         except:
+            # rolls back the transaction if session not successful
             db.session.rollback()
             raise  # raises a specific exception when a condition is met or the code encounters an error
             return make_response({"error": "Something went wrong!"}, 500)

@@ -2,7 +2,7 @@ import React from 'react';
 import './Login.css';
 import { Grid, Paper, Avatar, TextField, Button, Box, IconButton, Divider } from '@mui/material';
 import { LockPerson, Fingerprint, Key } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { ThemeContext } from './App.js'
@@ -14,6 +14,8 @@ const Login = ({ setCustomer }) => {
   const avatarStyle = { height: '70px', width: '70px', bgcolor: '#273248' };
   const lockPersonStyle = { fontSize: '2em', color: 'white' };
   const keyStyle = { fontSize: '40px', color: 'white' };
+  const history = useHistory();
+
 
   const initialValues={
     email:'',
@@ -26,8 +28,8 @@ const Login = ({ setCustomer }) => {
   const handleSubmit = (values, { setSubmitting }) => { // parameters are from formik docs
     // alert(JSON.stringify(values)) // uncomment to see what data is being returned
     const formData = {
-      email: values.email, // in values obj
-      password: values.password // in values obj
+      email: values.email, 
+      password: values.password 
     }
     fetch(`/login`, {
       method: 'POST',
@@ -40,6 +42,7 @@ const Login = ({ setCustomer }) => {
       // console.log(resp)
       if (resp.ok) { // if response is one of 200 status code
         resp.json().then((data) => {setCustomer(data.customer)}); // set data to response which is a customer
+        history.push('/');
       } else {
         resp.json().then(error => alert(error.error));
       }

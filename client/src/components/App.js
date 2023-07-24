@@ -48,6 +48,7 @@ const App = () => {
   //   })
 
   useEffect(() => {
+    // fetch customer and set customer data to state
     fetch("/customer")
     .then(resp => {
       if (resp.ok) {
