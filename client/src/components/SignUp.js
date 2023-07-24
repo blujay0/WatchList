@@ -9,10 +9,10 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 const SignUp = () => {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [address, setAddress] = useState();
-  const [password, setPassword] = useState();
+  // const [name, setName] = useState();
+  // const [email, setEmail] = useState();
+  // const [address, setAddress] = useState();
+  // const [password, setPassword] = useState();
   const [errorMessage, setErrorMessage] = useState();
   const history = useHistory(); 
 
@@ -34,9 +34,9 @@ const SignUp = () => {
     address:'',
     password:'',
   }
-
+  // regex for containing only letters and spaces: /^[A-Za-z\s]*$/
   const validationSchema=Yup.object().shape({
-    name:Yup.string().max(40).required('Required'),
+    name:Yup.string().max(40).matches(/^[A-Za-z\s]*$/, 'full name must contain only letters and spaces').required('Required'),
     email:Yup.string().email('please enter valid email').required("Required"),
     address:Yup.string().required('please enter address'),
     password:Yup.string().required("Required").min(5, 'Password is too short - should be 5 characters minimum.'),
