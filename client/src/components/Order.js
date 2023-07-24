@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Switch, Route, Redirect } from "react-router-dom";
 import { ThemeContext } from './App.js'
+import { useTheme } from './ThemeProvider'
 
 const Order = () => {
   const [orders, setOrders] = useState([])
+  const darkTheme = useTheme()
+  const themeStyles = {
+    backgroundColor: darkTheme ? '#008B8B' : '#FFFFFF',
+    color: darkTheme ? '#FFFFFF' : '#000000'
+  }
 
   useEffect(() => {
     fetch(`/orders`)
@@ -35,7 +41,7 @@ const Order = () => {
   // "product_id": self.product_id,
 
   return (
-    <div className="Order">
+    <div className="Order" style={themeStyles}>
       <h1>Order History</h1>
       {/* if orders exists (&&) map orders */}
 
@@ -49,12 +55,8 @@ const Order = () => {
         </div>
         )}
       </div>
-    
-  
     </div>
   )
-  
 }
-
 
 export default Order;

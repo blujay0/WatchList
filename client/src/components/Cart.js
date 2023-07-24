@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { ThemeContext } from './App.js'
+import { useTheme } from './ThemeProvider'
 import './Cart.css';
 
 function Cart(  ) {
   // creates state for cartItems returned from GET fetch below
   const [ cartItems, setCartItems ] = useState([])
+  const darkTheme = useTheme()
+  const themeStyles = {
+    backgroundColor: darkTheme ? '#008B8B' : '#FFFFFF',
+    color: darkTheme ? '#FFFFFF' : '#000000'
+  }
 
   const removeCartItem = (product_id) => {
     const formData = {
@@ -41,7 +47,7 @@ function Cart(  ) {
     })
   }, [])
   return (
-    <div className="Cart">
+    <div className="Cart" style={themeStyles}>
       <h1>Your Cart</h1>
       {/* check to see if cartItems exist first with && */}
       {console.log('CART ITEMS')}
