@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useParams, useHistory } from 'react-router-dom'
 import { Grid, Paper, Avatar, TextField, Button, Box, IconButton, Divider } from '@mui/material';
 import { Notes, PostAdd } from '@mui/icons-material';
 import { ThemeContext } from './App.js'
@@ -20,10 +21,14 @@ const EditProduct = () => {
   const notesStyle = { fontSize: '2em', color: 'white' };
   const postAddStyle = { fontSize: '40px', color: 'white' };
 
+  // useParams is used to grab from URL
+  const { productId } = useParams();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const formData = {
+      id: id,
       maker: maker,
       model: model,
       product_name: productName,
@@ -34,7 +39,7 @@ const EditProduct = () => {
 
     }
 
-    fetch(`/products/${id}`, {
+    fetch(`/products/${productId}`, {
       method: 'PATCH',
       headers: {
         "Content-Type": "application/json",
@@ -54,6 +59,7 @@ const EditProduct = () => {
           <h1><b>Edit Product</b></h1>
         </Grid>
         <form>
+          <TextField onChange={e => setID(e.target.value)} label='id' value={productId} placeholder='Enter product ID' style={textFieldStyle} fullWidth required/>
           <TextField onChange={e => setMaker(e.target.value)} label='maker' placeholder='Enter product ' style={textFieldStyle} fullWidth required/>
           <TextField onChange={e => setModel(e.target.value)} label='model' placeholder='Enter product model' style={textFieldStyle} fullWidth required/>
           <TextField onChange={e => setProductName(e.target.value)} label='product_name' placeholder='Enter product name' style={textFieldStyle} fullWidth required/>        

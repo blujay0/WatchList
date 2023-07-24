@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import './SignUp.css';
 import { Grid, Paper, Avatar, TextField, Button, Box, IconButton, Divider } from '@mui/material';
 import { LockPerson, Fingerprint, Person } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+
+
 const SignUp = () => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [address, setAddress] = useState();
   const [password, setPassword] = useState();
+  const [errorMessage, setErrorMessage] = useState();
+  const history = useHistory(); 
 
   const paperStyle = { backgroundColor: 'white', padding: 20, height:'60vh', width: 400, margin: '20px auto' };
   const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '30px', backgroundColor: '#627C79', padding: 0 };
@@ -30,7 +34,16 @@ const SignUp = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData)
-    });   
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      if (data.message) {
+        setErrorMessage(data.message)
+      } else {
+        // setName(''); // this is to clear textfield after successful submit
+        history.push('/login') // this is to redirect after successful submit
+      }
+    })  
   }
 
   return (
@@ -43,11 +56,12 @@ const SignUp = () => {
           <h1><b>SIGN UP</b></h1>
         </Grid>
         <form onSubmit={handleSubmit}>
-          <TextField onChange={e => setName(e.target.value)} label='name' placeholder='First and last name' style={textFieldStyle} fullWidth required/>
+          <TextField onChange={e => setName(e.target.value)} value={name} label='name' placeholder='First and last name' style={textFieldStyle} fullWidth required/>
           <TextField onChange={e => setEmail(e.target.value)} label='email' placeholder='Enter email' style={textFieldStyle} fullWidth required/>
           <TextField onChange={e => setAddress(e.target.value)} label='address' placeholder='Enter your address' style={textFieldStyle} fullWidth required/>        
           <TextField onChange={e => setPassword(e.target.value)} label='password' placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required/>
           <Box textAlign="center">
+            {errorMessage && <div style={{color:"red"}}>{errorMessage}</div>}
             <Button type='submit' style={buttonStyle} fullWidth>
                 <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>Register</b></p>
             </Button>          

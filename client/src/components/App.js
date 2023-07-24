@@ -37,6 +37,26 @@ const App = () => {
     getProducts();
   }, []);
 
+
+  // useEffect(() => {
+  //   fetch(`/cart`)
+  //   .then(resp => {
+  //     if (resp.ok) {
+  //       // console.log(resp.product_id.product_name)
+  //       resp.json().then((data) => {setCartItems(data)});
+  //     }
+  //   })
+
+  useEffect(() => {
+    fetch("/customer")
+    .then(resp => {
+      if (resp.ok) {
+        resp.json().then((data) => {setCustomer(data)});
+      }
+    })
+    .catch(err => setCustomer(null))
+  }, [])
+
   return (
 
     // keep navbar outside of <Switch> so it stays in place when page changes
@@ -80,7 +100,7 @@ const App = () => {
             <Logout setCustomer={setCustomer}/>
           </Route>
 
-          <Route exact path="/edit-product">
+          <Route exact path="/edit-product/:productId">
             <EditProduct />
           </Route>
 
@@ -93,7 +113,8 @@ const App = () => {
           </Route>
 
           <Route exact path="/chat">
-            <Chat />
+            {/* customer is an object with an email attribute, check if email att is there, else return null */}
+            <Chat username={customer?.email}/> 
           </Route>
 
           {/* <Route exact path="/about">

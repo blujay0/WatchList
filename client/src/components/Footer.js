@@ -11,7 +11,7 @@ const Footer = ({ customer }) => {
   return (
     <footer className="footer">
 
-      {customer && <IconButton component={Link} to={{ pathname: '/chat' }} target="_blank" rel='noopener noreferrer'>
+      {customer && <IconButton component={Link} to={{ pathname: '/chat' }} rel='noopener noreferrer'>
         <Chat sx={iconStyle} />
       </ IconButton>}
       

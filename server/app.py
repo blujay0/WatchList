@@ -23,8 +23,10 @@ from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from models import db, CartItem, Customer, OrderDetail, Order, Product
 import re
+import requests
 
 app = Flask(__name__)
+
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///store.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_ECHO"] = False
@@ -45,8 +47,8 @@ class CustomerByID(Resource):  # for Profiles
         # retrieve
         # user-specific info always needs this
         if session.get("id"):
-            return make_response(db.session.get(Customer, session["id"]).as_dict(), 200)
-        return make_response({"error": "something wrong occured!"}, 404)
+            return make_response(Customer.query.get(session["id"]).as_dict(), 200)
+        return make_response({"error": "something wrong occured!"}, 401)
 
         # def post(self):
         #     try:
@@ -219,10 +221,10 @@ class ProductByID(Resource):
         # add more fields as necessary
         # consider what happens when client does not provide value for a field
 
+        product = Product.query.filter(Product.id == id).first()
         product.product_name = product_name
         product.maker = maker
         product.image = image
-        product = Product.query.filter(Product.id == id).first()
 
         # below is the same thing done above
         # for key, value in request.get_json().items():
@@ -252,6 +254,12 @@ class SignUp(Resource):
             email = data["email"]
             address = data["address"]
             password = data["password"]
+            # querying db for customer using that email
+            # if customer already exists, return a message
+            # if customer does NOT exist, code continues as normal
+            customer = Customer.query.filter(Customer.email == email).first()
+            if customer:
+                return make_response({"message": "email already exists"}, 200)
 
             new_customer = Customer(
                 name=name,
@@ -263,10 +271,22 @@ class SignUp(Resource):
             db.session.add(new_customer)
             db.session.commit()
 
+            # add to chat engine
+            data = {
+                "username": email,
+                "secret": "same_secret",
+            }
+            headers = {"PRIVATE-KEY": "33c865ed-6f11-486f-b1e0-461096a45d38"}
+            r = requests.post(
+                "https://api.chatengine.io/users/", data=data, headers=headers
+            )
+            print(r.text)
+            return make_response({"message": ""}, 200)
+
         except:
             db.session.rollback()
             raise  # raises a specific exception when a condition is met or the code encounters an error
-            return make_response({"error": "Something went wrong!"}, 400)
+            return make_response({"error": "Something went wrong!"}, 500)
 
 
 class Orders(Resource):
@@ -341,7 +361,7 @@ class Orders(Resource):
 api.add_resource(Products, "/products")
 api.add_resource(ProductByID, "/products/<int:id>")
 
-api.add_resource(CustomerByID, "/customer/<int:id>")
+api.add_resource(CustomerByID, "/customer")
 
 api.add_resource(Cart, "/cart")
 

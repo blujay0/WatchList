@@ -1,10 +1,15 @@
 import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import './ProductCard.css'
+import { useTheme } from './ThemeProvider'
 
 const ProductCard = ({ customer, getProducts, product, setCartItems, cartItems }) => {
   const { product_id, maker, model, product_name, product_price, product_description, image } = product
-
+  const darkTheme = useTheme()
+  const themeStyles = {
+    backgroundColor: darkTheme ? '#2f4f4f' : '#FFFFFF',
+    color: darkTheme ? '#FFFFFF' : '#000000'
+  }
   // const history = useHistory();
 
   // const productDetails = () => {
@@ -13,7 +18,7 @@ const ProductCard = ({ customer, getProducts, product, setCartItems, cartItems }
 
   const productPath = `/products/${product_id}`
 
-  const productEditPath = `/edit-product`
+  const productEditPath = `/edit-product/${product_id}`
 
   const handleDelete = () => {
     fetch(`/products/${product_id}`, {
@@ -38,7 +43,7 @@ const ProductCard = ({ customer, getProducts, product, setCartItems, cartItems }
 
   return (
     <div className="main">
-      <main>
+      <main style={themeStyles}>
         <img src={image} alt={maker}/>
         <div>Maker: {maker}</div>
         <div>Model: {model}</div>

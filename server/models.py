@@ -60,7 +60,6 @@ class Customer(db.Model):
             "name": self.name,
             "email": self.email,
             "address": self.address,
-            "password": self.password,
         }
 
 

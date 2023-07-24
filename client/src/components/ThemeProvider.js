@@ -4,7 +4,7 @@ import React, { useContext, useState } from 'react'
 const ThemeContext = React.createContext()
 const ThemeUpdateContext = React.createContext()
 
-// custom hooks give us easy access to different values
+// custom hooks gives easy access to different values
 export function useTheme() {
   // wraps useContext(ThemeContext) inside of its own hook called useTheme
   return useContext(ThemeContext)
