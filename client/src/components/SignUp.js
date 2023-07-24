@@ -6,6 +6,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { ThemeContext } from './App.js'
 import { useTheme } from './ThemeProvider'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 const SignUp = () => {
   const [name, setName] = useState();
@@ -27,13 +28,26 @@ const SignUp = () => {
     backgroundColor: darkTheme ? '#008B8B' : '#FFFFFF'
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const initialValues={
+    name:'',
+    email:'',
+    address:'',
+    password:'',
+  }
+
+  const validationSchema=Yup.object().shape({
+    name:Yup.string().max(40).required('Required'),
+    email:Yup.string().email('please enter valid email').required("Required"),
+    address:Yup.string().required('please enter address'),
+    password:Yup.string().required("Required").min(5, 'Password is too short - should be 5 characters minimum.'),
+  })
+
+  const handleSubmit = (values, props) => {
     const formData = {
-      name: name,
-      email: email,
-      address: address,
-      password: password
+      name: values.name,
+      email: values.email,
+      address: values.address,
+      password: values.password
     }
     fetch(`/signup`, {
       method: 'POST',
@@ -47,8 +61,9 @@ const SignUp = () => {
       if (data.message) {
         setErrorMessage(data.message)
       } else {
-        // setName(''); // this is to clear textfield after successful submit
-        history.push('/login') // this is to redirect after successful submit
+        // setName(''); // clear textfield after successful submit
+        props.resetForm();
+        history.push('/login'); // redirect after successful submit
       }
     })  
   }
@@ -63,18 +78,22 @@ const SignUp = () => {
             </Avatar>
             <h1><b>SIGN UP</b></h1>
           </Grid>
-          <form onSubmit={handleSubmit}>
-            <TextField onChange={e => setName(e.target.value)} value={name} label='name' placeholder='First and last name' style={textFieldStyle} fullWidth required/>
-            <TextField onChange={e => setEmail(e.target.value)} label='email' placeholder='Enter email' style={textFieldStyle} fullWidth required/>
-            <TextField onChange={e => setAddress(e.target.value)} label='address' placeholder='Enter your address' style={textFieldStyle} fullWidth required/>        
-            <TextField onChange={e => setPassword(e.target.value)} label='password' placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required/>
-            <Box textAlign="center">
-              {errorMessage && <div style={{color:"red"}}>{errorMessage}</div>}
-              <Button type='submit' style={buttonStyle} fullWidth>
-                  <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>Register</b></p>
-              </Button>          
-            </Box>
-          </form>
+          <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
+            {(props) => (
+              <Form >
+                <Field as={TextField} label='name' name='name' variant="outlined"  placeholder='First and last name' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="name"/>}/>
+                <Field as={TextField} label='email' name='email' variant="outlined" placeholder='Enter email' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="email"/>}/>
+                <Field as={TextField} label='address' name='address' variant="outlined" placeholder='Enter your address' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="address"/>}/>        
+                <Field as={TextField} label='password' name='password' variant="outlined" placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required helperText={<ErrorMessage name="password"/>}/>
+                <Box textAlign="center">
+                  {/* {errorMessage && <div style={{color:"red"}}>{errorMessage}</div>} */}
+                  <Button type='submit' style={buttonStyle} fullWidth>
+                      <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>Register</b></p>
+                  </Button>          
+                </Box>
+              </Form>
+            )}
+          </Formik>
           <br/>
           <br/>
           <Divider>OR</Divider>

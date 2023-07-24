@@ -4,6 +4,7 @@ import { Grid, Paper, Avatar, TextField, Button, Box, IconButton, Divider } from
 import { Notes, PostAdd } from '@mui/icons-material';
 import { ThemeContext } from './App.js'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 const EditProduct = () => {
   const [id, setID] = useState();
