@@ -6,9 +6,9 @@ import { useTheme } from './ThemeProvider'
 
 const ProductsPage = ({ getProducts, products, customer, setCartItems, cartItems }) => {
   const mappedProducts = products.map((product, index) => <ProductCard key={index} customer={customer} getProducts={getProducts} product={product} setCartItems={setCartItems} cartItems={cartItems} />)
-  const darkTheme = useTheme()
+  const darkTheme = useTheme();
   const themeStyles = {
-    backgroundColor: darkTheme ? '#2f4f4f' : '#FFFFFF'
+    backgroundColor: darkTheme ? '#008B8B' : '#FFFFFF'
   }
 
   return (

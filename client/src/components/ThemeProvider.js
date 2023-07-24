@@ -17,7 +17,7 @@ export function useThemeUpdate() {
 
 // this takes the place of the ThemeContext.Provider in App.js
 export function ThemeProvider({ children }) {
-  const [darkTheme, setDarkTheme] =useState(true);
+  const [darkTheme, setDarkTheme] = useState(true);
   
   const toggleTheme = () => {
     setDarkTheme(prevDarkTheme => !prevDarkTheme)

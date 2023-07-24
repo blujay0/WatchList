@@ -17,6 +17,8 @@ import ListProduct from "./ListProduct.js"
 import Chat from "./Chat.js"
 import FunctionContext from "./FunctionContext.js"
 import { ThemeProvider } from "./ThemeProvider.js";
+import { NotificationsOffRounded } from "@mui/icons-material";
+import NotFound from './NotFound.js'
 
 const App = () => {
   // Code goes here!
@@ -121,6 +123,9 @@ const App = () => {
           {/* <Route exact path="/about">
             <About />
           </Route> */}
+          <Route path="*">
+            <NotFound />
+          </Route>
         </Switch>
       </ThemeProvider>
       <Footer customer={customer}/>   

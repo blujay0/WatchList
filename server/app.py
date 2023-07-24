@@ -104,7 +104,7 @@ class Cart(Resource):
 
             db.session.add(cartItem)
             db.session.commit()
-        return make_response("cart item added successfully")
+        return make_response("cart item added successfully", 201)
 
     def delete(self):
         # user-specific info always needs this
@@ -140,10 +140,10 @@ class Login(Resource):
                 return {"customer": customer.name}
             else:
                 print("bad password")
-                return {"error": "invalid credentials"}
+                return make_response({"error": "invalid credentials"}, 400)
         else:
             print("bad email")
-            return {"error": "invalid credentials"}
+            return make_response({"error": "invalid credentials"}, 400)
 
 
 class Logout(Resource):
@@ -153,7 +153,7 @@ class Logout(Resource):
         session.clear()
         print("session data")
         print("cookie cleared!")
-        return make_response({}, 202)
+        return make_response({}, 201)
 
 
 # the Products class is not your model, but a new class that represents the information you will be accessing
@@ -280,7 +280,7 @@ class SignUp(Resource):
                 "https://api.chatengine.io/users/", data=data, headers=headers
             )
             # print(r.text)
-            return make_response({"message": ""}, 200)
+            return make_response({"message": ""}, 201)
 
         except:
             # rolls back the transaction if session not successful
@@ -330,7 +330,7 @@ class Orders(Resource):
             CartItem.query.filter(CartItem.customer_id == customer_id).delete()
             db.session.commit()
 
-            return make_response({})
+            return make_response({}, 201)
 
         # try:
         #     # get data sent from client
