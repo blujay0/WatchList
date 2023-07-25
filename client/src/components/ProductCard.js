@@ -20,6 +20,7 @@ const ProductCard = ({ customer, getProducts, product, setCartItems, cartItems }
 
   const productEditPath = `/edit-product/${product_id}`
 
+  // remove product from list and call getProducts() again to update
   const handleDelete = () => {
     fetch(`/products/${product_id}`, {
       method: "DELETE",

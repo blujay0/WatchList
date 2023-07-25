@@ -47,7 +47,7 @@ class CustomerByID(Resource):  # for Profiles
         # get session id
         if session.get("id"):
             return make_response(Customer.query.get(session["id"]).as_dict(), 200)
-        return make_response({"error": "something wrong occured!"}, 401)
+        return make_response({"error": "user is not logged in"}, 401)
 
         # def post(self):
         #     try:
@@ -124,27 +124,31 @@ class Cart(Resource):
 
 class Login(Resource):
     def post(self):
-        data = (
-            request.get_json()
-        )  # give me json part of data (requests can have other info)
-        email = data["email"]
-        password = data["password"]
-        # write a query to get object associated with email address, if email doesn't exist customer is none
-        customer = Customer.query.filter(Customer.email == email).first()
-        # if successful log customer in
-        if customer:
-            # check password in database against password input
-            if bcrypt.check_password_hash(customer.password, password):
-                # if matches then session id and name is set to the customer id and name, respectively
-                session["id"] = customer.id
-                session["name"] = customer.name
-                return {"customer": customer.name}
+        try:
+            data = (
+                request.get_json()
+            )  # give me json part of data (requests can have other info)
+            email = data["email"]
+            password = data["password"]
+            # write a query to get object associated with email address, if email doesn't exist customer is none
+            customer = Customer.query.filter(Customer.email == email).first()
+            # if successful log customer in
+            if customer:
+                # check password in database against password input
+                if bcrypt.check_password_hash(customer.password, password):
+                    # if matches then session id and name is set to the customer id and name, respectively
+                    session["id"] = customer.id
+                    session["name"] = customer.name
+                    return {"customer": customer.name}
+                else:
+                    print("bad password")
+                    return make_response({"error": "invalid credentials"}, 400)
             else:
-                print("bad password")
+                print("bad email")
                 return make_response({"error": "invalid credentials"}, 400)
-        else:
-            print("bad email")
-            return make_response({"error": "invalid credentials"}, 400)
+        except Exception as e:
+            print(e)
+            return make_response({"error": "login failed"}, 500)
 
 
 class Logout(Resource):
@@ -169,7 +173,7 @@ class Products(Resource):
             return make_response(products, 200)
 
         except Exception as e:
-            return make_response({"error": e}, 404)
+            return make_response({"error": str(e)}, 404)
 
     # create new product
     def post(self):
@@ -186,15 +190,18 @@ class Products(Resource):
         image = data["image"]
 
         # use the MODEL class to create an instance of the class
-        product = Product(
-            maker=maker,
-            model=model,
-            product_name=product_name,
-            product_price=product_price,
-            inventory=inventory,
-            product_description=product_description,
-            image=image,
-        )
+        try:
+            product = Product(
+                maker=maker,
+                model=model,
+                product_name=product_name,
+                product_price=product_price,
+                inventory=inventory,
+                product_description=product_description,
+                image=image,
+            )
+        except ValueError as e:
+            return make_response({"error": str(e)}, 400)
 
         db.session.add(product)
         db.session.commit()  # saves to database
@@ -207,7 +214,7 @@ class ProductByID(Resource):
             product = Product.query.filter(Product.id == id).first().as_dict()
             return make_response(product, 200)
         except Exception as e:
-            return make_response({"error": e}, 400)
+            return make_response({"error": str(e)}, 400)
 
     # id parameter comes from client side page where client makes fetch request
     def patch(self, id):
@@ -217,14 +224,21 @@ class ProductByID(Resource):
         product_name = data["product_name"]
         maker = data["maker"]
         image = data["image"]
+        product_price = data["product_price"]
 
         # add more fields as necessary
         # consider what happens when client does not provide value for a field
 
         product = Product.query.filter(Product.id == id).first()
-        product.product_name = product_name
-        product.maker = maker
-        product.image = image
+
+        try:
+            product.product_name = product_name
+            product.maker = maker
+            product.image = image
+            product.product_price = product_price
+
+        except ValueError as e:
+            return make_response({"error": str(e)}, 400)
 
         # below is the same thing done above
         # for key, value in request.get_json().items():
@@ -260,13 +274,18 @@ class SignUp(Resource):
             customer = Customer.query.filter(Customer.email == email).first()
             if customer:
                 return make_response({"message": "email already exists"}, 200)
-
-            new_customer = Customer(
-                name=name,
-                email=email,
-                address=address,
-                password=bcrypt.generate_password_hash(password),
-            )
+            try:
+                # anytime using a Customer obj, we use the corresponding error defined in models.py
+                new_customer = Customer(
+                    name=name,
+                    email=email,
+                    address=address,
+                    password=bcrypt.generate_password_hash(password),
+                )
+            # if anything in try raises an error catch it here
+            except ValueError as e:
+                # e (exception object) includes the actual text that you put in the ValueError models.py
+                return make_response({"message": str(e)})
 
             db.session.add(new_customer)
             db.session.commit()
@@ -283,10 +302,11 @@ class SignUp(Resource):
             # print(r.text)
             return make_response({"message": ""}, 201)
 
+        # except is telling program that you will take care of exception
         except:
             # rolls back the transaction if session not successful
             db.session.rollback()
-            raise  # raises a specific exception when a condition is met or the code encounters an error
+            raise  # turns it back into unhandled exception: raises a specific exception when a condition is met or the code encounters an error
             return make_response({"error": "Something went wrong!"}, 500)
 
 

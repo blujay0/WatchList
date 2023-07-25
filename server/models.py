@@ -19,6 +19,7 @@ SQLAlchemy and Alembic in your models
 """
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.orm import validates
 import re
 
 # from sqlalchemy.orm import back_populates
@@ -43,6 +44,23 @@ class Customer(db.Model):
     orders = db.relationship("Order", back_populates="customer")
 
     # validations
+    @validates("name")
+    def validate_name(self, key, name):
+        if not name:
+            raise ValueError("Customer needs a name")
+        return name
+
+    # sqlalchemy documentation
+    # @validates("email")
+    # def validate_email(self, key, address):
+    #     assert "@" in address
+    #     return address
+
+    @validates("email")
+    def validate_email(self, key, email):
+        if "@" not in email:
+            raise ValueError("email requires @")
+        return email
 
     # other methods
     def __repr__(self):
@@ -80,6 +98,14 @@ class Product(db.Model):
     cart_items = db.relationship("CartItem", back_populates="product")
 
     # validations
+    @validates("product_name")
+    # (obj, key=attribute label, value=val of key)
+    def validate_product_name(self, key, product_name):
+        if len(product_name) < 3:
+            raise ValueError("product name is too short")
+        if len(product_name) > 20:
+            raise ValueError("product name is too long")
+        return product_name
 
     # other methods
     def __repr__(self):

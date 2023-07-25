@@ -104,11 +104,11 @@ const App = () => {
           </Route>
 
           <Route exact path="/edit-product/:productId">
-            <EditProduct />
+            <EditProduct getProducts={getProducts}/>
           </Route>
 
           <Route exact path="/list-product">
-            <ListProduct />
+            <ListProduct getProducts={getProducts}/>
           </Route>
 
           <Route exact path="/order">
