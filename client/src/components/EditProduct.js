@@ -59,7 +59,7 @@ const EditProduct = ({ getProducts }) => {
     product_name:Yup.string().min(3).max(20).required('Product Name Required'),
     product_price:Yup.number().required('Listing Price of at least $50 Required').test('Is positive?', 'Your listing price must be at least $50', value => value >= 50),
     inventory:Yup.number().required('Inventory of at least 1 Required').test('Is positive?', 'You must have an inventory of at least 1', value => value > 0),
-    product_description:Yup.string().min(25).max(250).required('Description Required'),
+    product_description:Yup.string().min(25).max(150).required('Description Required'),
     image:Yup.string().matches(URL, 'please enter valid URL')
   })  
 
@@ -111,8 +111,8 @@ const EditProduct = ({ getProducts }) => {
                   <Field as={TextField} label='maker' name='maker' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="maker"/>}/>
                   <Field as={TextField} label='model' name='model' placeholder='Enter product model' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="model"/>}/>
                   <Field as={TextField} label='product_name' name='product_name' placeholder='Enter product name' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="product_name"/>}/>        
-                  <Field as={TextField} label='product_price' name='product_price' type="number" placeholder='Enter price' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="product_price"/>}/>
-                  <Field as={TextField} label='inventory' name='inventory' type="number" placeholder='Enter how many to list' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="inventory"/>}/>
+                  <Field as={TextField} label='product_price' name='product_price' type="number" InputProps={{inputProps: {max: 1000000, min: 0}}} placeholder='Enter price' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="product_price"/>}/>
+                  <Field as={TextField} label='inventory' name='inventory' type="number" InputProps={{inputProps: {max: 1000000, min: 0}}} placeholder='Enter how many to list' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="inventory"/>}/>
                   <Field as={TextField} label='product_description' name='product_description' placeholder='Enter short description' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="product_description"/>}/>
                   <Field as={TextField} label='image' name='image' placeholder='Enter image url' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="image"/>}/>        
                   <Box textAlign="center">

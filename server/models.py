@@ -66,10 +66,10 @@ class Customer(db.Model):
 
     @validates("password")
     def validate_password(self, key, password):
-        if len(password) < 5 or len(password) > 10:
-            raise ValueError(
-                "password should be more than 4 characters and less than 11 characters"
-            )
+        if len(password) < 5:
+            raise ValueError("password should be more than 4 characters")
+        if len(password) > 10:
+            raise ValueError("password should be less than 11 characters")
         return password
 
     # other methods
@@ -108,6 +108,23 @@ class Product(db.Model):
     cart_items = db.relationship("CartItem", back_populates="product")
 
     # validations
+    @validates("maker")
+    def validate_maker(self, key, maker):
+        if len(maker) < 3:
+            raise ValueError("maker name is too short")
+
+        if len(maker > 20):
+            raise ValueError("maker name is too long")
+        return maker
+
+    @validates("model")
+    def validate_model(self, key, model):
+        if len(model) < 3:
+            raise ValueError("model name is too short")
+        if len(model > 20):
+            raise ValueError("model name is too long")
+        return model
+
     @validates("product_name")
     # (obj in question, key=attribute label, value=val of key)
     def validate_product_name(self, key, product_name):
@@ -117,7 +134,26 @@ class Product(db.Model):
             raise ValueError("product name is too long")
         return product_name
 
-    @validates("")
+    @validates("product_price")
+    def validate_product_price(self, key, product_price):
+        if product_price < 50:
+            raise ValueError("product price must be at least 50")
+        return product_price
+
+    @validates("inventory")
+    def validate_inventory(self, key, inventory):
+        if inventory <= 0:
+            raise ValueError("inventory must be greater than 0")
+        return inventory
+
+    @validates("product_description")
+    def validate_product_description(self, key, product_description):
+        if len(product_description) < 25:
+            raise ValueError("product description too short")
+        if len(product_description) > 150:
+            raise ValueError("product description too long")
+        return product_description
+
     # other methods
     def __repr__(self):
         return (
