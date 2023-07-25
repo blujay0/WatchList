@@ -48,6 +48,8 @@ class Customer(db.Model):
     def validate_name(self, key, name):
         if not name:
             raise ValueError("Customer needs a name")
+        if len(name) > 20:
+            raise ValueError("Name must be less than 20 chars")
         return name
 
     # sqlalchemy documentation
@@ -115,6 +117,7 @@ class Product(db.Model):
             raise ValueError("product name is too long")
         return product_name
 
+    @validates("")
     # other methods
     def __repr__(self):
         return (
