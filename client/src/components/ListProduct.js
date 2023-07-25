@@ -23,23 +23,38 @@ const ListProduct = () => {
   const addStyle = { fontSize: '2em', color: 'white' };
   const plusOneStyle = { fontSize: '40px', color: 'white' };
 
+  const URL = /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/ // can check this regex on regex101.com/r/O47zyn/4
+
   const darkTheme = useTheme()
   const themeStyles = {
     backgroundColor: darkTheme ? '#008B8B' : '#FFFFFF',
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const initialValues = {
+    image:'',
+    inventory:'',
+    maker:'',
+    model:'',
+    product_description:'',
+    product_id:'',
+    product_name:'',
+    product_price:'',
+  }
 
+  const validationSchema=Yup.object().shape({
+    image:Yup.string().matches(URL, 'please enter valid URL')
+  })
+
+  const handleSubmit = (values, props) => {
     const formData = {
-      image: image,
-      inventory: inventory,
-      maker: maker,
-      model: model,
-      product_description: productDescription,
-      product_id: productID,
-      product_name: productName,
-      product_price: productPrice,
+      image: values.image,
+      inventory: values.inventory,
+      maker: values.maker,
+      model: values.model,
+      product_description: values.product_description,
+      product_id: values.product_id,
+      product_name: values.product_name,
+      product_price: values.product_price,
     }
 
     // useEffect(() => {
@@ -73,20 +88,24 @@ const ListProduct = () => {
             </Avatar>
             <h1><b>List Watch</b></h1>
           </Grid>
-          <form>
-            <TextField onChange={e => setMaker(e.target.value)} label='maker' placeholder='Enter product ' style={textFieldStyle} fullWidth required/>
-            <TextField onChange={e => setModel(e.target.value)} label='model' placeholder='Enter product model' style={textFieldStyle} fullWidth required/>
-            <TextField onChange={e => setProductName(e.target.value)} label='product_name' placeholder='Enter product name' style={textFieldStyle} fullWidth required/>        
-            <TextField onChange={e => setProductPrice(e.target.value)} label='product_price' placeholder='Enter price' style={textFieldStyle} fullWidth required/>
-            <TextField onChange={e => setInventory(e.target.value)} label='inventory' placeholder='Enter how many to list' style={textFieldStyle} type="number" fullWidth required/>
-            <TextField onChange={e => setProductDescription(e.target.value)} label='product_description' placeholder='Enter short description' style={textFieldStyle} fullWidth required/>
-            <TextField onChange={e => setImage(e.target.value)} label='image' placeholder='Enter image url' style={textFieldStyle} fullWidth required/>        
-            <Box textAlign="center">
-              <Button onClick={handleSubmit} type='submit' style={buttonStyle} fullWidth>
-                  <Add sx={addStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>List</b></p>
-              </Button>          
-            </Box>
-          </form>
+          <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
+              {(props) => (
+                <Form>
+                  <Field as={TextField} label='maker' placeholder='Enter product maker' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="maker"/>}/>
+                  <Field as={TextField} label='model' placeholder='Enter product model' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="model"/>}/>
+                  <Field as={TextField} label='product_name' placeholder='Enter product name' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="product_name"/>}/>        
+                  <Field as={TextField} label='product_price' placeholder='Enter price' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="product_price"/>}/>
+                  <Field as={TextField} label='inventory' placeholder='Enter how many to list' style={textFieldStyle} type="number" fullWidth required helperText={<ErrorMessage name="inventory"/>}/>
+                  <Field as={TextField} label='product_description' placeholder='Enter short description' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="product_description"/>}/>
+                  <Field as={TextField} label='image' placeholder='Enter image url' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="image"/>}/>        
+                  <Box textAlign="center">
+                    <Button type='submit' style={buttonStyle} fullWidth>
+                        <Add sx={addStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>List</b></p>
+                    </Button>          
+                  </Box>
+                </Form>
+              )}
+          </Formik>
         </Paper>
       </Grid>
     </div>
