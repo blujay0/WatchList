@@ -39,7 +39,7 @@ const SignUp = () => {
     name:Yup.string().max(40).matches(/^[A-Za-z\s]*$/, 'full name must contain only letters and spaces').required('Required'),
     email:Yup.string().email('please enter valid email').required("Required"),
     address:Yup.string().required('please enter address'),
-    password:Yup.string().required("Required").min(5, 'Password is too short - should be 5 characters minimum.'),
+    password:Yup.string().required("Required").min(5, 'Password is too short - should be 5 characters minimum.').max(10, 'password too long - should be less than 11 characters'),
   })
 
   const handleSubmit = (values, props) => {

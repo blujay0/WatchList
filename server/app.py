@@ -74,7 +74,7 @@ class CustomerByID(Resource):  # for Profiles
         if customer := db.session.get(Customer, session.get("id")):
             db.session.delete(customer)
             db.session.commit()
-            return make_response({}, 204)
+            return make_response({"success": "successful delete"}, 204)
 
 
 class Cart(Resource):
@@ -82,7 +82,7 @@ class Cart(Resource):
     # 2. enter record into cartitems table with product.id
     # backend gets id for customer.id and product.id comes from client when button is clicked when fetch called
     def get(self):
-        # user-specific info always needs this
+        # user-specific info always needs to check id in session (if "id" in session)
         if "id" in session:
             customer_id = session["id"]
             cartItems = [
@@ -104,7 +104,7 @@ class Cart(Resource):
 
             db.session.add(cartItem)
             db.session.commit()
-        return make_response("cart item added successfully", 201)
+            return make_response({"success": "cart item added successfully"}, 201)
 
     # this is for the 'remove' button on each cart item
     def delete(self):
@@ -119,7 +119,7 @@ class Cart(Resource):
 
             db.session.delete(cartItem)
             db.session.commit()
-        return make_response("")
+            return make_response({"success": "delete successful"}, 200)
 
 
 class Login(Resource):
@@ -139,7 +139,7 @@ class Login(Resource):
                     # if matches then session id and name is set to the customer id and name, respectively
                     session["id"] = customer.id
                     session["name"] = customer.name
-                    return {"customer": customer.name}
+                    return make_response("customer": customer.name)
                 else:
                     print("bad password")
                     return make_response({"error": "invalid credentials"}, 400)
@@ -166,7 +166,7 @@ class Products(Resource):
     # self is the instance of the class
     def get(self):
         try:
-            # the as_dict() method that you built in models is used here b/c you can only serialize if it is converted to a dictionary
+            # the as_dict() method that you built in models is used here, you can only serialize if it is converted to a dictionary
             products = [product.as_dict() for product in Product.query.all()]
 
             # you can also just 'return products, 200' but make_response is preferred

@@ -62,6 +62,14 @@ class Customer(db.Model):
             raise ValueError("email requires @")
         return email
 
+    @validates("password")
+    def validate_password(self, key, password):
+        if len(password) < 5 or len(password) > 10:
+            raise ValueError(
+                "password should be more than 4 characters and less than 11 characters"
+            )
+        return password
+
     # other methods
     def __repr__(self):
         return (
@@ -99,7 +107,7 @@ class Product(db.Model):
 
     # validations
     @validates("product_name")
-    # (obj, key=attribute label, value=val of key)
+    # (obj in question, key=attribute label, value=val of key)
     def validate_product_name(self, key, product_name):
         if len(product_name) < 3:
             raise ValueError("product name is too short")
