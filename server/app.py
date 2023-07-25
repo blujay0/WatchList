@@ -139,7 +139,7 @@ class Login(Resource):
                     # if matches then session id and name is set to the customer id and name, respectively
                     session["id"] = customer.id
                     session["name"] = customer.name
-                    return make_response("customer": customer.name)
+                    return make_response({"customer": customer.name})
                 else:
                     print("bad password")
                     return make_response({"error": "invalid credentials"}, 400)
@@ -333,8 +333,7 @@ class Orders(Resource):
 
             order = Order(customer_id=customer_id)
 
-            # for each item in cartItems, create an Order Details obj
-            # appending to the order, the OrderDetails
+            # for each item in cartItems, append an Order Details obj to order
             for item in cartItems:
                 order.order_details.append(
                     OrderDetail(
