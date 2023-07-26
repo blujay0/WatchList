@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 // import ProductCard from "./ProductCard"
 import Product from "./Product"
@@ -19,13 +19,15 @@ import FunctionContext from "./FunctionContext.js"
 import { ThemeProvider } from "./ThemeProvider.js";
 import { NotificationsOffRounded } from "@mui/icons-material";
 import NotFound from './NotFound.js'
+import { ErrorContext } from '../context/errorContext';
+import Error from './Error';
 
 const App = () => {
   // Code goes here!
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [customer, setCustomer] = useState(null); // set customer id
-
+  const { saveErrors, errors } = useContext(ErrorContext);
 
   // GET watches
   const getProducts = () => {
