@@ -71,6 +71,7 @@ const App = () => {
     */
     <>
       <Navbar customer={customer}/>
+      {errors && <Error />}
         {/* context can be though of as a global set for all of the children in the Provider */}
       <ThemeProvider>
         <FunctionContext />
