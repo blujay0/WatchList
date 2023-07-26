@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './Login.css';
 import { Grid, Paper, Avatar, TextField, Button, Box, IconButton, Divider } from '@mui/material';
 import { LockPerson, Fingerprint, Key } from '@mui/icons-material';
@@ -7,8 +7,12 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { ThemeContext } from './App.js'
 import { useTheme } from './ThemeProvider'
+import { ErrorContext } from '../context/ErrorContext';
+
 const Login = ({ setCustomer }) => {
   // destructure error context here
+  const { error, setError } = useContext(ErrorContext)
+
   const [emailError, setEmailError] = useState('');
 
   const paperStyle = { backgroundColor: 'white', padding: 20, height:'50vh', width: 400, margin: '20px auto' };
@@ -34,6 +38,24 @@ const Login = ({ setCustomer }) => {
     email:Yup.string().email('please enter valid email').required("Required"),
     password:Yup.string().required("Required").min(5, 'Password is too short - should be 5 characters minimum.')
   })
+
+  // example format for Login fetch if... else...
+  // fetch('/login', {
+  //   method: 'POST',
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify(formData)
+  // })
+  // .then(resp => {
+  //   if (resp.ok) { // if response is one of 200 status code
+  //     resp.json().then((data) => {setCustomer(data)}); // set customer to customer attribute of data sent back from request
+  //     props.resetForm(); // resets form after submit
+  //     history.push('/');
+  //   } else {
+  //     resp.json().then(error => setError(error.error));
+  //   }
+  // })
 
   const handleSubmit = (values, props) => { // parameters are from formik docs
     // alert(JSON.stringify(values)) // uncomment to see what data is being returned

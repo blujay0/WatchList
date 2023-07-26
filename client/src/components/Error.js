@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext, useState, useEffect } from 'react';
-import { ErrorContext } from '../context/errorContext';
+import { ErrorContext } from '../context/ErrorContext';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
@@ -14,9 +14,31 @@ const Error = () => {
 
   useEffect(() => {
     if (error) {
+      setOpen(true);
+      // const timer = setTimeout(() => {
+      //   saveError(null);
+      // }, 3000);
 
+      // return () => {
+      //   clearTimeout(timer);
+      // };
     }
-  })
+  }, [error, saveError]);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  return (
+    <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+      <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+        {error}
+      </Alert>
+    </Snackbar>
+  )
 }
 
 export default Error;

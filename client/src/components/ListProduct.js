@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Grid, Paper, Avatar, TextField, Button, Box, IconButton, Divider } from '@mui/material';
 import { Add, PlusOne } from '@mui/icons-material';
 import { ThemeContext } from './App.js'
 import { useTheme } from './ThemeProvider'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { ErrorContext } from '../context/ErrorContext';
 
 const ListProduct = ( {getProducts} ) => {
   // const [maker, setMaker] = useState();
@@ -15,6 +16,9 @@ const ListProduct = ( {getProducts} ) => {
   // const [productDescription, setProductDescription] = useState();
   // const [image, setImage] = useState();
   // const [productID, setProductID] = useState();
+
+  // destructure error context here
+  const { error, setError } = useContext(ErrorContext)
 
   const paperStyle = { backgroundColor: 'white', padding: 20, height:'60vh', width: 400, margin: '20px auto' };
   const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '30px', backgroundColor: '#627C79', padding: 0 };
@@ -63,6 +67,7 @@ const ListProduct = ( {getProducts} ) => {
       product_price: values.product_price,
     }
 
+    // example format for ListProduct fetch if... else... 
     // useEffect(() => {
     //   // fetch customer and set customer data to state
     //   fetch("/customer")
@@ -102,7 +107,7 @@ const ListProduct = ( {getProducts} ) => {
                   <Field as={TextField} label='model' name='model' placeholder='Enter product model' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="model"/>}/>
                   <Field as={TextField} label='product_name' name='product_name' placeholder='Enter product name' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="product_name"/>}/>        
                   <Field as={TextField} label='product_price' name='product_price' type="number" InputProps={{inputProps: {max: 1000000, min: 0}}} placeholder='Enter price' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="product_price"/>}/>
-                  <Field as={TextField} label='inventory' name='inventory' type="number" InputProps={{inputProps: {max: 1000000, min: 0}}} placeholder='Enter how many to list' style={textFieldStyle} type="number" fullWidth required helperText={<ErrorMessage name="inventory"/>}/>
+                  <Field as={TextField} label='inventory' name='inventory' type="number" InputProps={{inputProps: {max: 1000000, min: 0}}} placeholder='Enter how many to list' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="inventory"/>}/>
                   <Field as={TextField} label='product_description' name='product_description' placeholder='Enter short description' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="product_description"/>}/>
                   <Field as={TextField} label='image' name='image' placeholder='Enter image url' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="image"/>}/>        
                   <Box textAlign="center">

@@ -3,18 +3,17 @@ import { useState, createContext } from "react"
 const ErrorContext = createContext();
 
 const ErrorProvider = ({children}) => {
-  const [errors, setErrors] = useState(null)
+  const [error, setError] = useState(null)
 
-  const saveErrors = (newError) => {
-    setErrors(newError)
+  const saveError = (newError) => {
+    setError(newError)
   }
-  
+
   return (
-    <ErrorContext.Provider value={{saveErrors, errors}} >
+    <ErrorContext.Provider value={{error, saveError}} >
       {children}
     </ErrorContext.Provider>
   )
 }
 
 export {ErrorContext, ErrorProvider}
-

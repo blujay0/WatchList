@@ -125,9 +125,8 @@ class Cart(Resource):
 class Login(Resource):
     def post(self):
         try:
-            data = (
-                request.get_json()
-            )  # give me json part of data (requests can have other info)
+            # give me json part of data (requests can have other info)
+            data = request.get_json()
             email = data["email"]
             password = data["password"]
             # write a query to get object associated with email address, if email doesn't exist customer is none
@@ -146,14 +145,14 @@ class Login(Resource):
                         }
                     )
                 else:
-                    print("bad password")
+                    # print("bad password")
                     return make_response({"error": "invalid credentials"}, 400)
             else:
-                print("bad email")
+                # print("bad email")
                 return make_response({"error": "invalid credentials"}, 400)
         except Exception as e:
-            print(e)
-            return make_response({"error": "login failed"}, 500)
+            # print(e)
+            return make_response({"error": "invalid credentials"}, 500)
 
 
 class Logout(Resource):
@@ -161,8 +160,8 @@ class Logout(Resource):
     # flask session on server is different than client-side session
     def post(self):
         session.clear()
-        print("session data")
-        print("cookie cleared!")
+        # print("session data")
+        # print("cookie cleared!")
         return make_response({}, 201)
 
 
@@ -187,6 +186,7 @@ class Products(Resource):
             data = request.get_json()
             # set client sent values to keys
 
+            customer_id = session["id"]
             maker = data["maker"]
             model = data["model"]
             product_name = data["product_name"]
@@ -194,7 +194,6 @@ class Products(Resource):
             inventory = data["inventory"]
             product_description = data["product_description"]
             image = data["image"]
-            customer_id = session["id"]
 
             # use the MODEL class to create an instance of the class
             try:

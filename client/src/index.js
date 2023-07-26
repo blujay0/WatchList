@@ -5,7 +5,7 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 // import 'semantic-ui-css/semantic.min.css'
-import ErrorProvider from './context/ErrorContext';
+import { ErrorProvider } from './context/ErrorContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

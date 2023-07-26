@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './SignUp.css';
 import { Grid, Paper, Avatar, TextField, Button, Box, IconButton, Divider } from '@mui/material';
 import { LockPerson, Fingerprint, Person } from '@mui/icons-material';
@@ -7,12 +7,17 @@ import { ThemeContext } from './App.js'
 import { useTheme } from './ThemeProvider'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { ErrorContext } from '../context/ErrorContext';
 
 const SignUp = () => {
   // const [name, setName] = useState();
   // const [email, setEmail] = useState();
   // const [address, setAddress] = useState();
   // const [password, setPassword] = useState();
+
+  // destructure error context here
+  const { error, setError } = useContext(ErrorContext)
+
   const [errorMessage, setErrorMessage] = useState();
   const history = useHistory(); 
 
@@ -41,6 +46,24 @@ const SignUp = () => {
     address:Yup.string().required('please enter address'),
     password:Yup.string().required("Required").min(5, 'Password is too short - should be 5 characters minimum.').max(10, 'password too long - should be less than 11 characters'),
   })
+
+// example format for SignUp fetch if... else...
+// fetch('/signup', {
+//   method: 'POST',
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+//   body: JSON.stringify(formData)
+// })
+// .then(resp => {
+//   if (resp.ok) {
+//     resp.json().then((data) => doSomething(data));
+//     props.resetForm(); // resets form after successful submit
+//   } else {
+//     resp.json()
+//     .then(error => setErrorMessage(error.error))
+//   }
+// })
 
   const handleSubmit = (values, props) => {
     const formData = {

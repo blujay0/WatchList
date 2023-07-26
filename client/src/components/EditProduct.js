@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { Grid, Paper, Avatar, TextField, Button, Box, IconButton, Divider } from '@mui/material';
 import { Notes, PostAdd } from '@mui/icons-material';
@@ -6,6 +6,7 @@ import { ThemeContext } from './App.js'
 import { useTheme } from './ThemeProvider'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { ErrorContext } from '../context/ErrorContext';
 
 const EditProduct = ({ getProducts }) => {
   // const [id, setID] = useState();
@@ -16,6 +17,10 @@ const EditProduct = ({ getProducts }) => {
   // const [inventory, setInventory] = useState();
   // const [productDescription, setProductDescription] = useState();
   // const [image, setImage] = useState();
+
+  // destructure error context here
+  const { error, setError } = useContext(ErrorContext)
+
   const [product, setProduct] = useState({
     maker:'',
     model:'',
@@ -62,6 +67,22 @@ const EditProduct = ({ getProducts }) => {
     product_description:Yup.string().min(25).max(150).required('Description Required'),
     image:Yup.string().matches(URL, 'please enter valid URL')
   })  
+
+// example format for EditProduct fetch if... else...
+// fetch(`/products/${productId}`, {
+//   method: "PATCH",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+//   body: JSON.stringify(formData)
+// }).then((resp) => {
+//   if (resp.ok) {
+//     getProducts()
+//   }
+//   else {
+//     resp.json().then(error => setError(error.error))
+//   }
+// })
 
   useEffect(() => {
     fetch(`/products/${productId}`)

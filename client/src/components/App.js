@@ -19,15 +19,16 @@ import FunctionContext from "./FunctionContext.js"
 import { ThemeProvider } from "./ThemeProvider.js";
 import { NotificationsOffRounded } from "@mui/icons-material";
 import NotFound from './NotFound.js'
-import { ErrorContext } from '../context/errorContext';
+import { ErrorContext } from '../context/ErrorContext';
 import Error from './Error';
 
 const App = () => {
   // Code goes here!
+  const { saveError, error } = useContext(ErrorContext);
+
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [customer, setCustomer] = useState(null); // set customer id
-  const { saveErrors, errors } = useContext(ErrorContext);
 
   // GET watches
   const getProducts = () => {
@@ -40,7 +41,6 @@ const App = () => {
   useEffect(() => {
     getProducts();
   }, []);
-
 
   // useEffect(() => {
   //   fetch(`/cart`)
@@ -71,7 +71,7 @@ const App = () => {
     */
     <>
       <Navbar customer={customer}/>
-      {errors && <Error />}
+      {error && <Error />}
         {/* context can be though of as a global set for all of the children in the Provider */}
       <ThemeProvider>
         <FunctionContext />
