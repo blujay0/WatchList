@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.css';
 import { Grid, Paper, Avatar, TextField, Button, Box, IconButton, Divider } from '@mui/material';
 import { LockPerson, Fingerprint, Key } from '@mui/icons-material';
@@ -8,13 +8,16 @@ import * as Yup from 'yup';
 import { ThemeContext } from './App.js'
 import { useTheme } from './ThemeProvider'
 const Login = ({ setCustomer }) => {
-  
+  // destructure error context here
+  const [emailError, setEmailError] = useState('');
+
   const paperStyle = { backgroundColor: 'white', padding: 20, height:'50vh', width: 400, margin: '20px auto' };
   const buttonStyle = { margin: '8px 0', height: '5vh', borderRadius: '30px', backgroundColor: '#627C79', padding: 0 };
   const textFieldStyle = { backgroundColor: 'white', margin: '8px 0', };
   const avatarStyle = { height: '70px', width: '70px', bgcolor: '#273248' };
   const lockPersonStyle = { fontSize: '2em', color: 'white' };
   const keyStyle = { fontSize: '40px', color: 'white' };
+
 
   const history = useHistory();
   const darkTheme = useTheme();
@@ -48,11 +51,11 @@ const Login = ({ setCustomer }) => {
     .then(resp => {
       // console.log(resp)
       if (resp.ok) { // if response is one of 200 status code
-        resp.json().then((data) => {setCustomer(data.customer)}); // set customer to customer attribute of data sent back from request
+        resp.json().then((data) => {setCustomer(data)}); // set customer to customer attribute of data sent back from request
         props.resetForm(); // resets form after submit
         history.push('/');
       } else {
-        resp.json().then(error => alert(error.error));
+        resp.json().then(error => setEmailError(error.error));
       }
     })
     .catch(console.error)
@@ -73,6 +76,7 @@ const Login = ({ setCustomer }) => {
               <Form>
                 {/* {console.log(props)} */}
                 <Field as={TextField} label='email' name='email' variant="outlined" placeholder='Enter email' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="email"/>}/>
+                {emailError && <span style={{color: "red"}}>{emailError}</span>}
                 <Field as={TextField} label='password' name='password' variant="outlined" placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required helperText={<ErrorMessage name="password"/>}/>
                 <Box textAlign='center'>
                   <Button type='submit' style={buttonStyle} fullWidth>

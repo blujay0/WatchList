@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ThemeContext } from './App.js'
 import { useTheme } from './ThemeProvider'
 import './Cart.css';
+import { useHistory } from 'react-router-dom';
 
 function Cart(  ) {
   // creates state for cartItems returned from GET fetch below
@@ -11,6 +12,8 @@ function Cart(  ) {
     backgroundColor: darkTheme ? '#008B8B' : '#FFFFFF',
     color: darkTheme ? '#FFFFFF' : '#000000'
   }
+
+  const history = useHistory();
 
   const removeCartItem = (product_id) => {
     const formData = {
@@ -33,6 +36,11 @@ function Cart(  ) {
       header: {
         "Content-Type": "application/json",
       },
+    })
+    .then(resp => {
+      if(resp.ok) {
+        history.push('/order')
+      }        
     })
   }
 

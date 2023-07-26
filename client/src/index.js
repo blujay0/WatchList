@@ -5,14 +5,16 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 // import 'semantic-ui-css/semantic.min.css'
+import ErrorProvider from './context/ErrorContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // turn strictmode into ErrorProvider
+  <ErrorProvider>
     <Router>
       <App />
     </Router>
-  </React.StrictMode>
+  </ErrorProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

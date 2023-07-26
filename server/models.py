@@ -42,6 +42,7 @@ class Customer(db.Model):
     # relationships
     cart_items = db.relationship("CartItem", back_populates="customer")
     orders = db.relationship("Order", back_populates="customer")
+    products = db.relationship("Product", back_populates="owner")
 
     # validations
     @validates("name")
@@ -68,8 +69,8 @@ class Customer(db.Model):
     def validate_password(self, key, password):
         if len(password) < 5:
             raise ValueError("password should be more than 4 characters")
-        if len(password) > 10:
-            raise ValueError("password should be less than 11 characters")
+        # if len(password) > 20:
+        #     raise ValueError("password should be less than 20 characters")
         return password
 
     # other methods
@@ -95,6 +96,7 @@ class Product(db.Model):
     __tablename__ = "products"
 
     id = db.Column(db.Integer, primary_key=True)
+    customer_id = db.Column(db.Integer, db.ForeignKey("customers.id"))
     maker = db.Column(db.String, nullable=False)
     model = db.Column(db.String, nullable=False)
     product_name = db.Column(db.String, nullable=False)
@@ -106,6 +108,7 @@ class Product(db.Model):
     # relationships
     order_details = db.relationship("OrderDetail", back_populates="product")
     cart_items = db.relationship("CartItem", back_populates="product")
+    owner = db.relationship("Customer", back_populates="products")
 
     # validations
     @validates("maker")
@@ -113,7 +116,7 @@ class Product(db.Model):
         if len(maker) < 3:
             raise ValueError("maker name is too short")
 
-        if len(maker > 20):
+        if len(maker) > 20:
             raise ValueError("maker name is too long")
         return maker
 
@@ -121,7 +124,7 @@ class Product(db.Model):
     def validate_model(self, key, model):
         if len(model) < 3:
             raise ValueError("model name is too short")
-        if len(model > 20):
+        if len(model) > 20:
             raise ValueError("model name is too long")
         return model
 
@@ -130,7 +133,7 @@ class Product(db.Model):
     def validate_product_name(self, key, product_name):
         if len(product_name) < 3:
             raise ValueError("product name is too short")
-        if len(product_name) > 20:
+        if len(product_name) > 60:
             raise ValueError("product name is too long")
         return product_name
 
@@ -150,7 +153,7 @@ class Product(db.Model):
     def validate_product_description(self, key, product_description):
         if len(product_description) < 25:
             raise ValueError("product description too short")
-        if len(product_description) > 150:
+        if len(product_description) > 5000:
             raise ValueError("product description too long")
         return product_description
 
@@ -168,6 +171,7 @@ class Product(db.Model):
 
     def as_dict(self):
         return {
+            "customer_id": self.customer_id,
             "product_id": self.id,
             "maker": self.maker,
             "model": self.model,
@@ -208,7 +212,7 @@ class Order(db.Model):
         # for order_detail in self.order_details:
         #     order_details.append(order_detail.as_dict())
 
-        # self.order_details refers to the order_details attribute in line 119
+        # self.order_details refers to the order_details attribute
         return {
             "order_id": self.id,
             "customer_id": self.customer_id,

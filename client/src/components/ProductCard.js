@@ -41,7 +41,7 @@ const ProductCard = ({ customer, getProducts, product, setCartItems, cartItems }
       body: JSON.stringify(formData)
     })  
   }
-
+  
   return (
     <div className="main">
       <main style={themeStyles}>
@@ -52,12 +52,14 @@ const ProductCard = ({ customer, getProducts, product, setCartItems, cartItems }
         <div>Price: ${product_price}</div>
         {/* <div>Description: {product_description}</div> */}
         {customer && <button className='cart-button' onClick={handleAddToCart}>🛒</button>}
-        {customer && <button className='trash-button' onClick={handleDelete}>🗑️</button>}    
+        {/* {console.log(customer)}
+        {console.log(product.customer_id)} */}
+        {customer && (customer.id === product.customer_id) && <button className='trash-button' onClick={handleDelete}>🗑️</button>}    
         {/* React has an 'as' prop that can instruct a component to render as something else */}
         <Link to={productPath} className="btn btn-primary">Details</Link>&nbsp;
         <br/>
         <br/>
-        {customer && <Link to={productEditPath} className="btn btn-primary">Edit Product</Link>}
+        {customer && (customer.id === product.customer_id) && <Link to={productEditPath} className="btn btn-primary">Edit Product</Link>}
       </main>
     </div>
   )

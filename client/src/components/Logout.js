@@ -1,15 +1,21 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom';
 import { ThemeContext } from './App.js'
 
 const Logout = ({updateCustomer, setCustomer}) => { // updateCustomer is not defined yet, but remember you will implement useContext
+  const history = useHistory();
+  
   const handleClick = async () => {
       const resp = await fetch("/logout", {
           method: "POST"
       })
-      // if(resp.ok) {
-      //   updateCustomer(false)  
-      // }
-      setCustomer(null);
+      .then(resp => {
+        if(resp.ok) {
+          setCustomer(null);
+          history.push('/login')
+        }        
+      })
+      // setCustomer(null);
   }
 
 return (

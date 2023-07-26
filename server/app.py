@@ -139,7 +139,12 @@ class Login(Resource):
                     # if matches then session id and name is set to the customer id and name, respectively
                     session["id"] = customer.id
                     session["name"] = customer.name
-                    return make_response({"customer": customer.name})
+                    return make_response(
+                        {
+                            "customer": customer.name,
+                            "customer_id": customer.id,
+                        }
+                    )
                 else:
                     print("bad password")
                     return make_response({"error": "invalid credentials"}, 400)
@@ -177,35 +182,38 @@ class Products(Resource):
 
     # create new product
     def post(self):
-        # get data sent from client
-        data = request.get_json()
-        # set client sent values to keys
+        if "id" in session:
+            # get data sent from client
+            data = request.get_json()
+            # set client sent values to keys
 
-        maker = data["maker"]
-        model = data["model"]
-        product_name = data["product_name"]
-        product_price = data["product_price"]
-        inventory = data["inventory"]
-        product_description = data["product_description"]
-        image = data["image"]
+            maker = data["maker"]
+            model = data["model"]
+            product_name = data["product_name"]
+            product_price = data["product_price"]
+            inventory = data["inventory"]
+            product_description = data["product_description"]
+            image = data["image"]
+            customer_id = session["id"]
 
-        # use the MODEL class to create an instance of the class
-        try:
-            product = Product(
-                maker=maker,
-                model=model,
-                product_name=product_name,
-                product_price=product_price,
-                inventory=inventory,
-                product_description=product_description,
-                image=image,
-            )
-        except ValueError as e:
-            return make_response({"error": str(e)}, 400)
+            # use the MODEL class to create an instance of the class
+            try:
+                product = Product(
+                    maker=maker,
+                    model=model,
+                    product_name=product_name,
+                    product_price=product_price,
+                    inventory=inventory,
+                    product_description=product_description,
+                    image=image,
+                    customer_id=customer_id,
+                )
+            except ValueError as e:
+                return make_response({"error": str(e)}, 400)
 
-        db.session.add(product)
-        db.session.commit()  # saves to database
-        return make_response(product.as_dict(), 201)
+            db.session.add(product)
+            db.session.commit()  # saves to database
+            return make_response(product.as_dict(), 201)
 
 
 class ProductByID(Resource):
@@ -218,6 +226,15 @@ class ProductByID(Resource):
 
     # id parameter comes from client side page where client makes fetch request
     def patch(self, id):
+        if "id" not in session:
+            return make_response({"error": "unauthorized user"}, 401)
+
+        product = Product.query.filter(Product.id == id).first()
+
+        # if person that is logged in is not the owner, return error
+        if session["id"] != product.customer_id:
+            return make_response({"error": "unauthorized user"}, 401)
+
         data = request.get_json()
 
         # assign data values to variables
@@ -225,15 +242,15 @@ class ProductByID(Resource):
         maker = data["maker"]
         image = data["image"]
         product_price = data["product_price"]
+        model = data["model"]
 
         # add more fields as necessary
         # consider what happens when client does not provide value for a field
 
-        product = Product.query.filter(Product.id == id).first()
-
         try:
             product.product_name = product_name
             product.maker = maker
+            product.model = model
             product.image = image
             product.product_price = product_price
 
@@ -251,6 +268,14 @@ class ProductByID(Resource):
     def delete(self, id):
         # query
         product = Product.query.filter(Product.id == id).first()
+
+        # make sure that someone is logged in
+        if "id" not in session:
+            return make_response({"error": "unauthorized user"}, 401)
+
+        # if person that is logged in is not the owner, return error
+        if session["id"] != product.customer_id:
+            return make_response({"error": "unauthorized user"}, 401)
 
         # session commands
         db.session.delete(product)
@@ -327,6 +352,9 @@ class Orders(Resource):
             customer_id = session["id"]
 
             # get cart items
+            # query for cat items associated w/ customer
+            # .all() returns a list
+            # .first() returns obj
             cartItems = CartItem.query.filter(CartItem.customer_id == customer_id).all()
 
             total_amount = 0
@@ -335,12 +363,12 @@ class Orders(Resource):
 
             # for each item in cartItems, append an Order Details obj to order
             for item in cartItems:
-                order.order_details.append(
-                    OrderDetail(
-                        quantity=1,
-                        product=item.product,
-                    )
+                order_detail = OrderDetail(
+                    quantity=1,
+                    product=item.product,
                 )
+                # order obj created in line 362
+                order.order_details.append(order_detail)
                 total_amount += item.product.product_price
 
             order.total_amount = total_amount
