@@ -21,14 +21,22 @@ import { NotificationsOffRounded } from "@mui/icons-material";
 import NotFound from './NotFound.js'
 import { ErrorContext } from '../context/ErrorContext';
 import Error from './Error';
+import { SuccessContext } from '../context/SuccessContext';
+import Success from './Success';
 
 const App = () => {
   // Code goes here!
-  const { saveError, error } = useContext(ErrorContext);
+  const { error, setError } = useContext(ErrorContext);
+  const { success, setSuccess } = useContext(SuccessContext);
 
-  const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [customer, setCustomer] = useState(null); // set customer id
+  const [products, setProducts] = useState([]);
+  // const [query, setQuery] = useState("")
+
+  // const filteredProducts = products.filter(product => {
+  //   return product.toLowerCase().includes(query.toLowerCase())
+  // })
 
   // GET watches
   const getProducts = () => {
@@ -71,6 +79,7 @@ const App = () => {
     */
     <>
       <Navbar customer={customer}/>
+      {success && <Success />}
       {error && <Error />}
         {/* context can be though of as a global set for all of the children in the Provider */}
       <ThemeProvider>

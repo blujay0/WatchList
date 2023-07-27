@@ -58,8 +58,8 @@ function Cart(  ) {
     <div className="Cart" style={themeStyles}>
       <h1>Your Cart</h1>
       {/* check to see if cartItems exist first with && */}
-      {console.log('CART ITEMS')}
-      {console.log(cartItems)}
+      {/* {console.log('CART ITEMS')}
+      {console.log(cartItems)} */}
       {cartItems && cartItems.map((item, index) => <div key={index}>{item.product_id}<button onClick={() => removeCartItem(item.product_id)}>Remove</button></div>)}
       {<div style={{marginTop: "10px"}}><button onClick={handleCheckout}>Checkout</button></div>}
     </div>

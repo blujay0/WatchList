@@ -7,6 +7,7 @@ import { useTheme } from './ThemeProvider'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { ErrorContext } from '../context/ErrorContext';
+import { SuccessContext } from '../context/SuccessContext';
 
 const EditProduct = ({ getProducts }) => {
   // const [id, setID] = useState();
@@ -20,6 +21,7 @@ const EditProduct = ({ getProducts }) => {
 
   // destructure error context here
   const { error, setError } = useContext(ErrorContext)
+  const { success, setSuccess } = useContext(SuccessContext)
 
   const [product, setProduct] = useState({
     maker:'',
@@ -109,10 +111,18 @@ const EditProduct = ({ getProducts }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData)
-    }).then(() => getProducts())
+    }).then(resp => {
+      if (resp.ok) {
+        getProducts()
+        setSuccess('Edit Successful!')
+      } else {
+        resp.json().then(error => {
+          setError(error.error)
+        })
+      }
+    })
     
   }
-
   return(
     <div style={themeStyles}>
       <Grid>

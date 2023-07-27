@@ -8,6 +8,7 @@ import { useTheme } from './ThemeProvider'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { ErrorContext } from '../context/ErrorContext';
+import { SuccessContext } from '../context/SuccessContext';
 
 const SignUp = () => {
   // const [name, setName] = useState();
@@ -17,8 +18,9 @@ const SignUp = () => {
 
   // destructure error context here
   const { error, setError } = useContext(ErrorContext)
+  const { success, setSuccess } = useContext(SuccessContext);
 
-  const [errorMessage, setErrorMessage] = useState();
+  // const [errorMessage, setErrorMessage] = useState();
   const history = useHistory(); 
 
   const paperStyle = { backgroundColor: 'white', padding: 20, height:'60vh', width: 400, margin: '20px auto' };
@@ -79,16 +81,18 @@ const SignUp = () => {
       },
       body: JSON.stringify(formData)
     })
-    .then(resp => resp.json())
-    .then(data => {
-      if (data.message) {
-        setErrorMessage(data.message)
-      } else {
-        // setName(''); // clear textfield after successful submit
+    .then(resp => {
+      if (resp.ok) {
         props.resetForm();
-        history.push('/login'); // redirect after successful submit
+        setSuccess('signup successful! please login!')
+        history.push('/login')
+      } else {
+        // convert to json b/c error message is in json
+        resp.json().then(error => {
+          setError(error.error)
+        })
       }
-    })  
+    })
   }
 
   return (

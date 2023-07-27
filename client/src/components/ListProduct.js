@@ -6,6 +6,7 @@ import { useTheme } from './ThemeProvider'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { ErrorContext } from '../context/ErrorContext';
+import { SuccessContext } from '../context/SuccessContext.js';
 
 const ListProduct = ( {getProducts} ) => {
   // const [maker, setMaker] = useState();
@@ -19,6 +20,7 @@ const ListProduct = ( {getProducts} ) => {
 
   // destructure error context here
   const { error, setError } = useContext(ErrorContext)
+  const { success, setSuccess } = useContext(SuccessContext)
 
   const paperStyle = { backgroundColor: 'white', padding: 20, height:'60vh', width: 400, margin: '20px auto' };
   const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '30px', backgroundColor: '#627C79', padding: 0 };
@@ -86,8 +88,19 @@ const ListProduct = ( {getProducts} ) => {
       },
       body: JSON.stringify(formData),
     })
-    .then( resp => resp.json())
-    .then(() => getProducts())
+    .then(resp => {
+      if (resp.ok) {
+        getProducts()
+        setSuccess('Listing Successful!')
+      } else {
+        resp.json().then(error => {
+          setError(error.error)
+        })
+        
+      }
+    })
+    // .then( resp => resp.json())
+    // .then(() => getProducts())
   }
 
   return(

@@ -6,15 +6,20 @@ import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 // import 'semantic-ui-css/semantic.min.css'
 import { ErrorProvider } from './context/ErrorContext';
+import { SuccessProvider } from './context/SuccessContext';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // turn strictmode into ErrorProvider
+  <SuccessProvider>
   <ErrorProvider>
     <Router>
       <App />
     </Router>
   </ErrorProvider>
+  </SuccessProvider>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -122,10 +122,8 @@ class Product(db.Model):
 
     @validates("model")
     def validate_model(self, key, model):
-        if len(model) < 3:
-            raise ValueError("model name is too short")
-        if len(model) > 20:
-            raise ValueError("model name is too long")
+        if model not in ["automatic", "manual"]:
+            raise ValueError("model must be either 'automatic' or 'manual'")
         return model
 
     @validates("product_name")

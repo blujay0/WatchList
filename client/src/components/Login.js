@@ -8,12 +8,14 @@ import * as Yup from 'yup';
 import { ThemeContext } from './App.js'
 import { useTheme } from './ThemeProvider'
 import { ErrorContext } from '../context/ErrorContext';
+import { SuccessContext } from '../context/SuccessContext';
 
 const Login = ({ setCustomer }) => {
   // destructure error context here
   const { error, setError } = useContext(ErrorContext)
+  const { success, setSuccess } = useContext(SuccessContext)
 
-  const [emailError, setEmailError] = useState('');
+  // const [emailError, setEmailError] = useState('');
 
   const paperStyle = { backgroundColor: 'white', padding: 20, height:'50vh', width: 400, margin: '20px auto' };
   const buttonStyle = { margin: '8px 0', height: '5vh', borderRadius: '30px', backgroundColor: '#627C79', padding: 0 };
@@ -75,12 +77,16 @@ const Login = ({ setCustomer }) => {
       if (resp.ok) { // if response is one of 200 status code
         resp.json().then((data) => {setCustomer(data)}); // set customer to customer attribute of data sent back from request
         props.resetForm(); // resets form after submit
+        setSuccess('Login Successful!');
         history.push('/');
       } else {
-        resp.json().then(error => setEmailError(error.error));
+        resp.json().then(error => {
+          // setEmailError(error.error)
+          setError(error.error)
+        });
       }
     })
-    .catch(console.error)
+    .catch(console.error) // this catch is for errors regarding the fetch itself
   }
 
   return (
@@ -98,7 +104,7 @@ const Login = ({ setCustomer }) => {
               <Form>
                 {/* {console.log(props)} */}
                 <Field as={TextField} label='email' name='email' variant="outlined" placeholder='Enter email' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="email"/>}/>
-                {emailError && <span style={{color: "red"}}>{emailError}</span>}
+                {/* {emailError && <span style={{color: "red"}}>{emailError}</span>} */}
                 <Field as={TextField} label='password' name='password' variant="outlined" placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required helperText={<ErrorMessage name="password"/>}/>
                 <Box textAlign='center'>
                   <Button type='submit' style={buttonStyle} fullWidth>

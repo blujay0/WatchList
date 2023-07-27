@@ -108,7 +108,7 @@ class Cart(Resource):
 
     # this is for the 'remove' button on each cart item
     def delete(self):
-        # user-specific info always needs this
+        # user-specific info needs condition to check for id
         if "id" in session:
             data = request.get_json()
             customer_id = session["id"]
@@ -136,14 +136,10 @@ class Login(Resource):
                 # check password in database against password input
                 if bcrypt.check_password_hash(customer.password, password):
                     # if matches then session id and name is set to the customer id and name, respectively
+                    # setting session key "id" to customer.id
                     session["id"] = customer.id
                     session["name"] = customer.name
-                    return make_response(
-                        {
-                            "customer": customer.name,
-                            "customer_id": customer.id,
-                        }
-                    )
+                    return make_response(customer.as_dict())
                 else:
                     # print("bad password")
                     return make_response({"error": "invalid credentials"}, 400)
@@ -225,6 +221,7 @@ class ProductByID(Resource):
 
     # id parameter comes from client side page where client makes fetch request
     def patch(self, id):
+        # id was never set on session = user has not logged in
         if "id" not in session:
             return make_response({"error": "unauthorized user"}, 401)
 
@@ -253,6 +250,7 @@ class ProductByID(Resource):
             product.image = image
             product.product_price = product_price
 
+        # message set in @validates for models is what gets set to ValueError
         except ValueError as e:
             return make_response({"error": str(e)}, 400)
 
@@ -286,7 +284,9 @@ class ProductByID(Resource):
 
 class SignUp(Resource):
     def post(self):
+        # step 1 create user in my system
         try:
+            # request json part of data and set variables to values from json
             data = request.get_json()
             name = data["name"]
             email = data["email"]
@@ -297,7 +297,7 @@ class SignUp(Resource):
             # if customer does NOT exist, code continues as normal
             customer = Customer.query.filter(Customer.email == email).first()
             if customer:
-                return make_response({"message": "email already exists"}, 200)
+                return make_response({"error": "email already exists"}, 400)
             try:
                 # anytime using a Customer obj, we use the corresponding error defined in models.py
                 new_customer = Customer(
@@ -309,11 +309,13 @@ class SignUp(Resource):
             # if anything in try raises an error catch it here
             except ValueError as e:
                 # e (exception object) includes the actual text that you put in the ValueError models.py
-                return make_response({"message": str(e)})
+                return make_response({"error": str(e)}, 400)
 
             db.session.add(new_customer)
             db.session.commit()
 
+            # step 2 create user in chatengine.io system
+            # once you create a user in your system => create a user in chatengine.io's system
             # add to chat engine
             data = {
                 "username": email,
@@ -324,7 +326,7 @@ class SignUp(Resource):
                 "https://api.chatengine.io/users/", data=data, headers=headers
             )
             # print(r.text)
-            return make_response({"message": ""}, 201)
+            return make_response({"success": "creation success!"}, 201)
 
         # except is telling program that you will take care of exception
         except:
@@ -343,7 +345,7 @@ class Orders(Resource):
             # get order for particular user
             orders = Order.query.filter(Order.customer_id == customer_id).all()
 
-            return make_response([order.as_dict() for order in orders])
+            return make_response([order.as_dict() for order in orders], 200)
 
     def post(self):
         # user-specific info always needs this
@@ -373,7 +375,6 @@ class Orders(Resource):
             order.total_amount = total_amount
 
             db.session.add(order)
-            # clears the cart after add to session
             CartItem.query.filter(CartItem.customer_id == customer_id).delete()
             db.session.commit()
 

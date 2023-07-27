@@ -5,12 +5,12 @@ const ErrorContext = createContext();
 const ErrorProvider = ({children}) => {
   const [error, setError] = useState(null)
 
-  const saveError = (newError) => {
-    setError(newError)
-  }
+  // const saveError = (newError) => {
+  //   setError(newError)
+  // }
 
   return (
-    <ErrorContext.Provider value={{error, saveError}} >
+    <ErrorContext.Provider value={{error, setError}} >
       {children}
     </ErrorContext.Provider>
   )

@@ -8,13 +8,13 @@ const Product = () => {
   const { productId } = useParams();
   
   useEffect(() => {
-    console.log(productId);
+    // console.log(productId);
     fetch(`/products/${productId}`)
     .then(resp => {
       if (resp.ok) { // if response is one of 200 status code
         resp.json().then(setProduct); // set product state to response which is a single product
       } else {
-        resp.json().then(error => setError(error.message));
+        resp.json().then(error => setError(error.error));
       }
     })
     .catch(console.error)
