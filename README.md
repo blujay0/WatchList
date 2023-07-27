@@ -47,7 +47,7 @@ To setup your database, do the following:
 > you to roll all the way back while still holding onto your database. You can
 > create this empty revision with `flask db revision -m'Create DB'`.**
 
-## Starting the Client
+## Start the Development (Client) Server
 To start running the client, do the following:
 * open a separate terminal, ```cd``` into the client directory
 * run ```npm install``` to install dependencies
