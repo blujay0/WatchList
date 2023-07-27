@@ -1,7 +1,5 @@
 # ⌚ WatchList
-Hello and welcome! This is a fullstack ecommerce application for manual & automatic watches, implementing React for the frontend and Python & Flask + SQLAlchemy for the backend. This README will give an overview of the server-side, and getting the frontend + backend up & running in the terminals. For an overview of the client-side, please go [here](/client/README.md)
-
-***
+Hello and welcome! This is a fullstack ecommerce application for manual & automatic watches, implementing React for the frontend and Python & Flask + SQLAlchemy for the backend. This README will give an overview of the server-side, and getting the frontend + backend up & running in the terminals. For an overview of the client-side, please go [here](/client/README.md).
 
 ## File Structure
 ```
@@ -27,37 +25,36 @@ Hello and welcome! This is a fullstack ecommerce application for manual & automa
     ├── models.py
     └── seed.py
 ```
-***
 
 ## Installation & Running Your Server
 1. Fork and clone this repo from Github to your local environment
-2. Navigate into your local directory and open the contents in your code editor
+2. Move to your local base directory and open the terminal in your code editor
 3. Run ```pipenv install``` to install dependencies
 4. Run ```pipenv shell``` to create and enter your virtual environment
-5. From the main project directory, run ```cd server``` to enter the server directory
-6. After that, in the same terminal, run ```flask run``` to run the backend server
-***
+5. In your main project directory, run ```cd server``` to enter the server directory
+6. After that, in the same terminal, run ```flask run``` to get the backend server up & running
 
-## Generate Your Database
+## Generate the Database
+<img src="client/public/watchlistERD.png" width="500" alt="watchlist project entity relationship diagram">
+
 To setup your database, do the following:
-
-`cd` into the `server/` directory, then run `flask db init migrations` to set up
-Flask-Migrate.
-
-Navigate to `models.py` and start creating your models. Remember
-to regularly run `flask db revision --autogenerate -m'<descriptive message>'`
-and `flask db upgrade head` to track your modifications to the database and
-create checkpoints in case you ever need to roll those modifications back.
+* `cd` into the `server/` directory and run ```export FLASK_APP=app.py``` to specify how to load the application
+* `flask db migrate -m "your message"`
+* ```flask db upgrade```
+* run ```python seed.py``` to seed the database
 
 > **Tip: It's always a good idea to start with an empty revision! This allows
 > you to roll all the way back while still holding onto your database. You can
 > create this empty revision with `flask db revision -m'Create DB'`.**
 
-If you want to seed your database, now would be a great time to write out your
-`seed.py` script and run it to generate some test data. You may want to use
-Pipenv to install Faker to save you some time.
+## Starting the Client
+To start running the client, do the following:
+* open a separate terminal, ```cd``` into the client directory
+* run ```npm install``` to install dependencies
+* run ```npm start``` to open the app in the browser
 
-***
+> **TIP: It's good practice to have the backend server running first!
+
 ## Packages Used
 
 
@@ -65,7 +62,7 @@ Pipenv to install Faker to save you some time.
 
 
 
-***
+
 ## Resources & Acknowledgements
 
 - [Chatengine.io](https://chatengine.io/)
