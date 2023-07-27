@@ -17,13 +17,11 @@ const Navbar = ({ customer }) => {
     </ IconButton>
 
     {/* if customer does not exist, show login link */}
-    {/*   */}
     {!customer && <Link to="/login" className="nav-links">
       <p>Login</p>
     </Link>}
 
     {/* if customer exists, show logout link */}
-    {/*   */}
     {customer && <Link to="/logout" className="nav-links">
       <p>Logout</p>
     </Link>}
@@ -45,7 +43,7 @@ const Navbar = ({ customer }) => {
     </Link>} */}
 
     {customer && <Link to="/order" className="nav-links">
-      <p>Orders</p>
+      <p>Your Orders</p>
     </Link>}
 
     </nav>  

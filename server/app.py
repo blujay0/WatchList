@@ -148,7 +148,7 @@ class Login(Resource):
                 return make_response({"error": "invalid credentials"}, 400)
         except Exception as e:
             # print(e)
-            return make_response({"error": "invalid credentials"}, 500)
+            return make_response({"error": "invalid credentials"}, 400)
 
 
 class Logout(Resource):
