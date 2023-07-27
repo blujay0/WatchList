@@ -47,14 +47,17 @@ const Order = () => {
 
       <div>{orders && orders.map((item) => 
         <div key={item.order_id}>
-          {item.order_id} /
-          {item.customer_id} /
-          {item.date} /
-          {item.total_amount} /
-          {item.order_details.map((ele, index) => <div>{ele.id} {ele.quantity} {ele.product_id}</div>)}
+          Order # {item.order_id} /
+          Customer ID: {item.customer_id} /
+          Order Date: {item.date} /
+          Total Order Amount: ${item.total_amount} /
+          {/* {item.order_details.map((ele, index) => <div>Item ID: {ele.id} / Quantity: {ele.quantity} / Product ID: {ele.product_id} / Name: {ele.product_name}</div>)} */}
+          {item.order_details.map((ele, index) => <div>Product ID: {ele.product_id} / Quantity: {ele.quantity} / </div>)}
+          <br />
         </div>
         )}
       </div>
+      <br />
     </div>
   )
 }
