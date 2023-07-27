@@ -53,7 +53,7 @@ class Customer(db.Model):
             raise ValueError("Name must be less than 20 chars")
         return name
 
-    # sqlalchemy documentation
+    # from sqlalchemy documentation:
     # @validates("email")
     # def validate_email(self, key, address):
     #     assert "@" in address

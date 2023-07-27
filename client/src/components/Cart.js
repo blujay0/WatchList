@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { ThemeContext } from './App.js'
 import { useTheme } from './ThemeProvider'
 import './Cart.css';
 import { useHistory } from 'react-router-dom';
+import { ErrorContext } from '../context/ErrorContext';
 
-function Cart(  ) {
+
+const Cart = () => {
+  const { error, setError } = useContext(ErrorContext)
+
   // creates state for cartItems returned from GET fetch below
   const [ cartItems, setCartItems ] = useState([])
   const darkTheme = useTheme()
@@ -30,18 +34,36 @@ function Cart(  ) {
     setCartItems(cartItems.filter((item) => item.product_id !== product_id))
   }
 
+  // const handleCheckout = () => {
+  //   fetch(`/orders`, {
+  //     method:"POST",
+  //     header: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //   .then(resp => {
+  //     if(resp.ok) {
+  //       history.push('/order')
+  //     }        
+  //   })
+  // }
+
   const handleCheckout = () => {
-    fetch(`/orders`, {
-      method:"POST",
-      header: {
-        "Content-Type": "application/json",
-      },
-    })
-    .then(resp => {
-      if(resp.ok) {
-        history.push('/order')
-      }        
-    })
+    if (cartItems.length === 0) {
+      setError('your cart is empty!')
+    } else {
+      fetch(`/orders`, {
+        method:"POST",
+        header: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then(resp => {
+        if(resp.ok) {
+          history.push('/order')
+        }
+      })
+    }
   }
 
   // GET fetch retrieves every item from that was added to the cartItems table
@@ -54,6 +76,7 @@ function Cart(  ) {
       }
     })
   }, [])
+
   return (
     <div className="Cart" style={themeStyles}>
       <h1>Your Cart</h1>
