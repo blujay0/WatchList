@@ -21,7 +21,7 @@ const Logout = ({updateCustomer, setCustomer}) => { // updateCustomer is not def
   }
 
 return (
-  <button onClick={handleClick}>Logout</button>
+  <button style={{position: "absolute", top: "25%", left:"50%", transform: "translate(-50%, -50%)", background: "yellow"}} onClick={handleClick}>Logout</button>
 )
 }
 
