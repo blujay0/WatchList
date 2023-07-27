@@ -35,7 +35,7 @@ Hello and welcome! This is a fullstack ecommerce application for manual & automa
 6. After that, in the same terminal, run ```flask run``` to get the backend server up & running
 
 ## Generate the Database
-<img src="client/public/watchlistERD.png" width="500" alt="watchlist project entity relationship diagram">
+<img src="client/public/watchlistERD.png" width="800" alt="watchlist project entity relationship diagram">
 
 To setup your database, do the following:
 * `cd` into the `server/` directory and run ```export FLASK_APP=app.py``` to specify how to load the application
