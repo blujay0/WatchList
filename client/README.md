@@ -10,6 +10,7 @@ Hello and welcome! This is a fullstack ecommerce application for manual & automa
 * Add to Cart ➡️ Checkout ➡️ Order History
 * Check for more details on a specific watch
 * Toggle Dark/Light mode
+* Basic Chat
 
 ## Start the Backend Server First
 For an overview of the server-side, please go [here](/README.md)
