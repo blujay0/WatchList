@@ -48,25 +48,11 @@ To setup your database, do the following:
 > create this empty revision with `flask db revision -m'Create DB'`.**
 
 ## Start the Development (Client) Server
-To start running the client, do the following:
-* open a separate terminal, ```cd``` into the client directory
-* run ```npm install``` to install dependencies
-* run ```npm start``` to open the app in the browser
+For an overview of the client-side, please go [here](/client/README.md)
 
 > **TIP: It's good practice to have the backend server running first!**
 
 ## Packages Used
-* Client-side:
-    * MUI
-        * @emotion/react
-        * @emotion/styled
-        * @mui/icons-material
-        * @mui/material
-    * React.js
-        * react-dom
-        * react-router-dom
-    * formik
-    * yup
 * Server-side:
     * faker
     * flask
