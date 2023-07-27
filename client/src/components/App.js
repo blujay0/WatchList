@@ -32,11 +32,6 @@ const App = () => {
   const [cartItems, setCartItems] = useState([]);
   const [customer, setCustomer] = useState(null); // set customer id
   const [products, setProducts] = useState([]);
-  // const [query, setQuery] = useState("")
-
-  // const filteredProducts = products.filter(product => {
-  //   return product.toLowerCase().includes(query.toLowerCase())
-  // })
 
   // GET watches
   const getProducts = () => {
