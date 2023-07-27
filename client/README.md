@@ -1,9 +1,18 @@
-# Getting Started with Create React App
+# ⌚ WatchList
+Hello and welcome! This is a fullstack ecommerce application for manual & automatic watches, implementing React for the frontend and Python & Flask + SQLAlchemy for the backend. This README will give an overview of the client-side, and getting the frontend up & running in the terminal(s). For an overview of the client-side, please go [here](/README.md).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Product page of WatchList appliction](./public/watchlist-productpage.png)
 
 ## Features
+* Create an Account as a Customer
+* Login/Logout: User Authentication
+* Browse through a plethora of watch products
+* Add to Cart -> Checkout -> Order History
+* Check for more details on a specific watch
+* Toggle Dark/Light mode
 
+## Start the Backend Server First
+For an overview of the server-side, please go [here](/README.md)
 
 ## Start the Development (Client) Server
 To start running the client, do the following:
@@ -25,6 +34,7 @@ To start running the client, do the following:
     * yup
 
 ## Resources & Acknowledgements
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 - Watches used for this app were sourced from the following sites:
     - [TeddyBaldassarre Watch Blog](https://teddybaldassarre.com/blogs/watches/best-mechanical-watches)
     - [FratelloWatches](https://www.fratellowatches.com/the-classic-time-only-manual-wind-watch-examples-for-every-budget-from-hamilton-grand-seiko-omega-and-more/#gref)

@@ -1,5 +1,5 @@
 # ⌚ WatchList
-Hello and welcome! This is a fullstack ecommerce application for manual & automatic watches, implementing React for the frontend and Python & Flask + SQLAlchemy for the backend. This README will give an overview of the server-side, and getting the frontend + backend up & running in the terminals. For an overview of the client-side, please go [here](/client/README.md).
+Hello and welcome! This is a fullstack ecommerce application for manual & automatic watches, implementing React for the frontend and Python & Flask + SQLAlchemy for the backend. This README will give an overview of the server-side, and getting the backend up & running in the terminal(s). For an overview of the client-side, please go [here](/client/README.md).
 
 ## File Structure
 ```
@@ -26,26 +26,30 @@ Hello and welcome! This is a fullstack ecommerce application for manual & automa
     └── seed.py
 ```
 
-## Installation & Running Your Backend Server
-1. Fork and clone this repo from Github to your local environment
-2. Move to your local base directory and open the terminal in your code editor
-3. Run ```pipenv install``` to install dependencies
-4. Run ```pipenv shell``` to create and enter your virtual environment
-5. In your main project directory, run ```cd server``` to enter the server directory
-6. After that, in the same terminal, run ```flask run``` to get the backend server up & running
+## Install dependencies
+* Fork and clone this repo from Github to your local environment
+* Move to your local base directory and open the terminal in your code editor
+* Run ```pipenv install``` to install dependencies
+* Run ```pipenv shell``` to create and enter your virtual environment
+* ```cd server``` to enter the server directory
+
 
 ## Generate the Database
 <img src="client/public/watchlistERD.png" width="800" alt="watchlist project entity relationship diagram">
 
 To setup your database, do the following:
-* `cd` into the `server/` directory and run ```export FLASK_APP=app.py``` to specify how to load the application
-* `flask db migrate -m "your message"`
-* ```flask db upgrade```
+* make sure that you are in the `server/` directory and run ```export FLASK_APP=app.py``` to specify how to load the application
+* run ```flask db init```
+* run `flask db migrate -m "your message"`
+* run ```flask db upgrade```
 * run ```python seed.py``` to seed the database
 
 > **Tip: It's always a good idea to start with an empty revision! This allows
 > you to roll all the way back while still holding onto your database. You can
 > create this empty revision with `flask db revision -m'Create DB'`.**
+
+## Running the flask server
+In a new terminal, run ```pipenv shell``` and, after making sure that you ```cd``` into the /server directory, run ```flask run``` to get the backend server up & running
 
 ## Start the Development (Client) Server
 For an overview of the client-side, please go [here](/client/README.md)
@@ -66,6 +70,7 @@ For an overview of the client-side, please go [here](/client/README.md)
     * requests
 
 ## Resources & Acknowledgements
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 - Watches used for this app were sourced from the following sites:
     - [TeddyBaldassarre Watch Blog](https://teddybaldassarre.com/blogs/watches/best-mechanical-watches)
     - [FratelloWatches](https://www.fratellowatches.com/the-classic-time-only-manual-wind-watch-examples-for-every-budget-from-hamilton-grand-seiko-omega-and-more/#gref)
