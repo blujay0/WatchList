@@ -33,8 +33,8 @@ const Error = () => {
   };
 
   return (
-    <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-      <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+    <Snackbar anchorOrigin={{ vertical: "top", horizontal: "left" }} open={open} autoHideDuration={3000} onClose={handleClose}>
+      <Alert onClose={handleClose} severity="error" sx={{fontSize: "24px", width: "100%" }}>
         {error}
       </Alert>
     </Snackbar>

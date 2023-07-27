@@ -33,8 +33,8 @@ const Success = () => {
   };
 
   return (
-    <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-      <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+    <Snackbar anchorOrigin={{ vertical: "top", horizontal: "left" }} open={open} autoHideDuration={3000} onClose={handleClose}>
+      <Alert onClose={handleClose} severity="success" sx={{ fontSize: "24px", width: "100%" }}>
         {success}
       </Alert>
     </Snackbar>
