@@ -26,7 +26,7 @@ Hello and welcome! This is a fullstack ecommerce application for manual & automa
     └── seed.py
 ```
 
-## Installation & Running Your Server
+## Installation & Running Your Backend Server
 1. Fork and clone this repo from Github to your local environment
 2. Move to your local base directory and open the terminal in your code editor
 3. Run ```pipenv install``` to install dependencies
@@ -53,24 +53,39 @@ To start running the client, do the following:
 * run ```npm install``` to install dependencies
 * run ```npm start``` to open the app in the browser
 
-> **TIP: It's good practice to have the backend server running first!
+> **TIP: It's good practice to have the backend server running first!**
 
 ## Packages Used
-
-
-
-
-
-
+* Client-side:
+    * MUI
+        * @emotion/react
+        * @emotion/styled
+        * @mui/icons-material
+        * @mui/material
+    * React.js
+        * react-dom
+        * react-router-dom
+    * formik
+    * yup
+* Server-side:
+    * faker
+    * flask
+        * flask-migrate
+        * flask-sqlalchemy
+        * flask-cors
+        * flask-restful
+        * flask-bcrypt
+    * sqlalchemy
+    * sqlalchemy-serializer
+    * requests
 
 ## Resources & Acknowledgements
-
-- [Chatengine.io](https://chatengine.io/)
 - Watches used for this app were sourced from the following sites:
     - [TeddyBaldassarre Watch Blog](https://teddybaldassarre.com/blogs/watches/best-mechanical-watches)
     - [FratelloWatches](https://www.fratellowatches.com/the-classic-time-only-manual-wind-watch-examples-for-every-budget-from-hamilton-grand-seiko-omega-and-more/#gref)
     - [SaksFifthAvenue](https://www.saksfifthavenue.com/product/Oris-Big-Crown-ProPilot-X-Calibre-115-0400018040529.html?site_refer=CSE_GGLPLA:Mens_Jewelry:Oris&country=US&currency=USD&CSE_CID=G_Saks_PLA_US_Men%27s+Accessories:Jewelry&gclid=Cj0KCQjwqs6lBhCxARIsAG8YcDgMEXcUM_GlruGn-SXkRDlKIEM3bwmDQAUn56LscIl3iUt9qcR4Le4aAtONEALw_wcB&gclsrc=aw.ds)
     - [TwoBrokeWatchSnobs](https://twobrokewatchsnobs.com/best-automatic-watches/)
+- [Chatengine.io](https://chatengine.io/)
 - [Material UI](https://mui.com/)
 - [React documentation](https://react.dev/)
 - [Python documentation](https://docs.python.org/3/)
