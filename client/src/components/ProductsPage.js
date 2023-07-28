@@ -3,6 +3,10 @@ import ProductCard from './ProductCard';
 import { ThemeContext } from './App.js';
 import { useTheme } from './ThemeProvider';
 import './ProductsPage.css';
+import SearchIcon from '@mui/icons-material/Search';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+
 const ProductsPage = ({ getProducts, products, customer, setCartItems, cartItems }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -38,7 +42,19 @@ const ProductsPage = ({ getProducts, products, customer, setCartItems, cartItems
     <div>
       {/* <h1>Logged in as: {customer}</h1> */}
       <br />
-      <input className="search-input" onChange={onChange} type="search" placeholder="search by name, make, or model"/>
+      {/* <input className="search-input" onChange={onChange} type="search" placeholder="search by name, make, or model"/> */}
+      <TextField 
+        id='search-bar' 
+        variant='standard' 
+        size='large' 
+        type="search" 
+        sx={{marginLeft: "100px", width: "600px"}} 
+        onChange={onChange} 
+        placeholder="search by name, make, or model"
+        InputProps={{
+          startAdornment: <InputAdornment position="start"><SearchIcon/></InputAdornment>
+        }}
+      />
       <br />
       <br />
       <div style={themeStyles}>
