@@ -9,6 +9,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { ErrorContext } from '../context/ErrorContext';
 import { SuccessContext } from '../context/SuccessContext';
+import emailjs from 'emailjs-com';
 
 const ContactUs = () => {
   // destructure error context here
@@ -22,13 +23,26 @@ const ContactUs = () => {
     color: darkTheme ? '#FFFFFF' : '#000000',
   }
 
+  const sendEmail = (e) => {
+    e.preventDefault();
+    //emailjs.sendForm("service_id", "template_id", input, "user_id")
+    emailjs.sendForm(
+      "service_gymsax3", 
+      "template_6vpott8", 
+      e.target, 
+      "NsTC9WPcTHXnR0JQ1"
+      ).then(res => {
+        console.log(res);
+      }).catch( err=> console.log(err));
+  }
+
   return (
     <div style={themeStyles}>
-      <form style={{marginLeft: "100px"}}>
+      <form style={{marginLeft: "100px"}} onSubmit={sendEmail}>
         <h1 style={{fontSize: "50px"}}>Contact Us</h1>
         <div>
           <label style={{fontSize: "25px"}}>Name: </label>
-          <input type='text' name='name' style={{fontSize: "25px"}}/>        
+          <input type='text' name='user_name' style={{fontSize: "25px"}}/>        
         </div>
         <br />
         <div>
@@ -39,12 +53,11 @@ const ContactUs = () => {
         <div>
           <label style={{fontSize: "25px"}}>Message: </label>
           <br />
-          <textarea name='message' rows='6' cols="50" style={{fontSize: "25px"}}/>
+          <textarea name='user_message' rows='6' cols="50" style={{fontSize: "25px"}}/>
         </div>
         <input type='submit' value='Send' style={{backgroundColor: "#87CEEB", color: "black", padding: "8px 32px", margin: "4px 2px", fontSize: "20px"}}/>
       </form>
     </div>
-
   )
 }
 
