@@ -1,0 +1,17 @@
+/* .search {
+  font-weight: 900;
+  text-align: center;
+  border: 0cqmax;
+  padding: 25px;
+  font-size: 30px;
+} */
+
+.search-input {
+  margin-left: 10px;
+  padding-right: 20px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  font-size: 25px;
+  border-radius: 1rem;
+  width: 50%;
+}

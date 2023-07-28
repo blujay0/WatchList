@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import ProductCard from './ProductCard'
-import { ThemeContext } from './App.js'
-import { useTheme } from './ThemeProvider'
-
+import ProductCard from './ProductCard';
+import { ThemeContext } from './App.js';
+import { useTheme } from './ThemeProvider';
+import './ProductsPage.css';
 const ProductsPage = ({ getProducts, products, customer, setCartItems, cartItems }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -38,7 +38,7 @@ const ProductsPage = ({ getProducts, products, customer, setCartItems, cartItems
     <div>
       {/* <h1>Logged in as: {customer}</h1> */}
       <br />
-      <input onChange={onChange} type="search" placeholder="search by name, make, or model"/>
+      <input className="search-input" onChange={onChange} type="search" placeholder="search by name, make, or model"/>
       <br />
       <br />
       <div style={themeStyles}>
