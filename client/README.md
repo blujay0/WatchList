@@ -6,7 +6,7 @@ Hello and welcome! This is a fullstack ecommerce application for manual & automa
 ## Features
 * Create an Account as a Customer
 * Login/Logout: User Authentication
-* Browse through a plethora of watch products
+* Browse & Search through a plethora of watch products
 * Add to Cart ➡️ Checkout ➡️ Order History
 * Check for more details on a specific watch
 * Toggle Dark/Light mode
