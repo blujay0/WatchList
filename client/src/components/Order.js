@@ -7,7 +7,7 @@ const Order = () => {
   const [orders, setOrders] = useState([])
   const darkTheme = useTheme()
   const themeStyles = {
-    backgroundColor: darkTheme ? '#008B8B' : '#FFFFFF',
+    backgroundColor: darkTheme ? '#0C1728' : '#FFFFFF',
     color: darkTheme ? '#FFFFFF' : '#000000'
   }
 

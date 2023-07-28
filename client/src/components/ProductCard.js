@@ -7,7 +7,7 @@ const ProductCard = ({ customer, getProducts, product, setCartItems, cartItems }
   const { product_id, maker, model, product_name, product_price, product_description, image } = product
   const darkTheme = useTheme()
   const themeStyles = {
-    backgroundColor: darkTheme ? '#008B8B' : '#FFFFFF',
+    backgroundColor: darkTheme ? '#408367' : '#FFFFFF',
     color: darkTheme ? '#FFFFFF' : '#000000'
   }
   // const history = useHistory();
@@ -43,7 +43,7 @@ const ProductCard = ({ customer, getProducts, product, setCartItems, cartItems }
   }
   
   return (
-    <div className="main">
+    <div className="main" style={themeStyles}>
       <main style={themeStyles}>
         <img src={image} alt={maker}/>
         <div>Maker: {maker}</div>

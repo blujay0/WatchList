@@ -23,15 +23,15 @@ const ListProduct = ( {getProducts} ) => {
   const { success, setSuccess } = useContext(SuccessContext)
 
   const paperStyle = { backgroundColor: 'white', padding: 20, height:'60vh', width: 400, margin: '20px auto' };
-  const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '30px', backgroundColor: '#627C79', padding: 0 };
+  const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '30px', backgroundColor: 'yellow', padding: 0 };
   const textFieldStyle = { backgroundColor: 'white', margin: '8px 0' };
   const avatarStyle = { height: '70px', width: '70px', bgcolor: '#273248', fontSize: 30 };
-  const addStyle = { fontSize: '2em', color: 'white' };
+  const addStyle = { fontSize: '2em', color: 'black' };
   const plusOneStyle = { fontSize: '40px', color: 'white' };
 
   const darkTheme = useTheme()
   const themeStyles = {
-    backgroundColor: darkTheme ? '#008B8B' : '#FFFFFF',
+    backgroundColor: darkTheme ? '#0C1728' : '#FFFFFF',
   }
 
   const initialValues = {
@@ -125,7 +125,7 @@ const ListProduct = ( {getProducts} ) => {
                   <Field as={TextField} label='image' name='image' placeholder='Enter image url' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="image"/>}/>        
                   <Box textAlign="center">
                     <Button type='submit' style={buttonStyle} fullWidth>
-                        <Add sx={addStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>List</b></p>
+                        <Add sx={addStyle}/>&nbsp;<p style={{color: "black", fontSize: '20px'}}><b>List</b></p>
                     </Button>          
                   </Box>
                 </Form>

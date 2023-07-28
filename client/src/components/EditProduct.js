@@ -34,15 +34,15 @@ const EditProduct = ({ getProducts }) => {
   });
 
   const paperStyle = { backgroundColor: 'white', padding: 20, height:'60vh', width: 400, margin: '20px auto' };
-  const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '30px', backgroundColor: '#627C79', padding: 0 };
+  const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '30px', backgroundColor: 'yellow', padding: 0 };
   const textFieldStyle = { backgroundColor: 'white', margin: '8px 0' };
   const avatarStyle = { height: '70px', width: '70px', bgcolor: '#273248', fontSize: 30 };
   const notesStyle = { fontSize: '2em', color: 'white' };
-  const postAddStyle = { fontSize: '40px', color: 'white' };
+  const postAddStyle = { fontSize: '40px', color: 'black' };
 
   const darkTheme = useTheme()
   const themeStyles = {
-    backgroundColor: darkTheme ? '#008B8B' : '#FFFFFF',
+    backgroundColor: darkTheme ? '#0C1728' : '#FFFFFF',
   }
 
   // useParams is used to grab from URL
@@ -148,7 +148,7 @@ const EditProduct = ({ getProducts }) => {
                   <Field as={TextField} label='image' name='image' placeholder='Enter image url' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="image"/>}/>        
                   <Box textAlign="center">
                     <Button type='submit' style={buttonStyle} fullWidth>
-                        <PostAdd sx={postAddStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>Edit</b></p>
+                        <PostAdd sx={postAddStyle}/>&nbsp;<p style={{color: "black", fontSize: '20px'}}><b>Edit</b></p>
                     </Button>          
                   </Box>
                 </Form>
@@ -157,7 +157,6 @@ const EditProduct = ({ getProducts }) => {
         </Paper>
       </Grid>
     </div>
-
   );
 }
 

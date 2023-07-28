@@ -18,17 +18,17 @@ const Login = ({ setCustomer }) => {
   // const [emailError, setEmailError] = useState('');
 
   const paperStyle = { backgroundColor: 'white', padding: 20, height:'50vh', width: 400, margin: '20px auto' };
-  const buttonStyle = { margin: '8px 0', height: '5vh', borderRadius: '30px', backgroundColor: '#627C79', padding: 0 };
+  const buttonStyle = { margin: '8px 0', height: '5vh', borderRadius: '30px', padding: 0 };
   const textFieldStyle = { backgroundColor: 'white', margin: '8px 0', };
   const avatarStyle = { height: '70px', width: '70px', bgcolor: '#273248' };
   const lockPersonStyle = { fontSize: '2em', color: 'white' };
-  const keyStyle = { fontSize: '40px', color: 'white' };
+  const keyStyle = { fontSize: '40px', color: 'black' };
 
 
   const history = useHistory();
   const darkTheme = useTheme();
   const themeStyles = {
-    backgroundColor: darkTheme ? '#008B8B' : '#FFFFFF'
+    backgroundColor: darkTheme ? '#0C1728' : '#FFFFFF'
   }
 
   const initialValues={
@@ -107,8 +107,8 @@ const Login = ({ setCustomer }) => {
                 {/* {emailError && <span style={{color: "red"}}>{emailError}</span>} */}
                 <Field as={TextField} label='password' name='password' variant="outlined" placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required helperText={<ErrorMessage name="password"/>}/>
                 <Box textAlign='center'>
-                  <Button type='submit' style={buttonStyle} fullWidth>
-                    <Key sx={keyStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>Continue</b></p>
+                  <Button type='submit' style={buttonStyle} sx={{color: "black", backgroundColor: 'yellow'}} fullWidth>
+                    <Key sx={keyStyle}/>&nbsp;<p style={{color: "black"}}><b>Continue</b></p>
                   </Button>         
                 </Box>
               </Form>

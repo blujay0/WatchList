@@ -24,15 +24,15 @@ const SignUp = () => {
   const history = useHistory(); 
 
   const paperStyle = { backgroundColor: 'white', padding: 20, height:'60vh', width: 400, margin: '20px auto' };
-  const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '30px', backgroundColor: '#627C79', padding: 0 };
+  const buttonStyle = { margin: '8px 0', height:'5vh', borderRadius: '30px', backgroundColor: 'yellow', color: 'black', padding: 0 };
   const textFieldStyle = { backgroundColor: 'white', margin: '8px 0' };
   const avatarStyle = { height: '70px', width: '70px', bgcolor: '#273248', fontSize: 30 };
   const personStyle = { fontSize: '2em', color: 'white' };
-  const fingerprintStyle = { fontSize: '40px', color: 'white' };
+  const fingerprintStyle = { fontSize: '40px', color: 'black' };
 
   const darkTheme = useTheme();
   const themeStyles = {
-    backgroundColor: darkTheme ? '#008B8B' : '#FFFFFF'
+    backgroundColor: darkTheme ? '#0C1728' : '#FFFFFF'
   }
 
   const initialValues={
@@ -115,7 +115,7 @@ const SignUp = () => {
                 <Box textAlign="center">
                   {/* {errorMessage && <div style={{color:"red"}}>{errorMessage}</div>} */}
                   <Button type='submit' style={buttonStyle} fullWidth>
-                      <Fingerprint sx={fingerprintStyle}/>&nbsp;<p style={{color: "white", fontSize: '20px'}}><b>Register</b></p>
+                      <Fingerprint sx={fingerprintStyle}/>&nbsp;<p><b>Register</b></p>
                   </Button>          
                 </Box>
               </Form>
