@@ -18,7 +18,8 @@ import Chat from "./Chat.js"
 import FunctionContext from "./FunctionContext.js"
 import { ThemeProvider } from "./ThemeProvider.js";
 import { NotificationsOffRounded } from "@mui/icons-material";
-import NotFound from './NotFound.js'
+import NotFound from './NotFound.js';
+import ContactUs from './ContactUs';
 import { ErrorContext } from '../context/ErrorContext';
 import Error from './Error';
 import { SuccessContext } from '../context/SuccessContext';
@@ -120,6 +121,10 @@ const App = () => {
 
           <Route exact path="/order">
             <Order />
+          </Route>
+
+          <Route exact path="/contact-us">
+            <ContactUs />
           </Route>
 
           <Route exact path="/chat">
