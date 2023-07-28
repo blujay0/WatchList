@@ -108,7 +108,7 @@ const SignUp = () => {
           <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
             {(props) => (
               <Form >
-                <Field as={TextField} label='name' name='name' variant='outlined'  placeholder='First and last name' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="name"/>}/>
+                <Field as={TextField} label='name' name='name' variant='standard'  placeholder='First and last name' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="name"/>}/>
                 <Field as={TextField} label='email' name='email' variant='standard' placeholder='Enter email' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="email"/>}/>
                 <Field as={TextField} label='address' name='address' variant='standard' placeholder='Enter your address' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="address"/>}/>        
                 <Field as={TextField} label='password' name='password' variant='standard' placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required helperText={<ErrorMessage name="password"/>}/>
