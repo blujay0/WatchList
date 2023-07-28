@@ -103,9 +103,9 @@ const Login = ({ setCustomer }) => {
             {(props)=>(
               <Form>
                 {/* {console.log(props)} */}
-                <Field as={TextField} label='email' name='email' variant="outlined" placeholder='Enter email' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="email"/>}/>
+                <Field as={TextField} label='email' name='email' variant='standard' placeholder='Enter email' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="email"/>}/>
                 {/* {emailError && <span style={{color: "red"}}>{emailError}</span>} */}
-                <Field as={TextField} label='password' name='password' variant="outlined" placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required helperText={<ErrorMessage name="password"/>}/>
+                <Field as={TextField} label='password' name='password' variant='standard' placeholder='Enter password' style={textFieldStyle} type="password" fullWidth required helperText={<ErrorMessage name="password"/>}/>
                 <Box textAlign='center'>
                   <Button type='submit' style={buttonStyle} sx={{color: "black", backgroundColor: 'yellow'}} fullWidth>
                     <Key sx={keyStyle}/>&nbsp;<p style={{color: "black"}}><b>Continue</b></p>

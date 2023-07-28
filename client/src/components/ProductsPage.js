@@ -30,9 +30,10 @@ const ProductsPage = ({ getProducts, products, customer, setCartItems, cartItems
       // filter all products
       // if expression evals to true, add to filtered list & vice versa
       products.filter( product => {
-        return (product.product_name.toLowerCase().startsWith(value.toLowerCase())
-        || product.model.toLowerCase().startsWith(value.toLowerCase())
-        || product.maker.toLowerCase().startsWith(value.toLowerCase())
+        return (
+          product.product_name.toLowerCase().startsWith(value.toLowerCase())
+          || product.model.toLowerCase().startsWith(value.toLowerCase())
+          || product.maker.toLowerCase().startsWith(value.toLowerCase())
         )
       })
     )
@@ -46,13 +47,14 @@ const ProductsPage = ({ getProducts, products, customer, setCartItems, cartItems
       <TextField 
         id='search-bar' 
         variant='standard' 
-        size='large' 
+        size='normal' 
         type="search" 
         sx={{marginLeft: "32px", width: "500px"}} 
         onChange={onChange} 
         placeholder="search by name, make, or model"
+        inputProps={{ style: { fontSize: "1.5rem" } }}
         InputProps={{
-          startAdornment: <InputAdornment position="start"><SearchIcon/></InputAdornment>
+          startAdornment: <InputAdornment position="start"><SearchIcon /></InputAdornment>
         }}
       />
       <br />

@@ -138,14 +138,14 @@ const EditProduct = ({ getProducts }) => {
               {(props)=>(
                 // console.log(values.maker)
                 <Form>
-                  <Field as={TextField} label='id' value={productId} placeholder='Enter product ID' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="id"/>}/>
-                  <Field as={TextField} label='maker' name='maker' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="maker"/>}/>
-                  <Field as={TextField} label='model' name='model' placeholder='Enter product model' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="model"/>}/>
-                  <Field as={TextField} label='product_name' name='product_name' placeholder='Enter product name' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="product_name"/>}/>        
-                  <Field as={TextField} label='product_price' name='product_price' type="number" InputProps={{inputProps: {max: 1000000, min: 0}}} placeholder='Enter price' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="product_price"/>}/>
-                  <Field as={TextField} label='inventory' name='inventory' type="number" InputProps={{inputProps: {max: 1000000, min: 0}}} placeholder='Enter how many to list' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="inventory"/>}/>
-                  <Field as={TextField} label='product_description' name='product_description' placeholder='Enter short description' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="product_description"/>}/>
-                  <Field as={TextField} label='image' name='image' placeholder='Enter image url' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="image"/>}/>        
+                  <Field as={TextField} label='id' value={productId} placeholder='Enter product ID' style={textFieldStyle} variant='standard' fullWidth required helperText={<ErrorMessage name="id"/>}/>
+                  <Field as={TextField} label='maker' name='maker' style={textFieldStyle} variant='standard' fullWidth required helperText={<ErrorMessage name="maker"/>}/>
+                  <Field as={TextField} label='model' name='model' placeholder='Enter product model' style={textFieldStyle} variant='standard' fullWidth required helperText={<ErrorMessage name="model"/>}/>
+                  <Field as={TextField} label='product_name' name='product_name' placeholder='Enter product name' style={textFieldStyle} variant='standard' fullWidth required helperText={<ErrorMessage name="product_name"/>}/>        
+                  <Field as={TextField} label='product_price' name='product_price' type="number" InputProps={{inputProps: {max: 1000000, min: 0}}} variant='standard' placeholder='Enter price' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="product_price"/>}/>
+                  <Field as={TextField} label='inventory' name='inventory' type="number" InputProps={{inputProps: {max: 1000000, min: 0}}} variant='standard' placeholder='Enter how many to list' style={textFieldStyle} fullWidth required helperText={<ErrorMessage name="inventory"/>}/>
+                  <Field as={TextField} label='product_description' name='product_description' placeholder='Enter short description' style={textFieldStyle} variant='standard' fullWidth required helperText={<ErrorMessage name="product_description"/>}/>
+                  <Field as={TextField} label='image' name='image' placeholder='Enter image url' style={textFieldStyle} variant='standard' fullWidth required helperText={<ErrorMessage name="image"/>}/>        
                   <Box textAlign="center">
                     <Button type='submit' style={buttonStyle} fullWidth>
                         <PostAdd sx={postAddStyle}/>&nbsp;<p style={{color: "black", fontSize: '20px'}}><b>Edit</b></p>
