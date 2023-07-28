@@ -51,7 +51,7 @@ const Footer = ({ customer }) => {
         <Instagram sx={iconStyle} />
       </IconButton>
 
-      <IconButton component={Link} to={{ pathname: 'https://gmail.com' }} target="_blank" rel='noopener noreferrer'>
+      <IconButton component={Link} to={{ pathname: '/contact-us' }} target="_blank" rel='noopener noreferrer'>
         <MailOutline sx={iconStyle} />
       </IconButton>
 
