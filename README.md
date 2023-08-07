@@ -1,7 +1,7 @@
 # ⌚ WatchList
 Hello and welcome! This is a fullstack ecommerce application for manual & automatic watches, implementing React for the frontend and Python & Flask + SQLAlchemy for the backend. This README will give an overview of the server-side, and getting the backend up & running in the terminal(s). For an overview of the client-side, please go [here](/client/README.md).
 
-## File Structure
+## Filesystem
 ```
 .
 ├── CONTRIBUTING.md
