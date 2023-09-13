@@ -41,6 +41,7 @@ To start running the client, do the following:
     - [FratelloWatches](https://www.fratellowatches.com/the-classic-time-only-manual-wind-watch-examples-for-every-budget-from-hamilton-grand-seiko-omega-and-more/#gref)
     - [SaksFifthAvenue](https://www.saksfifthavenue.com/product/Oris-Big-Crown-ProPilot-X-Calibre-115-0400018040529.html?site_refer=CSE_GGLPLA:Mens_Jewelry:Oris&country=US&currency=USD&CSE_CID=G_Saks_PLA_US_Men%27s+Accessories:Jewelry&gclid=Cj0KCQjwqs6lBhCxARIsAG8YcDgMEXcUM_GlruGn-SXkRDlKIEM3bwmDQAUn56LscIl3iUt9qcR4Le4aAtONEALw_wcB&gclsrc=aw.ds)
     - [TwoBrokeWatchSnobs](https://twobrokewatchsnobs.com/best-automatic-watches/)
+- [EmailJS](https://www.emailjs.com/)
 - [Chatengine.io](https://chatengine.io/)
 - [Material UI](https://mui.com/)
 - [React documentation](https://react.dev/)
